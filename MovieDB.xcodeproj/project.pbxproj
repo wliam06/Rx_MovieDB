@@ -18,6 +18,7 @@
 		356C6CB926C66120007A0F67 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C6CB826C66120007A0F67 /* NetworkRequest.swift */; };
 		356C6CBC26C661D3007A0F67 /* NetwokReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C6CBB26C661D3007A0F67 /* NetwokReachability.swift */; };
 		356C6CC026C66224007A0F67 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C6CBF26C66224007A0F67 /* AlertController.swift */; };
+		356C6CC326C668D0007A0F67 /* NetworkLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C6CC226C668D0007A0F67 /* NetworkLog.swift */; };
 		F99EEC6433C45D8128A751EA /* Pods_MovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E331C4D4479BFF461452A337 /* Pods_MovieDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		356C6CB826C66120007A0F67 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		356C6CBB26C661D3007A0F67 /* NetwokReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwokReachability.swift; sourceTree = "<group>"; };
 		356C6CBF26C66224007A0F67 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		356C6CC226C668D0007A0F67 /* NetworkLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLog.swift; sourceTree = "<group>"; };
 		4B7141CF54A4C02EB7C2F4A8 /* Pods-MovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.release.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		B8AA2C9F4C38C530D83F8D75 /* Pods-MovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.debug.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.debug.xcconfig"; sourceTree = "<group>"; };
 		E331C4D4479BFF461452A337 /* Pods_MovieDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +100,7 @@
 		356C6CB026C66076007A0F67 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				356C6CC126C668A5007A0F67 /* Log */,
 				356C6CBA26C661BE007A0F67 /* Reachability */,
 				356C6CB726C66116007A0F67 /* Request */,
 				356C6CB126C6607A007A0F67 /* Session */,
@@ -151,6 +154,14 @@
 				356C6CBF26C66224007A0F67 /* AlertController.swift */,
 			);
 			path = AlertController;
+			sourceTree = "<group>";
+		};
+		356C6CC126C668A5007A0F67 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				356C6CC226C668D0007A0F67 /* NetworkLog.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 		56BDF10900F4890FE204D8AC /* Pods */ = {
@@ -276,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				356C6CC326C668D0007A0F67 /* NetworkLog.swift in Sources */,
 				356C6CB626C660EB007A0F67 /* Constants.swift in Sources */,
 				356C6CA126C65C14007A0F67 /* ViewController.swift in Sources */,
 				356C6CB326C6608A007A0F67 /* NetworkSession.swift in Sources */,

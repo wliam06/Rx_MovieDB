@@ -29,25 +29,25 @@ final class NetworkReachability {
       }
     }
 
-    func showErrorResponse(_ statusCode: Int?, callback: (() -> Void)?) {
+    func showErrorResponse(_ statusCode: NetworkError?, callback: (() -> Void)?) {
         switch statusCode {
-        case 400:
+        case .BadRequest:
             showErroWithMessage(title: "Bad Request",
                                 message: "We could not process that action",
                                 callback: callback)
-        case 403:
+        case .Forbidden:
             showErroWithMessage(title: "Forbidden",
                                 message: "You exceeded the rate limit",
                                 callback: callback)
-        case 404:
+        case .NotFound:
             showErroWithMessage(title: "Not Found",
                                 message: "The requested resource could not be found",
                                 callback: callback)
-        case 500:
+        case .InternalServerError:
             showErroWithMessage(title: "Internal Server Error",
                                 message: "We had a problem with our server. Please try again later",
                                 callback: callback)
-        case 503:
+        case .ServiceUnavailable:
             showErroWithMessage(title: "Service Unavailable",
                                 message: "We are temporarily offline for maintenance. Please try again later",
                                 callback: callback)
