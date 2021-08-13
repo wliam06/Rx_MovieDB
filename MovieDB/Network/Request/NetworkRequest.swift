@@ -51,6 +51,7 @@ class NetworkSessionRequest: NetworkRequest {
                     case (.some(503), _):
                         observer(.failure(NetworkError.ServiceUnavailable))
                     default:
+                        Logger.error(response.error?.localizedDescription ?? "Error Request")
                         observer(.failure(response.error!))
                     }
             }
