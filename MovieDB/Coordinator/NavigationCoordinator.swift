@@ -24,7 +24,7 @@ public protocol NavigationType {
     func push(_ viewController: UIViewController, animated: Bool, onPoppedCompletion: (() -> Void)?)
 
     /** Replaces all the view controllers currently managed by the navigation controller a new root view controller. */
-    func setRootViewController(_ viewController: UIViewController, animated: Bool)
+    func setRootViewController(from window: UIWindow, viewController: UIViewController, animated: Bool)
 }
 
 public extension NavigationType {
@@ -33,21 +33,21 @@ public extension NavigationType {
     }
 }
 
-protocol NavigationCoordinator: Presentable {
-    var navigator: NavigationType { get }
-}
+//protocol NavigationCoordinator: Presentable {
+//    var navigator: NavigationType { get }
+//}
+//
+//extension NavigationCoordinator {
+//    func push(_ coordinator: PresentationCoordinator, animated: Bool) {
+//        self.addChild(coordinator)
+//        coordinator.start()
+//        navigator.push(coordinator.controller, animated: animated, onPoppedCompletion: { [weak self] in
+//            self?.removeChild(coordinator)
+//        })
+//    }
+//}
 
-extension NavigationCoordinator {
-    func push(_ coordinator: PresentationCoordinator, animated: Bool) {
-        self.addChild(coordinator)
-        coordinator.start()
-        navigator.push(coordinator.controller, animated: animated, onPoppedCompletion: { [weak self] in
-            self?.removeChild(coordinator)
-        })
-    }
-}
-
-final class BaseNavigationCoordinator: BaseCoordinator, NavigationType {
+class BaseNavigationCoordinator: BaseCoordinator, NavigationType {
     private let navigationController: UINavigationController
     private var completions: [UIViewController: () -> Void]
 
@@ -91,10 +91,11 @@ final class BaseNavigationCoordinator: BaseCoordinator, NavigationType {
         navigationController.pushViewController(viewController, animated: animated)
     }
     
-    func setRootViewController(_ viewController: UIViewController, animated: Bool) {
+    func setRootViewController(from window: UIWindow, viewController: UIViewController, animated: Bool) {
         completions.forEach { $0.value() }      // call completions so all view controllers are deallocated
         completions = [:]
         navigationController.setViewControllers([viewController], animated: animated)
+        window.rootViewController = navigationController
     }
     
     private func runCompletion(for controller: UIViewController) {
