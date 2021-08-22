@@ -9,30 +9,19 @@ import RxSwift
 
 protocol FlowScreen {}
 
-protocol Route: AnyObject {
+protocol Router: AnyObject, Presentable {
     associatedtype Screen: FlowScreen
+
     func navigate(to screen: Screen, animated: Bool)
 }
 
-final class Router<Screen: FlowScreen>: Route {
-    private let navigateTo: (Screen, Bool) -> Void
-
-    init<T: Route>(_ router: T) where T.Screen == Screen {
-        self.navigateTo = router.navigate
-    }
-
-    func navigate(to screen: Screen, animated: Bool) {
-        navigateTo(screen, animated)
-    }
-}
-
-extension Route {
+extension Router {
     func navigate(to screen: Screen) {
         navigate(to: screen, animated: true)
     }
 }
 
-extension Reactive where Base: Route {
+extension Reactive where Base: Router {
     func navigate<Screen: FlowScreen>(to screen: Screen) -> AnyObserver<Void>
         where Base.Screen == Screen {
         AnyObserver { [unowned base] in
@@ -46,12 +35,26 @@ extension Reactive where Base: Route {
     }
 }
 
-extension Router: ReactiveCompatible {}
-
-protocol RoutingFlowCoordinator: Route, ReactiveCompatible {}
-
-extension RoutingFlowCoordinator {
-    var router: Router<Screen> {
-        return Router(self)
+extension Router where Self: Presentable {
+    var router: RouterImp<Screen> {
+        return RouterImp(self)
     }
 }
+
+extension Router where Self: ReactiveCompatible {}
+
+final class RouterImp<Screen: FlowScreen>: Router {
+    var rootViewController: UIViewController
+    private let navigateTo: (Screen, Bool) -> Void
+
+    init<T: Router>(_ router: T) where T.Screen == Screen {
+        self.navigateTo = router.navigate
+        self.rootViewController = router.root
+    }
+    
+    func navigate(to screen: Screen, animated: Bool) {
+        navigateTo(screen, animated)
+    }
+}
+
+extension RouterImp: ReactiveCompatible {}
