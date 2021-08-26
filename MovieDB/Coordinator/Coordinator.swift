@@ -32,20 +32,25 @@ extension Coordinator {
     }
 
     func removeChild(_ coordinator: Presentable) {
-        childCoordinators.removeAll { $0.rootViewController === coordinator.rootViewController }
+//        childCoordinators.removeAll { $0.rootViewController === coordinator.rootViewController }
     }
 }
 
 class BaseCoordinator<RouteType: FlowScreen, Presentation: PresentationCoordinator>: Coordinator {
+    
+    
     typealias Screen = RouteType
 
     var childCoordinators: [Presentable] = []
+    var count = 0
     @RxSignal var didFinish: Observable<Bool>
 
     func start() {}
 
     var rootViewController: UIViewController {
-        return root
+        count += 1
+        print("ROOT VIEWCONTROLLER CALLED: \(count)")
+        return controller
     }
 
     private(set) var controller: RootViewController
@@ -55,6 +60,7 @@ class BaseCoordinator<RouteType: FlowScreen, Presentation: PresentationCoordinat
     }
 
     func navigate(to screen: RouteType, animated: Bool) {}
+    func trigger(to screen: RouteType.Action) {}
 }
 
 extension BaseCoordinator {

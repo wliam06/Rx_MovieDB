@@ -11,12 +11,19 @@ protocol PresentationCoordinator {
     associatedtype RootViewController: UIViewController
 }
 
+
 protocol Presentable { 
     var rootViewController: UIViewController { get }
 }
 
+extension UIViewController: Presentable {
+    var rootViewController: UIViewController {
+        return self
+    }
+}
 extension Presentable {
-    var root: UIViewController { return rootViewController }
+//    var root: UIViewController { return rootViewController }
+    
 }
 
 //extension Presentable {

@@ -92,7 +92,6 @@ class NavigationCoordinator<RouteType: FlowScreen>: BaseCoordinator<RouteType, N
         childCoordinators.removeAll()
         completions.removeValue(forKey: controller)
     }
-    
 }
 
 //class BaseNavigationCoordinator: BaseCoordinator, NavigationType {
