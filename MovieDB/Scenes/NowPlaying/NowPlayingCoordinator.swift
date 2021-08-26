@@ -14,14 +14,14 @@ enum NowPlayingScreen: FlowScreen {
 }
 
 class NowPlayingCoordinator: NavigationCoordinator<NowPlayingScreen> {
-    override func start() {
+    init() {
+        super.init()
         navigate(to: .nowPlaying)
     }
 
     override func navigate(to screen: NowPlayingScreen, animated: Bool) {
         switch screen {
         case .nowPlaying:
-            print("now playing here")
             self.push(NowPlayingViewController(), animated: animated)
         default:
             break

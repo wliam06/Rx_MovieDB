@@ -12,7 +12,7 @@ typealias TabBarTransition = Transition<UITabBarController>
 extension Transition where RootViewController: UITabBarController {}
 
 class TabBarCoordinator<RouteType: FlowScreen>: BaseCoordinator<RouteType, TabBarTransition> {
-    
+
     override init(rootViewController: RootViewController = .init()) {
         super.init(rootViewController: rootViewController)
     }

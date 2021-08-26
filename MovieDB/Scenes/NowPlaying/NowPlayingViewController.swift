@@ -13,5 +13,5 @@ class NowPlayingViewController: UIViewController {
 
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.view.backgroundColor = .red
-    }    
+    }
 }

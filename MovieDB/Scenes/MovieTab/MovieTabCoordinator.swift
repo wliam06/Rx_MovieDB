@@ -14,11 +14,21 @@ enum MovieTab: FlowScreen {
 }
 
 class MovieTabCoordinator: TabBarCoordinator<MovieTab> {
-    override func start() {
-        let tab = NowPlayingCoordinator()
-//        tab.rootViewController.tabBarItem = UITabBarItem(title: "Now Playing", image: nil, tag: 0)
-        tab.start()
-        tab.controller.tabBarItem = UITabBarItem(title: "Now Playing", image: nil, tag: 0)
-        setViewController([tab])
+    init() {
+        super.init()
+        prepare(to: .nowPlaying)
+    }
+
+    override func prepare(to screen: MovieTab) {
+        let nowPlaying: NowPlayingCoordinator
+        switch screen {
+        case .nowPlaying:
+            nowPlaying = NowPlayingCoordinator()
+            nowPlaying.controller.tabBarItem = UITabBarItem(title: "Now Playing", image: nil, tag: 0)
+        default:
+            return
+        }
+
+        setViewController([nowPlaying])
     }
 }

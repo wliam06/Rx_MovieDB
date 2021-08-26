@@ -19,11 +19,6 @@ class AppCoordinator: NavigationCoordinator<AppScreen> {
 
     init(window: UIWindow?) {
         self.window = window
-//        let navController = UINavigationController()
-//        super.init(rootViewController: navController)
-//
-//        navigationController = navController
-//        window?.rootViewController = navigationController
     }
 
     override func start() {
@@ -34,7 +29,6 @@ class AppCoordinator: NavigationCoordinator<AppScreen> {
         switch screen {
         case .tab:
             let coordinator = MovieTabCoordinator()
-            coordinator.start()
             self.setRootViewController(from: window!, viewController: coordinator.controller, animated: true)
         case .test:
             let vc = ViewController()
