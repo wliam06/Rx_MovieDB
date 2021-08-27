@@ -25,6 +25,8 @@ public protocol NavigationType {
 
     /** Replaces all the view controllers currently managed by the navigation controller a new root view controller. */
     func setRootViewController(from window: UIWindow, viewController: UIViewController, animated: Bool)
+
+    func createModule() -> UIViewController
 }
 
 public extension NavigationType {
@@ -91,6 +93,10 @@ class NavigationCoordinator<RouteType: FlowScreen>: BaseCoordinator<RouteType, N
         completion()
         childCoordinators.removeAll()
         completions.removeValue(forKey: controller)
+    }
+
+    func createModule() -> UIViewController {
+        return navigationController
     }
 }
 

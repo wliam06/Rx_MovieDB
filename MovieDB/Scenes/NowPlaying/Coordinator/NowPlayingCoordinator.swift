@@ -5,7 +5,7 @@
 //  Created by William on 26/08/21.
 //
 
-import Foundation
+import UIKit
 
 enum NowPlayingScreen: FlowScreen {
     case nowPlaying
@@ -22,9 +22,10 @@ class NowPlayingCoordinator: NavigationCoordinator<NowPlayingScreen> {
     override func navigate(to screen: NowPlayingScreen, animated: Bool) {
         switch screen {
         case .nowPlaying:
-            self.push(NowPlayingViewController(), animated: animated)
-        default:
-            break
+            let viewController = NowPlayingViewController()
+            let viewModel = ImpNowPlayingViewModel()
+            viewController.bind(to: viewModel)
+//            self.push(controller, animated: animated)
         }
     }
 }

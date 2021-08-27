@@ -18,7 +18,7 @@ protocol Router: AnyObject, Presentable {
 
     func navigate(to screen: Screen, animated: Bool)
     func trigger(to screen: Screen.Action)
-    func prepare(to screen: Screen)
+    func prepare(to screen: [Screen])
 }
 
 extension Router {
@@ -51,7 +51,7 @@ extension Reactive where Base: Router {
         }
     }
 
-    func prepare<Screen: FlowScreen>(to screen: Screen) -> AnyObserver<Void>
+    func prepare<Screen: FlowScreen>(to screen: [Screen]) -> AnyObserver<Void>
         where Base.Screen == Screen {
         AnyObserver { [unowned base] in
             switch $0 {
@@ -77,7 +77,7 @@ final class RouterImp<Screen: FlowScreen>: Router {
 
     private let navigateTo: (Screen, Bool) -> Void
     private let triggerTo: (Screen.Action) -> Void
-    private let prepareTo: (Screen) -> Void
+    private let prepareTo: ([Screen]) -> Void
 
     init<T: Router>(_ router: T) where T.Screen == Screen {
         self.navigateTo = router.navigate
@@ -94,7 +94,7 @@ final class RouterImp<Screen: FlowScreen>: Router {
         triggerTo(screen)
     }
 
-    func prepare(to screen: Screen) {
+    func prepare(to screen: [Screen]) {
         prepareTo(screen)
     }
 }
