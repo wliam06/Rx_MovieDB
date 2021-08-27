@@ -25,7 +25,7 @@ class NowPlayingCoordinator: NavigationCoordinator<NowPlayingScreen> {
             let viewController = NowPlayingViewController()
             let viewModel = ImpNowPlayingViewModel()
             viewController.bind(to: viewModel)
-//            self.push(controller, animated: animated)
+            self.push(viewController, animated: animated)
         }
     }
 }

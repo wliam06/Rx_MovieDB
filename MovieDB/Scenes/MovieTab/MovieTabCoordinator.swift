@@ -18,8 +18,7 @@ class MovieTabCoordinator: TabBarCoordinator<MovieTab> {
     init() {
         super.init()
 
-        navigate(to: .nowPlaying)
-//        prepare(to: [.nowPlaying])
+        prepare(to: [.nowPlaying, .upcoming])
     }
 
     override func prepare(to screen: [MovieTab]) {
@@ -37,22 +36,6 @@ class MovieTabCoordinator: TabBarCoordinator<MovieTab> {
             }
         }
 
-        setViewController([nowPlaying])
-    }
-
-    override func navigate(to screen: MovieTab, animated: Bool) {
-        var nowPlaying: NowPlayingCoordinator!
-        var upcoming: UpcomingCoordinator!
-
-        switch screen {
-        case .nowPlaying:
-            nowPlaying = NowPlayingCoordinator()
-            nowPlaying.controller.tabBarItem = UITabBarItem(title: "Now Playing", image: nil, tag: 0)
-        case .upcoming:
-            upcoming = UpcomingCoordinator()
-            upcoming.controller.tabBarItem = UITabBarItem(title: "Upcoming", image: nil, tag: 1)
-        }
-
-        setViewController([nowPlaying])
+        setViewController([nowPlaying, upcoming])
     }
 }

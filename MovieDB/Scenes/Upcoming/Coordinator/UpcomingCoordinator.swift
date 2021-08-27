@@ -25,7 +25,7 @@ class UpcomingCoordinator: NavigationCoordinator<UpcomingScreen> {
             let viewController = UpcomingViewController()
             let viewModel = ImpUpcomingViewModel()
             viewController.bind(to: viewModel)
-//            self.push(controller, animated: animated)
+            self.push(viewController, animated: animated)
         }
     }
 }
