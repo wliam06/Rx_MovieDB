@@ -9,7 +9,6 @@ import UIKit
 
 enum AppScreen: FlowScreen {
     case tab
-    case test
 
     enum Action: FlowAction {}
 }
@@ -29,10 +28,9 @@ class AppCoordinator: NavigationCoordinator<AppScreen> {
         switch screen {
         case .tab:
             let coordinator = MovieTabCoordinator()
-            self.setRootViewController(from: window!, viewController: coordinator.controller, animated: true)
-        case .test:
-            let vc = ViewController()
-            self.setRootViewController(from: window!, viewController: vc, animated: true)
+            self.setRootViewController(from: window!,
+                                       viewController: coordinator.controller,
+                                       animated: true)
         }
     }
 }

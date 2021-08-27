@@ -18,3 +18,9 @@ end
 target 'MovieDB' do
   share_pods
 end
+
+target 'MovieDBTests' do
+  inherit! :search_paths
+  share_pods
+  testing_pods
+end

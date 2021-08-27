@@ -59,7 +59,7 @@ class BaseCoordinator<RouteType: FlowScreen, Presentation: PresentationCoordinat
 
     func navigate(to screen: RouteType, animated: Bool) {}
     func trigger(to screen: RouteType.Action) {}
-    func prepare(to screen: RouteType) {}
+    func prepare(to screen: [RouteType]) {}
 }
 
 extension BaseCoordinator {
