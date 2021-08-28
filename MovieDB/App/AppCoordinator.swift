@@ -22,6 +22,7 @@ class AppCoordinator: NavigationCoordinator<AppScreen> {
 
     override func start() {
         navigate(to: .tab)
+        self.navigationController.setNavigationBarHidden(true, animated: true)
     }
 
     override func navigate(to screen: AppScreen, animated: Bool) {
