@@ -2,101 +2,65 @@
 //  Container.swift
 //  MovieDB
 //
-//  Created by William on 28/08/21.
+//  Created by William on 18/09/21.
 //
 
 import Foundation
 
-//struct Container: Resolver {
-//    let factories: []
-//    func resolve<ServiceType>(_ type: ServiceType.Type) -> ServiceType {
-//    }
-//}
+typealias FactoryClosure = (DIContainer) -> AnyObject
 
-class Container {
-    let dependency: Resolver?
-    let factories: [AnyResolver]
-    
-    /// Initializes a new container with an optional child resolver
-    /// - Parameter dependency: a child resolver that is used when the dependency cannot be resolved by this container.
-    /// However, the container first tries to resolve the dependencies by itself
-    public init(dependency: Resolver? = nil) {
-        self.dependency = dependency
-        self.factories = []
+// Configurable used to add a method that enables
+// the object to be configured but doesn't define
+// what the configuration type is.
+protocol Configurable {
+    // Generic Configuration
+    associatedtype Configuration
+    func configure(configuration: Configuration)
+}
+
+protocol Container {
+    // Generic service
+    func register<Service>(type: Service.Type, factoryClosure: @escaping FactoryClosure)
+    // Create an object that conform protocol
+    func resolve<Service>(type: Service.Type) -> Service?
+    // Conform Configurable Protocol
+    func resolve<Service: Configurable>(type: Service.Type, configuration: Service.Configuration) -> Service?
+}
+
+class DIContainer: Container {
+    // Hold all factories
+    var services = Dictionary<String, FactoryClosure>()
+
+    func register<Service>(
+        type: Service.Type,
+        factoryClosure: @escaping FactoryClosure
+    ) {
+        services["\(type)"] = factoryClosure
     }
 
-    /// Initializes a new container with an optional child resolver and an array of factories
-    /// - Parameter dependency: a child resolver that is used when the dependency cannot be resolved by this container.
-    /// However, the container first tries to resolve the dependencies by itself
-    /// - Parameter factories: an array of already registered types.
-    init(dependency: Resolver? = nil, factories: [AnyResolver]) {
-        self.dependency = dependency
-        self.factories = factories
+    func resolve<Service>(
+        type: Service.Type
+    ) -> Service? {
+        return services["\(type)"]?(self) as? Service
     }
 
-    // MARK: - Register
-    /// Register the `instance` as a object of Type `ServiceType`. The same instance will be resolved on every resolve call.
-    /// - Parameter interface: The target type `ServiceType` to register the object as
-    /// - Parameter instance: The instance to register
-    public func register<ServiceType>(_ interface: ServiceType.Type, instance: ServiceType) -> Container {
-        return register(interface) { _ in instance }
-    }
-
-    /// Register the `factory` as a template to create object of Type `ServiceType`. The `factory` will be called on
-    /// every resolve call which means that a new instance will be created on every resolve call.
-    /// - Parameter interface: The target type `ServiceType` to register the object as
-    /// - Parameter factory: The factory/closure that is used to create the instance of type `ServiceType`
-    public func register<ServiceType>(_ interface: ServiceType.Type,
-                                      _ factory: @escaping (Resolver) -> ServiceType) -> Container {
-
-        let newFactory = BaseResolverFactory<ServiceType>(interface, factory: { resolver in
-            factory(resolver)
-        })
-        return .init(dependency: dependency, factories: factories + [AnyResolver(newFactory)])
+    func resolve<Service>(
+        type: Service.Type,
+        configuration: Service.Configuration
+    ) -> Service? where Service : Configurable {
+        let service = resolve(type: type)
+        service?.configure(configuration: configuration)
+        return service
     }
 }
 
-extension Container: Resolver {
-    /// returns a resolver that can be used to resolve the container objects
-    public var resolver: Resolver { return self as Resolver }
-
-    /// Resolves to an instance of type `ServiceType` and throws if no instance/factory has already been registered.
-    /// In case the container is not able to resolve the instance type, it will try to resolve it using its dependency.
-    /// An `Error.factoryNotFound` will be thrown in case the resolution is not possible.
-    public func resolve<ServiceType>(_ type: ServiceType.Type) throws -> ServiceType {
-        guard let factory = factories.first(where: { $0.supports(type) }) else {
-            guard let resolvedByDependency = try dependency?.resolve(type) else {
-                throw Container.unableToResolve(type)
-            }
-
-            return resolvedByDependency
-        }
-
-        return try factory.resolve(self)
-    }
-
-    /// Resolves to an instance of type `ServiceType` and throws if no instance/factory has already been registered.
-    /// In case the container is not able to resolve the instance type, it will try to resolve it using its dependency.
-    /// An `Error.factoryNotFound` will be thrown in case the resolution is not possible.
-    public func resolve<ServiceType>() throws -> ServiceType {
-        return try resolve(ServiceType.self)
-    }
-}
-
-// MARK: - Error
-extension Container {
-    public static func unableToResolve<ServiceType>(_ type: ServiceType.Type) -> Error {
-        return .factoryNotFound(service: type)
-    }
-
-    public enum Error: Swift.Error, Equatable {
-        public static func == (lhs: Container.Error, rhs: Container.Error) -> Bool {
-            switch (lhs, rhs) {
-            case let (.factoryNotFound(lhsType), .factoryNotFound(rhsType)):
-                return lhsType == rhsType
-            }
-        }
-
-        case factoryNotFound(service: Any.Type)
-    }
-}
+/** How to use register
+ let container = DIContainer()
+ container.register(type: ServiceOneProtocol.self) { _ in
+    return ClassServiceOne()
+ }
+ 
+ container.register(type: ServiceTwoProtocol.self) { container in
+    return ClassServiceTwo(serviceOne: container.resolve(type: ServiceOne.self)!)
+ }
+ **/

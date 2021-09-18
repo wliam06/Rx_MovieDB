@@ -31,6 +31,9 @@ class NetworkSessionRequest: NetworkRequest {
     init(_ session: SessionRequest = NetworkSession()) {
         self.session = session
     }
+//    init(_ session: SessionRequest) {
+//        self.session = session
+//    }
 
     func request<T: Codable>(_ url: URLRequestConvertible, decoder: JSONDecoder) -> Single<T> {
         return Single<T>.create { observer -> Disposable in

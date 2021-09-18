@@ -9,20 +9,23 @@ import UIKit
 
 enum AppScreen: FlowScreen {
     case tab
-
     enum Action: FlowAction {}
 }
 
 class AppCoordinator: NavigationCoordinator<AppScreen> {
     private let window: UIWindow?
+    private let depedency: Dependency
 
-    init(window: UIWindow?) {
+    init(window: UIWindow?,
+         depedency: Dependency = AppDependency()) {
         self.window = window
+        self.depedency = depedency
     }
 
     override func start() {
-        navigate(to: .tab)
+        // TODO: Create navigation custom
         self.navigationController.setNavigationBarHidden(true, animated: true)
+        navigate(to: .tab)
     }
 
     override func navigate(to screen: AppScreen, animated: Bool) {

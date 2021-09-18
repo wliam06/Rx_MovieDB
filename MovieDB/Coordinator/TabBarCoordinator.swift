@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 typealias TabBarTransition = Transition<UITabBarController>
 extension Transition where RootViewController: UITabBarController {}
 
@@ -21,3 +20,4 @@ class TabBarCoordinator<RouteType: FlowScreen>: BaseCoordinator<RouteType, TabBa
         controller.setViewControllers(tabs.map { $0.rootViewController }, animated: true)
     }
 }
+

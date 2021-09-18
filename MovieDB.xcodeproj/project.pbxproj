@@ -39,10 +39,9 @@
 		356C6CC726C6742E007A0F67 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C6CC626C6742E007A0F67 /* Logger.swift */; };
 		356C6CCA26C67641007A0F67 /* LatestMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C6CC926C67641007A0F67 /* LatestMovie.swift */; };
 		3583410B26D11E500021C342 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3583410A26D11E500021C342 /* TabBarCoordinator.swift */; };
-		3583C9B026DA2EEC00C00EA9 /* Resolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3583C9AF26DA2EEC00C00EA9 /* Resolver.swift */; };
-		3583C9B426DA4A2300C00EA9 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3583C9B326DA4A2300C00EA9 /* Container.swift */; };
-		3583C9B826DA4E7200C00EA9 /* ResolverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3583C9B726DA4E7200C00EA9 /* ResolverFactory.swift */; };
-		3583C9BD26DA4F2200C00EA9 /* AnyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3583C9BC26DA4F2200C00EA9 /* AnyResolver.swift */; };
+		35E3FF2226F5DBCC0097F1CA /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3FF2126F5DBCC0097F1CA /* Container.swift */; };
+		35EE173426EE2BFA0042EF73 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EE173326EE2BFA0042EF73 /* AppContainer.swift */; };
+		35EE173726EE38D10042EF73 /* NavigationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EE173626EE38D10042EF73 /* NavigationType.swift */; };
 		7D6A63800416DF5EEF3C9412 /* Pods_MovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C5E20553180721A89877D3 /* Pods_MovieDBTests.framework */; };
 		F99EEC6433C45D8128A751EA /* Pods_MovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E331C4D4479BFF461452A337 /* Pods_MovieDB.framework */; };
 /* End PBXBuildFile section */
@@ -94,10 +93,9 @@
 		356C6CC626C6742E007A0F67 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		356C6CC926C67641007A0F67 /* LatestMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMovie.swift; sourceTree = "<group>"; };
 		3583410A26D11E500021C342 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
-		3583C9AF26DA2EEC00C00EA9 /* Resolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resolver.swift; sourceTree = "<group>"; };
-		3583C9B326DA4A2300C00EA9 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
-		3583C9B726DA4E7200C00EA9 /* ResolverFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolverFactory.swift; sourceTree = "<group>"; };
-		3583C9BC26DA4F2200C00EA9 /* AnyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyResolver.swift; sourceTree = "<group>"; };
+		35E3FF2126F5DBCC0097F1CA /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		35EE173326EE2BFA0042EF73 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		35EE173626EE38D10042EF73 /* NavigationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationType.swift; sourceTree = "<group>"; };
 		4B7141CF54A4C02EB7C2F4A8 /* Pods-MovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.release.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		64C5E20553180721A89877D3 /* Pods_MovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6C56F20DBA76883D9E38BA2 /* Pods-MovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDBTests.release.xcconfig"; path = "Target Support Files/Pods-MovieDBTests/Pods-MovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +218,7 @@
 		356937F026CFE159000FD18A /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				35EE173526EE38C80042EF73 /* Navigation */,
 				3569380926D001D3000FD18A /* Router */,
 				356937F126CFE15E000FD18A /* Coordinator.swift */,
 				356937FE26CFE501000FD18A /* NavigationCoordinator.swift */,
@@ -244,6 +243,7 @@
 				356C6C9C26C65C14007A0F67 /* AppDelegate.swift */,
 				356C6C9E26C65C14007A0F67 /* SceneDelegate.swift */,
 				3569380726CFF841000FD18A /* AppCoordinator.swift */,
+				35EE173326EE2BFA0042EF73 /* AppContainer.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -297,6 +297,7 @@
 		356BE93B26D7CBFD00601AFD /* MovieDBTests */ = {
 			isa = PBXGroup;
 			children = (
+				3583C9BE26DA6DB000C00EA9 /* DI */,
 				356BE93C26D7CBFD00601AFD /* MovieDBTests.swift */,
 				356BE93E26D7CBFD00601AFD /* Info.plist */,
 			);
@@ -326,8 +327,8 @@
 		356C6C9B26C65C14007A0F67 /* MovieDB */ = {
 			isa = PBXGroup;
 			children = (
-				3583C9AE26DA2EE700C00EA9 /* DI */,
 				3569380626CFF832000FD18A /* App */,
+				35E3FF2026F5DBC60097F1CA /* DI */,
 				356937F026CFE159000FD18A /* Coordinator */,
 				356C6CB026C66076007A0F67 /* Network */,
 				356C6CBD26C661FD007A0F67 /* Component */,
@@ -412,31 +413,27 @@
 			path = Endpoint;
 			sourceTree = "<group>";
 		};
-		3583C9AE26DA2EE700C00EA9 /* DI */ = {
+		3583C9BE26DA6DB000C00EA9 /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				3583C9B626DA4C8400C00EA9 /* Extension */,
-				3583C9B526DA4C7D00C00EA9 /* ResolverFactory */,
-				3583C9AF26DA2EEC00C00EA9 /* Resolver.swift */,
-				3583C9B326DA4A2300C00EA9 /* Container.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
 		};
-		3583C9B526DA4C7D00C00EA9 /* ResolverFactory */ = {
+		35E3FF2026F5DBC60097F1CA /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				3583C9B726DA4E7200C00EA9 /* ResolverFactory.swift */,
-				3583C9BC26DA4F2200C00EA9 /* AnyResolver.swift */,
+				35E3FF2126F5DBCC0097F1CA /* Container.swift */,
 			);
-			path = ResolverFactory;
+			path = DI;
 			sourceTree = "<group>";
 		};
-		3583C9B626DA4C8400C00EA9 /* Extension */ = {
+		35EE173526EE38C80042EF73 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				35EE173626EE38D10042EF73 /* NavigationType.swift */,
 			);
-			path = Extension;
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		56BDF10900F4890FE204D8AC /* Pods */ = {
@@ -657,21 +654,20 @@
 				3583410B26D11E500021C342 /* TabBarCoordinator.swift in Sources */,
 				356C6C9D26C65C14007A0F67 /* AppDelegate.swift in Sources */,
 				351FED5E26D8B6AB004AC7DE /* NowPlayingViewModel.swift in Sources */,
-				3583C9B026DA2EEC00C00EA9 /* Resolver.swift in Sources */,
 				356BE93126D7B58500601AFD /* NowPlayingCoordinator.swift in Sources */,
-				3583C9BD26DA4F2200C00EA9 /* AnyResolver.swift in Sources */,
 				351FED7126D8BFCC004AC7DE /* UpcomingViewModel.swift in Sources */,
+				35EE173426EE2BFA0042EF73 /* AppContainer.swift in Sources */,
 				356C6CC026C66224007A0F67 /* AlertController.swift in Sources */,
 				351FED7826D8C07C004AC7DE /* ImpUpcomingViewModel.swift in Sources */,
 				351FED6B26D8BB2A004AC7DE /* BindableType.swift in Sources */,
 				356937F226CFE15E000FD18A /* Coordinator.swift in Sources */,
 				351FED6D26D8BCB7004AC7DE /* ImpNowPlayingViewModel.swift in Sources */,
+				35E3FF2226F5DBCC0097F1CA /* Container.swift in Sources */,
+				35EE173726EE38D10042EF73 /* NavigationType.swift in Sources */,
 				351FED6F26D8BFC8004AC7DE /* UpcomingViewController.swift in Sources */,
 				356C6CB926C66120007A0F67 /* NetworkRequest.swift in Sources */,
 				356BE92926D7B34200601AFD /* MovieTabCoordinator.swift in Sources */,
-				3583C9B826DA4E7200C00EA9 /* ResolverFactory.swift in Sources */,
 				356C6C9F26C65C14007A0F67 /* SceneDelegate.swift in Sources */,
-				3583C9B426DA4A2300C00EA9 /* Container.swift in Sources */,
 				356C6CBC26C661D3007A0F67 /* NetwokReachability.swift in Sources */,
 				356937FF26CFE501000FD18A /* NavigationCoordinator.swift in Sources */,
 				356937FB26CFE437000FD18A /* RxObserve.swift in Sources */,
