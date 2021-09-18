@@ -7,11 +7,11 @@
 
 import Alamofire
 
-protocol SessionRequest {
+protocol SessionRequest: AnyObject {
     func dataRequest(urlRequest: URLRequestConvertible) -> DataRequest
 }
 
-struct NetworkSession {
+class NetworkSession {
     static var httpHeader: HTTPHeaders {
         return [
             "Content-Type": "application/json;charset=utf-8",

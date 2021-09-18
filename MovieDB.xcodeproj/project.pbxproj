@@ -40,6 +40,8 @@
 		356C6CCA26C67641007A0F67 /* LatestMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C6CC926C67641007A0F67 /* LatestMovie.swift */; };
 		3583410B26D11E500021C342 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3583410A26D11E500021C342 /* TabBarCoordinator.swift */; };
 		35E3FF2226F5DBCC0097F1CA /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3FF2126F5DBCC0097F1CA /* Container.swift */; };
+		35E3FF2426F5F7400097F1CA /* Container+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3FF2326F5F7400097F1CA /* Container+Network.swift */; };
+		35E3FF2626F5F80E0097F1CA /* Container+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3FF2526F5F80E0097F1CA /* Container+Coordinator.swift */; };
 		35EE173426EE2BFA0042EF73 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EE173326EE2BFA0042EF73 /* AppContainer.swift */; };
 		35EE173726EE38D10042EF73 /* NavigationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EE173626EE38D10042EF73 /* NavigationType.swift */; };
 		7D6A63800416DF5EEF3C9412 /* Pods_MovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C5E20553180721A89877D3 /* Pods_MovieDBTests.framework */; };
@@ -94,6 +96,8 @@
 		356C6CC926C67641007A0F67 /* LatestMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestMovie.swift; sourceTree = "<group>"; };
 		3583410A26D11E500021C342 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		35E3FF2126F5DBCC0097F1CA /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		35E3FF2326F5F7400097F1CA /* Container+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Network.swift"; sourceTree = "<group>"; };
+		35E3FF2526F5F80E0097F1CA /* Container+Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Container+Coordinator.swift"; sourceTree = "<group>"; };
 		35EE173326EE2BFA0042EF73 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		35EE173626EE38D10042EF73 /* NavigationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationType.swift; sourceTree = "<group>"; };
 		4B7141CF54A4C02EB7C2F4A8 /* Pods-MovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.release.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,6 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				35E3FF2126F5DBCC0097F1CA /* Container.swift */,
+				35E3FF2326F5F7400097F1CA /* Container+Network.swift */,
+				35E3FF2526F5F80E0097F1CA /* Container+Coordinator.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35E3FF2426F5F7400097F1CA /* Container+Network.swift in Sources */,
 				356C6CB626C660EB007A0F67 /* Constants.swift in Sources */,
 				3569380326CFEE7D000FD18A /* PresentationCoordinator.swift in Sources */,
 				3569380826CFF841000FD18A /* AppCoordinator.swift in Sources */,
@@ -648,6 +655,7 @@
 				351FED6526D8B706004AC7DE /* ViewController.swift in Sources */,
 				356BE93526D7B6C700601AFD /* NowPlayingViewController.swift in Sources */,
 				351FED7326D8BFD4004AC7DE /* UpcomingCoordinator.swift in Sources */,
+				35E3FF2626F5F80E0097F1CA /* Container+Coordinator.swift in Sources */,
 				356937FD26CFE441000FD18A /* RxBinding.swift in Sources */,
 				350362F426D90DF700A24446 /* GetNowPlayingUseCase.swift in Sources */,
 				356C6CB326C6608A007A0F67 /* NetworkSession.swift in Sources */,

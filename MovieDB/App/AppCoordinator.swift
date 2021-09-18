@@ -14,12 +14,9 @@ enum AppScreen: FlowScreen {
 
 class AppCoordinator: NavigationCoordinator<AppScreen> {
     private let window: UIWindow?
-    private let depedency: Dependency
 
-    init(window: UIWindow?,
-         depedency: Dependency = AppDependency()) {
+    init(window: UIWindow?) {
         self.window = window
-        self.depedency = depedency
     }
 
     override func start() {
