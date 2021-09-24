@@ -40,14 +40,11 @@ class BaseCoordinator<RouteType: FlowScreen, Presentation: PresentationCoordinat
     typealias Screen = RouteType
 
     var childCoordinators: [Presentable] = []
-    var count = 0
     @RxSignal var didFinish: Observable<Bool>
 
     func start() {}
 
     var rootViewController: UIViewController {
-        count += 1
-        print("ROOT VIEWCONTROLLER CALLED: \(count)")
         return controller
     }
 

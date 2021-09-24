@@ -5,10 +5,23 @@
 //  Created by William on 18/09/21.
 //
 
-import Foundation
+import UIKit
+
+//class RouterPOP {
+//    typealias RouterDependencies = Presentable & Router
+//
+//    let depedencies: RouterDependencies
+//
+//    init(dependencies: RouterDependencies) {
+//        self.depedencies = depedencies
+//    }
+//}
 
 extension DIContainer {
-    func registerCoordinator() {
-        
-    }
+//    var presentable: Presentable {
+//        return resolve(type: Presentable.self)!
+//    }
+//    var router: Router {
+//        return resolve(type: Router.self)!
+//    }
 }
