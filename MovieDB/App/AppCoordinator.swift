@@ -20,9 +20,12 @@ class AppCoordinator: NavigationCoordinator<AppScreen> {
     }
 
     override func start() {
-        // TODO: Create navigation custom
+        // TODO: Create Custom Navigation Style
         self.navigationController.setNavigationBarHidden(true, animated: true)
         navigate(to: .tab)
+
+        // Register Dependencies
+        DIContainer().registerAllDependencies()
     }
 
     override func navigate(to screen: AppScreen, animated: Bool) {

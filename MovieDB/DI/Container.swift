@@ -7,6 +7,17 @@
 
 import Foundation
 
+/** How to use register
+ let container = DIContainer()
+ container.register(type: ServiceOneProtocol.self) { _ in
+    return ClassServiceOne()
+ }
+ 
+ container.register(type: ServiceTwoProtocol.self) { container in
+    return ClassServiceTwo(serviceOne: container.resolve(type: ServiceOne.self)!)
+ }
+ **/
+
 typealias FactoryClosure = (DIContainer) -> AnyObject
 
 // Configurable used to add a method that enables
@@ -44,6 +55,7 @@ class DIContainer: Container {
         return services["\(type)"]?(self) as? Service
     }
 
+    // Use to custom values
     func resolve<Service>(
         type: Service.Type,
         configuration: Service.Configuration
@@ -53,14 +65,3 @@ class DIContainer: Container {
         return service
     }
 }
-
-/** How to use register
- let container = DIContainer()
- container.register(type: ServiceOneProtocol.self) { _ in
-    return ClassServiceOne()
- }
- 
- container.register(type: ServiceTwoProtocol.self) { container in
-    return ClassServiceTwo(serviceOne: container.resolve(type: ServiceOne.self)!)
- }
- **/

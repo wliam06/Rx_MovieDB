@@ -25,7 +25,7 @@ extension Coordinator where Self: ReactiveCompatible {
     }
 }
 
-extension Coordinator where Self: Presentable {}
+//extension Coordinator where Self: Presentable {}
 extension Coordinator {
     func addChild(_ coordinator: Presentable) {
         childCoordinators.append(coordinator)
@@ -36,7 +36,7 @@ extension Coordinator {
     }
 }
 
-class BaseCoordinator<RouteType: FlowScreen, Presentation: PresentationCoordinator>: Coordinator {
+class BaseCoordinator<RouteType: FlowScreen, Presentation: PresentationCoordinator>: NSObject, Coordinator {
     typealias Screen = RouteType
 
     var childCoordinators: [Presentable] = []
