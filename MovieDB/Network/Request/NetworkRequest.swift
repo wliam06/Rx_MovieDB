@@ -28,7 +28,7 @@ public protocol NetworkRequest {
 class NetworkSessionRequest: NetworkRequest {
     private var session: SessionRequest
 
-    init(_ session: SessionRequest = NetworkSession()) {
+    init(_ session: SessionRequest) {
         self.session = session
     }
 
