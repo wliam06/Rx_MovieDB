@@ -1,4 +1,7 @@
 # Rx_MovieDB
+[![Build Status](https://app.bitrise.io/app/062c202c43a0e102/status.svg?token=8ljnE41Y_jZX5RG-J5QCug&branch=develop)](https://app.bitrise.io/app/062c202c43a0e102)
+[![codecov](https://codecov.io/gh/wliamgho/Rx_MovieDB/branch/develop/graph/badge.svg?token=bBBnmEsPQE)](https://codecov.io/gh/wliamgho/Rx_MovieDB)
+
 Create TheMovieDB with RxSwift
 
 ## Resolver
