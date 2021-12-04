@@ -22,15 +22,15 @@ class HomeCoordinator: NavigationCoordinator<HomeScreen> {
     }
 
     override func start() {
-        let request = container.resolve(type: NetworkRequest.self)
-        let repository = container.resolve(type: MovieRepository.self)
+        let _ = container.resolve(type: NetworkRequest.self)
+        let _ = container.resolve(type: MovieRepository.self)
         let usecase = container.resolve(type: HomeUsecase.self)
 
         let viewController = HomeViewController()
-        let viewModel = ImpHomeViewModel(usecase: usecase)
+        let viewModel = HomeViewModel(usecase: usecase)
         viewController.bind(to: viewModel)
 
-        self.push(viewController, animated: false)
         self.navigationController.setNavigationBarHidden(true, animated: false)
+        self.push(viewController, animated: false)
     }
 }

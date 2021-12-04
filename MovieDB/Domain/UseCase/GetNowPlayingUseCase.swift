@@ -14,7 +14,7 @@ protocol HomeUsecase {
     func fetchNowPlaying(page: Int, completion: @escaping (Result<MovieResultResponse, Error>) -> Void)
 }
 
-final class ImpHomeUsecase: HomeUsecase, HasDisposeBag {
+final class ImpHomeUsecase: HomeUsecase {
     private let repository: MovieRepository
 
     init(repository: MovieRepository) {
@@ -29,6 +29,6 @@ final class ImpHomeUsecase: HomeUsecase, HasDisposeBag {
             completion(.success($0))
         }, onError: {
             completion(.failure($0))
-        }).disposed(by: disposeBag)
+        })
     }
 }

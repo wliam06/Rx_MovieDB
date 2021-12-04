@@ -25,7 +25,6 @@ extension Container {
     func registerHomeContainer() {
         registerMovieRepository()
         registerHomeUsecase()
-        registerHomeViewModel()
     }
 
     func registerMovieRepository() {
@@ -43,13 +42,4 @@ extension Container {
             )
         }
     }
-
-    func registerHomeViewModel() {
-        register(type: HomeViewModel.self) { (container) -> AnyObject in
-            return ImpHomeViewModel(
-                usecase: container.resolve(type: HomeUsecase.self)
-            )
-        }
-    }
-
 }

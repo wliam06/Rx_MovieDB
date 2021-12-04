@@ -19,7 +19,6 @@ import Foundation
  
  
  **/
-
 typealias FactoryClosure = (DIContainer) -> AnyObject
 
 // Configurable used to add a method that enables
