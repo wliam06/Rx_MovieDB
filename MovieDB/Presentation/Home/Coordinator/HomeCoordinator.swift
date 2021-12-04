@@ -22,10 +22,7 @@ class HomeCoordinator: NavigationCoordinator<HomeScreen> {
     }
 
     override func start() {
-        let _ = container.resolve(type: NetworkRequest.self)
-        let _ = container.resolve(type: MovieRepository.self)
         let usecase = container.resolve(type: HomeUsecase.self)
-
         let viewController = HomeViewController()
         let viewModel = HomeViewModel(usecase: usecase)
         viewController.bind(to: viewModel)

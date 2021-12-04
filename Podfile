@@ -1,14 +1,18 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
-
 use_frameworks!
 
-def share_pods
+def reactive
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
   pod 'NSObject+Rx', '5.2.1'
+end
+
+def share_pods
   pod 'Alamofire', '5.4.3'
   pod 'SwiftLint', '0.45.0'
+  pod 'SnapKit', '5.0.1'
+  reactive
 end
 
 def testing_pods

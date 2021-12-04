@@ -6,19 +6,15 @@
 //
 
 import UIKit
-import RxSwift
+import NSObject_Rx
 
 protocol ViewControllerBinder: AnyObject {
     func setConstraint()
     func loadUI()
     func bindViewModel()
-
-    var disposeBag: DisposeBag { get }
 }
 
-class ViewController: UIViewController {
-    var disposeBag: DisposeBag = DisposeBag()
-
+class ViewController: UIViewController, HasDisposeBag {
     init() {
         super.init(nibName: nil, bundle: nil)
     }
