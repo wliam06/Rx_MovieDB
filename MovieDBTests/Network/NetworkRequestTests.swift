@@ -34,6 +34,6 @@ class NetworkRequestTests: XCTestCase {
     }
 
     func test_successRequest() {
-        network.request(<#T##url: URLRequestConvertible##URLRequestConvertible#>, decodable: <#T##(Decodable & Encodable).Protocol#>)
+//        network.request(<#T##url: URLRequestConvertible##URLRequestConvertible#>, decodable: <#T##(Decodable & Encodable).Protocol#>)
     }
 }
