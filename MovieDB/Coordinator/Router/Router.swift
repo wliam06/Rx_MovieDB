@@ -13,7 +13,7 @@ protocol FlowScreen {
     associatedtype Action: FlowAction
 }
 
-protocol Router: AnyObject, Presentable {
+protocol Router: Presentable {
     associatedtype Screen: FlowScreen
 
     func navigate(to screen: Screen, animated: Bool)

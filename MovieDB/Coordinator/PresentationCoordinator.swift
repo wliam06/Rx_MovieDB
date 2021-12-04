@@ -11,7 +11,7 @@ protocol PresentationCoordinator {
     associatedtype RootViewController: UIViewController
 }
 
-protocol Presentable { 
+protocol Presentable: AnyObject { 
     var rootViewController: UIViewController { get }
 }
 

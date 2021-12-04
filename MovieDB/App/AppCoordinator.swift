@@ -14,24 +14,27 @@ enum AppScreen: FlowScreen {
 
 class AppCoordinator: NavigationCoordinator<AppScreen> {
     private let window: UIWindow?
+    private let container: Container
 
-    init(window: UIWindow?) {
+    init(window: UIWindow?,
+         container: Container = DIContainer()) {
         self.window = window
+        self.container = container
     }
 
     override func start() {
+        // Register Dependencies
+        container.registerAllDependencies()
+
         // TODO: Create Custom Navigation Style
         self.navigationController.setNavigationBarHidden(true, animated: true)
         navigate(to: .tab)
-
-        // Register Dependencies
-        DIContainer().registerAllDependencies()
     }
 
     override func navigate(to screen: AppScreen, animated: Bool) {
         switch screen {
         case .tab:
-            let coordinator = MovieTabCoordinator()
+            let coordinator = MovieTabCoordinator(container: container)
             self.setRootViewController(from: window!,
                                        viewController: coordinator.controller,
                                        animated: true)

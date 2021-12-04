@@ -6,13 +6,29 @@
 //
 
 import Foundation
+import RxSwift
+import NSObject_Rx
 
-protocol GetNowPlayingUseCase {
-    func fetchNowPlaying()
+protocol HomeUsecase {
+//    func fetchNowPlaying(page: Int) -> Single<MovieResultResponse>
+    func fetchNowPlaying(page: Int, completion: @escaping (Result<MovieResultResponse, Error>) -> Void)
 }
 
-final class ImpGetNowPlayingUseCase: GetNowPlayingUseCase {
-    func fetchNowPlaying() {
-        
+final class ImpHomeUsecase: HomeUsecase, HasDisposeBag {
+    private let repository: MovieRepository
+
+    init(repository: MovieRepository) {
+        self.repository = repository
+    }
+
+    func fetchNowPlaying(
+        page: Int,
+        completion: @escaping (Result<MovieResultResponse, Error>) -> Void
+    ) {
+        repository.getUpcoming(page: page).subscribe(onNext: {
+            completion(.success($0))
+        }, onError: {
+            completion(.failure($0))
+        }).disposed(by: disposeBag)
     }
 }

@@ -11,6 +11,7 @@ import RxSwift
 protocol ViewControllerBinder: AnyObject {
     func setConstraint()
     func loadUI()
+    func bindViewModel()
 
     var disposeBag: DisposeBag { get }
 }
@@ -26,16 +27,16 @@ class ViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // Override method
-    func loadUI() {}
-    func setConstraint() {}
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         loadUI()
         setConstraint()
+        bindViewModel()
     }
 
+    // Override method
+    func loadUI() {}
+    func setConstraint() {}
     func bindViewModel() {}
 }
