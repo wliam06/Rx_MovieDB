@@ -18,4 +18,8 @@ In this repo, Resolver is used to get dependencies from a certain store and enab
 
 
 TODO:
- - [ ] 
+ - [ ] Show Movie List Layout (Upcoming, Now Playing, Popular)
+ - [ ] Show Movie Detail
+ - [ ] Unit Test & Snapshot UI
+ - [ ] Dark Mode
+ - [ ] Modularity
