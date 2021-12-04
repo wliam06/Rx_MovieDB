@@ -42,6 +42,11 @@
 		35911231274125D400D935DE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35911230274125D400D935DE /* Endpoint.swift */; };
 		359112342741273800D935DE /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359112332741273800D935DE /* Localization.swift */; };
 		359F471B275B79DE00833757 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359F471A275B79DE00833757 /* HomeView.swift */; };
+		359F4722275B801900833757 /* MockMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359F4721275B801900833757 /* MockMovieRepository.swift */; };
+		359F4727275B8E1D00833757 /* ImpMovieRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359F4726275B8E1D00833757 /* ImpMovieRepositoryTests.swift */; };
+		359F472B275B8EFF00833757 /* MockNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359F472A275B8EFF00833757 /* MockNetworkRequest.swift */; };
+		359F472D275B8F5400833757 /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359F472C275B8F5400833757 /* NetworkRequestTests.swift */; };
+		359F472F275B8F7300833757 /* MockSessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359F472E275B8F7300833757 /* MockSessionRequest.swift */; };
 		35A72E452736B27100BF3140 /* DIContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A72E442736B27100BF3140 /* DIContainerTests.swift */; };
 		35A72E4A2736B30100BF3140 /* MockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A72E492736B30100BF3140 /* MockProtocol.swift */; };
 		35E3FF2226F5DBCC0097F1CA /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3FF2126F5DBCC0097F1CA /* Container.swift */; };
@@ -104,6 +109,11 @@
 		35911230274125D400D935DE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		359112332741273800D935DE /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		359F471A275B79DE00833757 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		359F4721275B801900833757 /* MockMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieRepository.swift; sourceTree = "<group>"; };
+		359F4726275B8E1D00833757 /* ImpMovieRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpMovieRepositoryTests.swift; sourceTree = "<group>"; };
+		359F472A275B8EFF00833757 /* MockNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkRequest.swift; sourceTree = "<group>"; };
+		359F472C275B8F5400833757 /* NetworkRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestTests.swift; sourceTree = "<group>"; };
+		359F472E275B8F7300833757 /* MockSessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionRequest.swift; sourceTree = "<group>"; };
 		35A72E442736B27100BF3140 /* DIContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainerTests.swift; sourceTree = "<group>"; };
 		35A72E492736B30100BF3140 /* MockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocol.swift; sourceTree = "<group>"; };
 		35E3FF2126F5DBCC0097F1CA /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
@@ -297,6 +307,9 @@
 		356BE93B26D7CBFD00601AFD /* MovieDBTests */ = {
 			isa = PBXGroup;
 			children = (
+				359F4728275B8E6600833757 /* Network */,
+				359F471F275B7FF400833757 /* Data */,
+				359F471D275B7FE100833757 /* Presentation */,
 				3583C9BE26DA6DB000C00EA9 /* DI */,
 				356BE93C26D7CBFD00601AFD /* MovieDBTests.swift */,
 				356BE93E26D7CBFD00601AFD /* Info.plist */,
@@ -489,6 +502,64 @@
 			children = (
 			);
 			path = Constraint;
+			sourceTree = "<group>";
+		};
+		359F471D275B7FE100833757 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				359F471E275B7FE900833757 /* Home */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		359F471E275B7FE900833757 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		359F471F275B7FF400833757 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				359F4720275B7FFA00833757 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		359F4720275B7FFA00833757 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				359F4723275B8DF300833757 /* Mock */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		359F4723275B8DF300833757 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				359F4721275B801900833757 /* MockMovieRepository.swift */,
+				359F4726275B8E1D00833757 /* ImpMovieRepositoryTests.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		359F4728275B8E6600833757 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				359F4729275B8EF700833757 /* Mock */,
+				359F472C275B8F5400833757 /* NetworkRequestTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		359F4729275B8EF700833757 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				359F472A275B8EFF00833757 /* MockNetworkRequest.swift */,
+				359F472E275B8F7300833757 /* MockSessionRequest.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		35A72E462736B2EA00BF3140 /* Mock */ = {
@@ -711,8 +782,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				359F472B275B8EFF00833757 /* MockNetworkRequest.swift in Sources */,
 				35A72E4A2736B30100BF3140 /* MockProtocol.swift in Sources */,
+				359F472F275B8F7300833757 /* MockSessionRequest.swift in Sources */,
 				35A72E452736B27100BF3140 /* DIContainerTests.swift in Sources */,
+				359F4727275B8E1D00833757 /* ImpMovieRepositoryTests.swift in Sources */,
+				359F4722275B801900833757 /* MockMovieRepository.swift in Sources */,
+				359F472D275B8F5400833757 /* NetworkRequestTests.swift in Sources */,
 				356BE93D26D7CBFD00601AFD /* MovieDBTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,6 @@ import RxSwift
 import Alamofire
 
 protocol MovieRepository: AnyObject {
-//    func getUpcoming(page: Int) -> Single<MovieResultResponse>
     func getUpcoming(page: Int) -> Observable<MovieResultResponse>
 }
 
@@ -22,15 +21,6 @@ final class ImpMovieRepository: MovieRepository {
     }
 
     func getUpcoming(page: Int) -> Observable<MovieResultResponse> {
-//        networkRequest.request(
-//           MovieEndpoint.getUpcoming(page: 1),
-//           decodable: MovieResultResponse.self
-//        ).runInThread().subscribe(onSuccess: {
-//            print("success", $0)
-//        }, onFailure: {
-//            print("ERROR", $0)
-//        }).disposed(by: dispose)
-
         return self.networkRequest.request(
             MovieEndpoint.getUpcoming(page: 1),
             decodable: MovieResultResponse.self
