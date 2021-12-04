@@ -16,8 +16,9 @@ import Foundation
  container.register(type: ServiceTwoProtocol.self) { container in
     return ClassServiceTwo(serviceOne: container.resolve(type: ServiceOne.self)!)
  }
+ 
+ 
  **/
-
 typealias FactoryClosure = (DIContainer) -> AnyObject
 
 // Configurable used to add a method that enables
@@ -32,10 +33,12 @@ protocol Configurable {
 protocol Container {
     // Generic service
     func register<Service>(type: Service.Type, factoryClosure: @escaping FactoryClosure)
+    // Receive Array of services
+    func register<Service>(types: [Service.Type], factoryClosure: @escaping FactoryClosure)
     // Create an object that conform protocol
-    func resolve<Service>(type: Service.Type) -> Service?
+    func resolve<Service>(type: Service.Type) -> Service
     // Conform Configurable Protocol
-    func resolve<Service: Configurable>(type: Service.Type, configuration: Service.Configuration) -> Service?
+    func resolve<Service: Configurable>(type: Service.Type, configuration: Service.Configuration) -> Service
 }
 
 class DIContainer: Container {
@@ -49,19 +52,28 @@ class DIContainer: Container {
         services["\(type)"] = factoryClosure
     }
 
+    func register<Service>(
+        types: [Service.Type],
+        factoryClosure: @escaping FactoryClosure
+    ) {
+        types.forEach { type in
+            services["\(type)"] = factoryClosure
+        }
+    }
+
     func resolve<Service>(
         type: Service.Type
-    ) -> Service? {
-        return services["\(type)"]?(self) as? Service
+    ) -> Service {
+        return services["\(type)"]?(self) as! Service
     }
 
     // Use to custom values
     func resolve<Service>(
         type: Service.Type,
         configuration: Service.Configuration
-    ) -> Service? where Service : Configurable {
+    ) -> Service where Service: Configurable {
         let service = resolve(type: type)
-        service?.configure(configuration: configuration)
+        service.configure(configuration: configuration)
         return service
     }
 }

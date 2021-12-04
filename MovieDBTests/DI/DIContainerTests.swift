@@ -43,15 +43,15 @@ class DIContainerTests: XCTestCase {
         let resolvedProtocol = resolver.resolve(type: MockProtocol.self)
         let resolvedClass = resolver.resolve(type: MockClass.self)
 
-        XCTAssertEqual(resolvedProtocol?.id, 1)
-        XCTAssertEqual(resolvedClass?.id, 2)
+        XCTAssertEqual(resolvedProtocol.id, 1)
+        XCTAssertEqual(resolvedClass.id, 2)
     }
 
     func test_successRegisterClassWithConfigurable() {
         resolver.register(type: MockProtocol.self) { _ in MockClass(id: 1) }
         resolver.register(type: MockClassConfigurable.self) { container -> AnyObject in
             return MockClassConfigurable(
-                mockProtocol: container.resolve(type: MockProtocol.self)!
+                mockProtocol: container.resolve(type: MockProtocol.self)
             )
         }
 
@@ -61,6 +61,6 @@ class DIContainerTests: XCTestCase {
             configuration: configuration
         )
         
-        XCTAssertEqual(mockConfigurable?.id, 2)
+        XCTAssertEqual(mockConfigurable.id, 2)
     }
 }

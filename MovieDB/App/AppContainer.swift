@@ -7,8 +7,9 @@
 
 import Foundation
 
-extension DIContainer {
+extension Container {
     func registerAllDependencies() {
         registerNetwork()
+        registerHomeContainer()
     }
 }

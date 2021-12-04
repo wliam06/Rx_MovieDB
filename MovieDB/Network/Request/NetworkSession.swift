@@ -25,8 +25,10 @@ class NetworkSession {
         config.httpCookieStorage = nil
         config.urlCache = nil
         config.headers = httpHeader
-        let sesion = Session(configuration: config,
-                             startRequestsImmediately: true)
+        let sesion = Session(
+            configuration: config,
+            startRequestsImmediately: true
+        )
         return sesion
     }()
 }
