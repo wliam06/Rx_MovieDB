@@ -25,6 +25,7 @@
 		35790F3E277091600038B210 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F3D277091600038B210 /* NowPlayingViewController.swift */; };
 		35790F402770917A0038B210 /* NowPlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F3F2770917A0038B210 /* NowPlayingViewModel.swift */; };
 		35790F47277092CA0038B210 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F46277092CA0038B210 /* Bindable.swift */; };
+		35CAE8F62770D32C004ADBDE /* Ext+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CAE8F52770D32C004ADBDE /* Ext+UIColor.swift */; };
 		35D8B871277095DC00D3D779 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B870277095DC00D3D779 /* NetworkConfig.swift */; };
 		35D8B873277096A600D3D779 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B872277096A600D3D779 /* NetworkSession.swift */; };
 		35D8B875277096DA00D3D779 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B874277096DA00D3D779 /* NetworkRequest.swift */; };
@@ -66,6 +67,7 @@
 		35790F3D277091600038B210 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		35790F3F2770917A0038B210 /* NowPlayingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewModel.swift; sourceTree = "<group>"; };
 		35790F46277092CA0038B210 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		35CAE8F52770D32C004ADBDE /* Ext+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIColor.swift"; sourceTree = "<group>"; };
 		35D8B870277095DC00D3D779 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
 		35D8B872277096A600D3D779 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
 		35D8B874277096DA00D3D779 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		354DC1EC2770CC9E00FAA6D2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				35CAE8F42770D326004ADBDE /* Color */,
 				354DC1EF2770CCBA00FAA6D2 /* TableView */,
 			);
 			path = Extensions;
@@ -299,6 +302,14 @@
 				35D8B874277096DA00D3D779 /* NetworkRequest.swift */,
 			);
 			path = SessionRequest;
+			sourceTree = "<group>";
+		};
+		35CAE8F42770D326004ADBDE /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				35CAE8F52770D32C004ADBDE /* Ext+UIColor.swift */,
+			);
+			path = Color;
 			sourceTree = "<group>";
 		};
 		35D8B8762770973500D3D779 /* Reachability */ = {
@@ -566,6 +577,7 @@
 				35D8B89027709ECD00D3D779 /* MovieListUseCase.swift in Sources */,
 				35D8B8802770982F00D3D779 /* Logger.swift in Sources */,
 				354DC1E72770C0FE00FAA6D2 /* RxBinding.swift in Sources */,
+				35CAE8F62770D32C004ADBDE /* Ext+UIColor.swift in Sources */,
 				356C6C9D26C65C14007A0F67 /* AppDelegate.swift in Sources */,
 				35790F402770917A0038B210 /* NowPlayingViewModel.swift in Sources */,
 				356C6C9F26C65C14007A0F67 /* SceneDelegate.swift in Sources */,

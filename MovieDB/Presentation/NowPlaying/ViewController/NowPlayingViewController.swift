@@ -17,11 +17,10 @@ class NowPlayingViewController: UIViewController, Bindable {
 
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = .systemBlue
+        self.view.backgroundColor = .colorMode(light: .white, dark: .black)
         nowPlayingView = NowPlayingView(viewModel: viewModel)
         self.view.addSubview(nowPlayingView)
 
