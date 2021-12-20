@@ -7,8 +7,10 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
+import NSObject_Rx
 
-class NowPlayingView: UIView {
+class NowPlayingView: UIView, HasDisposeBag {
     private lazy var indicator: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
         if #available(iOS 13.0, *) {
@@ -17,7 +19,6 @@ class NowPlayingView: UIView {
             // Fallback on earlier versions
             activity.style = .whiteLarge
         }
-//        activity.color = .darkGray
         activity.hidesWhenStopped = true
         activity.translatesAutoresizingMaskIntoConstraints = false
         return activity
@@ -37,7 +38,8 @@ class NowPlayingView: UIView {
             frame: .zero,
             collectionViewLayout: viewLayout
         )
-        collection.registerCells(<#T##cellClasses: UICollectionViewCell.Type...##UICollectionViewCell.Type#>)
+        collection.backgroundColor = .clear
+        collection.registerCells(NowPlayingCell.self)
         return collection
     }()
 
@@ -72,6 +74,12 @@ class NowPlayingView: UIView {
         rx.bind(
             viewModel.activityLoading ~> indicator.rx.isAnimating
         )
+        viewModel.moviesResult.bind(
+            to: collectionView.rx.items(cellType: NowPlayingCell.self)
+        ) { index, data, cell in
+            cell.configure(poster: data.posterPath)
+        }.disposed(by: disposeBag)
+        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 
     private func setupConstraint() {
@@ -86,5 +94,29 @@ class NowPlayingView: UIView {
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
         }
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(title.snp.bottom).offset(8)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+}
+
+extension NowPlayingView: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        let width = collectionView.bounds.width
+        let size = (width - 30) / 2
+        return CGSize(width: size, height: size / 0.6)
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
 }

@@ -15,6 +15,7 @@ end
 
 def layout_pods
   pod 'SnapKit', '5.0.1'
+  pod 'Kingfisher', '~> 7.0'
 end
 
 def testing_pods
