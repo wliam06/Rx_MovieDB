@@ -11,4 +11,10 @@ protocol NowPlayingViewModelInput {}
 protocol NowPlayingViewModelOutput {}
 protocol NowPlayingViewModel: NowPlayingViewModelInput & NowPlayingViewModelOutput {}
 
-final class ImpNowPlayingViewModel: NowPlayingViewModel {}
+final class ImpNowPlayingViewModel: NowPlayingViewModel {
+    private let usecase: MovieListUseCase
+
+    init(usecase: MovieListUseCase) {
+        self.usecase = usecase
+    }
+}

@@ -40,5 +40,4 @@ final class ImpMovieListUseCase: MovieListUseCase, HasDisposeBag {
     func fetchPopular(page: Int) -> Observable<MovieResultResponse> {
         repository.getPopular(page: page).asObservable()
     }
-    
 }
