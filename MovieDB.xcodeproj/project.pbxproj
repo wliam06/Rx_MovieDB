@@ -84,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				35790F3027708FE70038B210 /* App */,
+				35790F49277093DB0038B210 /* Network */,
 				35790F3127708FEF0038B210 /* Coordinator */,
 				35790F3B2770912E0038B210 /* Presentation */,
 				35790F36277090550038B210 /* Utils */,
@@ -170,6 +171,21 @@
 				35790F46277092CA0038B210 /* Bindable.swift */,
 			);
 			path = Binder;
+			sourceTree = "<group>";
+		};
+		35790F49277093DB0038B210 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				35790F4C277094210038B210 /* SessionRequest */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		35790F4C277094210038B210 /* SessionRequest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SessionRequest;
 			sourceTree = "<group>";
 		};
 		56BDF10900F4890FE204D8AC /* Pods */ = {
