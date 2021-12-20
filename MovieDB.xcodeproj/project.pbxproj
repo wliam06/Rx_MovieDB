@@ -15,6 +15,10 @@
 		35790F3327708FF60038B210 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F3227708FF60038B210 /* Coordinator.swift */; };
 		35790F35277090460038B210 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F34277090460038B210 /* BaseCoordinator.swift */; };
 		35790F38277090640038B210 /* RxSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F37277090640038B210 /* RxSignal.swift */; };
+		35790F3A2770909F0038B210 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F392770909F0038B210 /* AppCoordinator.swift */; };
+		35790F3E277091600038B210 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F3D277091600038B210 /* NowPlayingViewController.swift */; };
+		35790F402770917A0038B210 /* NowPlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F3F2770917A0038B210 /* NowPlayingViewModel.swift */; };
+		35790F47277092CA0038B210 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F46277092CA0038B210 /* Bindable.swift */; };
 		F99EEC6433C45D8128A751EA /* Pods_MovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E331C4D4479BFF461452A337 /* Pods_MovieDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +33,10 @@
 		35790F3227708FF60038B210 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		35790F34277090460038B210 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		35790F37277090640038B210 /* RxSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSignal.swift; sourceTree = "<group>"; };
+		35790F392770909F0038B210 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		35790F3D277091600038B210 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
+		35790F3F2770917A0038B210 /* NowPlayingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewModel.swift; sourceTree = "<group>"; };
+		35790F46277092CA0038B210 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		4B7141CF54A4C02EB7C2F4A8 /* Pods-MovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.release.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		B8AA2C9F4C38C530D83F8D75 /* Pods-MovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.debug.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.debug.xcconfig"; sourceTree = "<group>"; };
 		E331C4D4479BFF461452A337 /* Pods_MovieDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +85,7 @@
 			children = (
 				35790F3027708FE70038B210 /* App */,
 				35790F3127708FEF0038B210 /* Coordinator */,
+				35790F3B2770912E0038B210 /* Presentation */,
 				35790F36277090550038B210 /* Utils */,
 				356C6CA026C65C14007A0F67 /* ViewController.swift */,
 				356C6CA526C65C16007A0F67 /* Assets.xcassets */,
@@ -91,6 +100,7 @@
 			children = (
 				356C6C9C26C65C14007A0F67 /* AppDelegate.swift */,
 				356C6C9E26C65C14007A0F67 /* SceneDelegate.swift */,
+				35790F392770909F0038B210 /* AppCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -107,9 +117,59 @@
 		35790F36277090550038B210 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				35790F37277090640038B210 /* RxSignal.swift */,
+				35790F48277092D10038B210 /* Binder */,
+				35790F45277092B50038B210 /* Rx */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		35790F3B2770912E0038B210 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				35790F3C2770913B0038B210 /* NowPlaying */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		35790F3C2770913B0038B210 /* NowPlaying */ = {
+			isa = PBXGroup;
+			children = (
+				35790F42277092400038B210 /* ViewModel */,
+				35790F41277092380038B210 /* ViewController */,
+			);
+			path = NowPlaying;
+			sourceTree = "<group>";
+		};
+		35790F41277092380038B210 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				35790F3D277091600038B210 /* NowPlayingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		35790F42277092400038B210 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				35790F3F2770917A0038B210 /* NowPlayingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		35790F45277092B50038B210 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				35790F37277090640038B210 /* RxSignal.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		35790F48277092D10038B210 /* Binder */ = {
+			isa = PBXGroup;
+			children = (
+				35790F46277092CA0038B210 /* Bindable.swift */,
+			);
+			path = Binder;
 			sourceTree = "<group>";
 		};
 		56BDF10900F4890FE204D8AC /* Pods */ = {
@@ -234,12 +294,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35790F47277092CA0038B210 /* Bindable.swift in Sources */,
+				35790F3E277091600038B210 /* NowPlayingViewController.swift in Sources */,
 				35790F35277090460038B210 /* BaseCoordinator.swift in Sources */,
 				35790F3327708FF60038B210 /* Coordinator.swift in Sources */,
 				356C6CA126C65C14007A0F67 /* ViewController.swift in Sources */,
 				356C6C9D26C65C14007A0F67 /* AppDelegate.swift in Sources */,
+				35790F402770917A0038B210 /* NowPlayingViewModel.swift in Sources */,
 				356C6C9F26C65C14007A0F67 /* SceneDelegate.swift in Sources */,
 				35790F38277090640038B210 /* RxSignal.swift in Sources */,
+				35790F3A2770909F0038B210 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
