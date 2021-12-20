@@ -19,6 +19,12 @@
 		35790F3E277091600038B210 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F3D277091600038B210 /* NowPlayingViewController.swift */; };
 		35790F402770917A0038B210 /* NowPlayingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F3F2770917A0038B210 /* NowPlayingViewModel.swift */; };
 		35790F47277092CA0038B210 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F46277092CA0038B210 /* Bindable.swift */; };
+		35D8B871277095DC00D3D779 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B870277095DC00D3D779 /* NetworkConfig.swift */; };
+		35D8B873277096A600D3D779 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B872277096A600D3D779 /* NetworkSession.swift */; };
+		35D8B875277096DA00D3D779 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B874277096DA00D3D779 /* NetworkRequest.swift */; };
+		35D8B8792770977D00D3D779 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B8782770977D00D3D779 /* AlertViewController.swift */; };
+		35D8B87D277097ED00D3D779 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B87C277097ED00D3D779 /* NetworkReachability.swift */; };
+		35D8B8802770982F00D3D779 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D8B87F2770982F00D3D779 /* Logger.swift */; };
 		F99EEC6433C45D8128A751EA /* Pods_MovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E331C4D4479BFF461452A337 /* Pods_MovieDB.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +43,12 @@
 		35790F3D277091600038B210 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		35790F3F2770917A0038B210 /* NowPlayingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewModel.swift; sourceTree = "<group>"; };
 		35790F46277092CA0038B210 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		35D8B870277095DC00D3D779 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
+		35D8B872277096A600D3D779 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		35D8B874277096DA00D3D779 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		35D8B8782770977D00D3D779 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		35D8B87C277097ED00D3D779 /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		35D8B87F2770982F00D3D779 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		4B7141CF54A4C02EB7C2F4A8 /* Pods-MovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.release.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		B8AA2C9F4C38C530D83F8D75 /* Pods-MovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.debug.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.debug.xcconfig"; sourceTree = "<group>"; };
 		E331C4D4479BFF461452A337 /* Pods_MovieDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +97,7 @@
 			children = (
 				35790F3027708FE70038B210 /* App */,
 				35790F49277093DB0038B210 /* Network */,
+				35D8B8772770976C00D3D779 /* Component */,
 				35790F3127708FEF0038B210 /* Coordinator */,
 				35790F3B2770912E0038B210 /* Presentation */,
 				35790F36277090550038B210 /* Utils */,
@@ -118,6 +131,7 @@
 		35790F36277090550038B210 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				35D8B87E2770982A00D3D779 /* Logger */,
 				35790F48277092D10038B210 /* Binder */,
 				35790F45277092B50038B210 /* Rx */,
 			);
@@ -176,7 +190,9 @@
 		35790F49277093DB0038B210 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				35D8B8762770973500D3D779 /* Reachability */,
 				35790F4C277094210038B210 /* SessionRequest */,
+				35D8B870277095DC00D3D779 /* NetworkConfig.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -184,8 +200,34 @@
 		35790F4C277094210038B210 /* SessionRequest */ = {
 			isa = PBXGroup;
 			children = (
+				35D8B872277096A600D3D779 /* NetworkSession.swift */,
+				35D8B874277096DA00D3D779 /* NetworkRequest.swift */,
 			);
 			path = SessionRequest;
+			sourceTree = "<group>";
+		};
+		35D8B8762770973500D3D779 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				35D8B87C277097ED00D3D779 /* NetworkReachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		35D8B8772770976C00D3D779 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				35D8B8782770977D00D3D779 /* AlertViewController.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		35D8B87E2770982A00D3D779 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				35D8B87F2770982F00D3D779 /* Logger.swift */,
+			);
+			path = Logger;
 			sourceTree = "<group>";
 		};
 		56BDF10900F4890FE204D8AC /* Pods */ = {
@@ -310,16 +352,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D8B875277096DA00D3D779 /* NetworkRequest.swift in Sources */,
+				35D8B8792770977D00D3D779 /* AlertViewController.swift in Sources */,
 				35790F47277092CA0038B210 /* Bindable.swift in Sources */,
+				35D8B871277095DC00D3D779 /* NetworkConfig.swift in Sources */,
 				35790F3E277091600038B210 /* NowPlayingViewController.swift in Sources */,
 				35790F35277090460038B210 /* BaseCoordinator.swift in Sources */,
 				35790F3327708FF60038B210 /* Coordinator.swift in Sources */,
+				35D8B8802770982F00D3D779 /* Logger.swift in Sources */,
 				356C6CA126C65C14007A0F67 /* ViewController.swift in Sources */,
 				356C6C9D26C65C14007A0F67 /* AppDelegate.swift in Sources */,
 				35790F402770917A0038B210 /* NowPlayingViewModel.swift in Sources */,
 				356C6C9F26C65C14007A0F67 /* SceneDelegate.swift in Sources */,
+				35D8B873277096A600D3D779 /* NetworkSession.swift in Sources */,
 				35790F38277090640038B210 /* RxSignal.swift in Sources */,
 				35790F3A2770909F0038B210 /* AppCoordinator.swift in Sources */,
+				35D8B87D277097ED00D3D779 /* NetworkReachability.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
