@@ -20,9 +20,9 @@ final class NowPlayingCoordinator: BaseCoordinator {
     override func start() {
         super.start()
 
-        let view = NowPlayingViewController()
         let usecase =  dependency.resolve(type: MovieListUseCase.self)
         let viewModel = ImpNowPlayingViewModel(usecase: usecase)
+        let view = NowPlayingViewController()
         view.bind(to: viewModel)
 
         navigationController?.pushViewController(view, animated: true)

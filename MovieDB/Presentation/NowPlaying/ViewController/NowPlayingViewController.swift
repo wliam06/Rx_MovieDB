@@ -8,14 +8,30 @@
 import UIKit
 
 class NowPlayingViewController: UIViewController, Bindable {
+    private lazy var nowPlayingView = NowPlayingView()
+
     var viewModel: NowPlayingViewModel!
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
-        self.view.backgroundColor = .systemBlue
         super.viewDidLoad()
+
+        self.view.backgroundColor = .systemBlue
+        nowPlayingView = NowPlayingView(viewModel: viewModel)
+        self.view.addSubview(nowPlayingView)
+
+        nowPlayingView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(300)
+        }
     }
 
     // Binding ViewModel
-    func bindViewModel() {
-    }
+    func bindViewModel() {}
 }
