@@ -5,7 +5,7 @@ Create TheMovieDB with RxSwift
  - [ ] Show Movie List Layout (Upcoming, Now Playing, Popular)
  - [ ] Show Movie Detail
  - [ ] Unit Test & Snapshot UI
- - [ ] Dark Mode
+ - [X] Dark Mode
  - [ ] Dependency Injection using Protocol
  - [ ] Modularity
  - [ ] Navigation Flow
