@@ -11,6 +11,7 @@ class NowPlayingViewController: UIViewController, Bindable {
     var viewModel: NowPlayingViewModel!
 
     override func viewDidLoad() {
+        self.view.backgroundColor = .systemBlue
         super.viewDidLoad()
     }
 
