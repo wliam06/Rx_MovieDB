@@ -8,7 +8,7 @@
 import UIKit
 
 /// Represents as a controller
-protocol Presentable {
+protocol Presentable: AnyObject {
     /// Return self controller
     var viewController: UIViewController { get }
 
@@ -16,7 +16,6 @@ protocol Presentable {
     func setRoot(for window: UIWindow)
 
     /// To present a controller
-    ///
     func presented(from controller: Presentable?)
 }
 
@@ -30,5 +29,14 @@ extension Presentable {
     func presented(from controller: Presentable?) {}
 }
 
-extension UIViewController: Presentable {}
-extension UIWindow: Presentable {}
+extension UIViewController: Presentable {
+    var viewController: UIViewController {
+        return self
+    }
+}
+
+extension UIWindow: Presentable {
+    var viewController: UIViewController {
+        return window?.rootViewController ?? UIViewController()
+    }
+}

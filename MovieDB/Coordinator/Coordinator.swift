@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 import NSObject_Rx
 
-
 protocol Coordinator: AnyObject {
     var childCoordinators: [Coordinator] { get set }
     var didFinish: Observable<Bool> { get }
@@ -24,4 +23,11 @@ extension Coordinator where Self: ReactiveCompatible {
         childCoordinators.append(child)
         child.start()
     }
+}
+
+class BaseCoordinator: Coordinator {
+    var childCoordinators: [Coordinator] = []
+    @RxSignal var didFinish: Observable<Bool>
+
+    func start() {}
 }

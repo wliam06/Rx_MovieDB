@@ -6,7 +6,15 @@
 //
 
 import Foundation
+import RxSwift
+import UIKit
 
-final class AppCoordinator {
-    func start() {}
+final class AppCoordinator: BaseCoordinator {
+    private(set) var window: UIWindow?
+
+    init(window: UIWindow?) {
+        self.window = window
+    }
+
+    override func start() {}
 }
