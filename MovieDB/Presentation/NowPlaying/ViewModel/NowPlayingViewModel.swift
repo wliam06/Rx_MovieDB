@@ -9,19 +9,6 @@ import Foundation
 import RxSwift
 import NSObject_Rx
 
-protocol NowPlayingViewModelInput {
-    var movies: [MovieResponse] { get }
-    var isLoading: Bool { get}
-    var page: Int { get }
-}
-
-protocol NowPlayingViewModelOutput {
-    var activityLoading: BehaviorSubject<Bool>.Observer { get }
-    var moviesResult: BehaviorSubject<[MovieResponse]>.Observer { get }
-    var currentPage: BehaviorSubject<Int>.Observer { get }
-}
-protocol NowPlayingViewModel: NowPlayingViewModelInput & NowPlayingViewModelOutput {}
-
 final class ImpNowPlayingViewModel: NowPlayingViewModel, HasDisposeBag {
     // Input
     @RxPublished var page: Int = 1

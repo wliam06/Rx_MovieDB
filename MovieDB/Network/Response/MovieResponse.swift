@@ -37,29 +37,3 @@ struct MovieResponse: Codable {
         case voteAverage = "vote_average"
     }
 }
-
-// Mapping into MoviePage Domain
-extension MovieResultResponse {
-    func toDomain() -> MoviePage {
-        return .init(
-            page: page,
-            totalPages: totalPages,
-            movies: results.map {$0.toDomain()}
-        )
-    }
-
-}
-
-// Mapping into Movie Domain
-extension MovieResponse {
-    func toDomain() -> Movie {
-        return .init(
-            id: Movie.Identifier(id),
-            title: title,
-            posterPath: posterPath,
-            overview: overview,
-            voteAverage: voteAverage
-        )
-    }
-
-}

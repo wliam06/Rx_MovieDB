@@ -6,10 +6,15 @@
 //
 
 import RxSwift
+import UIKit
 
 class BaseCoordinator: Coordinator {
+    @RxSignal var onFinish: Observable<Bool>
     var childCoordinators: [Coordinator] = []
-    @RxSignal var didFinish: Observable<Bool>
 
+//    func start() -> AnyObserver<Void> {
+//        Logger.error("Start should be implemented")
+//        fatalError("Start should be implemented")
+//    }
     func start() {}
 }

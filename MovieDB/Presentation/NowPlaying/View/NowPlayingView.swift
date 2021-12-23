@@ -11,7 +11,7 @@ import Kingfisher
 import NSObject_Rx
 
 class NowPlayingView: UIView, HasDisposeBag {
-    private lazy var indicator: UIActivityIndicatorView = {
+    lazy var indicator: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
         if #available(iOS 13.0, *) {
             activity.style = .large
@@ -24,14 +24,14 @@ class NowPlayingView: UIView, HasDisposeBag {
         return activity
     }()
 
-    private lazy var title: UILabel = {
+    lazy var title: UILabel = {
         let label = UILabel()
         label.text = "Now Playing"
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
 
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
         viewLayout.scrollDirection = .horizontal
         let collection = UICollectionView(
@@ -52,13 +52,6 @@ class NowPlayingView: UIView, HasDisposeBag {
         setupConstraint()
     }
 
-    convenience init(viewModel: NowPlayingViewModel) {
-        self.init(frame: .zero)
-
-        self.viewModel = viewModel
-        self.binding()
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -68,17 +61,7 @@ class NowPlayingView: UIView, HasDisposeBag {
         self.addSubview(indicator)
         self.addSubview(title)
         self.addSubview(collectionView)
-    }
 
-    private func binding() {
-        rx.bind(
-            viewModel.activityLoading ~> indicator.rx.isAnimating
-        )
-        viewModel.moviesResult.bind(
-            to: collectionView.rx.items(cellType: NowPlayingCell.self)
-        ) { index, data, cell in
-            cell.configure(poster: data.posterPath)
-        }.disposed(by: disposeBag)
         collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     }
 
