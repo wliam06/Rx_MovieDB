@@ -15,7 +15,6 @@ enum AppRoute: Route {
 final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     private(set) var window: UIWindow?
     private(set) var navigationRoute: NavigationRoute!
-    private var navigationController = UINavigationController()
  
     let dependency = DependencyInjection()
 
@@ -25,8 +24,8 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
         super.init()
 
         dependency.registerAllDependencies()
-        self.navigationRoute = NavigationFlowRoute(navigationController: navigationController)
-        self.window?.rootViewController = navigationController
+        self.navigationRoute = dependency.resolve(type: NavigationRoute.self)
+        self.window?.rootViewController = self.navigationRoute.navigationController
         self.window?.makeKeyAndVisible()
     }
 
@@ -42,10 +41,7 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
                 navigationRoute: navigationRoute,
                 dependency: dependency
             )
-            nowPlayingCoordinator.navigateTo(
-                route: .nowPlaying,
-                animated: true
-            )
+            nowPlayingCoordinator.start()
 
             navigationRoute.navigationDidFinish.subscribe(onNext: { [weak self] in
                 self?.$onFinish.onNext($0)

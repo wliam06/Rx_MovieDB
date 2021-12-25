@@ -15,25 +15,32 @@ enum NowPlayingRoute: Route {
     case detail
 }
 
-final class NowPlayingCoordinator: RoutingFlowCoordinator {
-    private(set) var navigationRoute: NavigationRoute
-    private var dependency: Dependency
+final class NowPlayingCoordinator: BaseCoordinator, RoutingFlowCoordinator {
+    private var navigationRoute: NavigationRoute
+    private(set) var dependency: Dependency
 
     init(navigationRoute: NavigationRoute, dependency: Dependency) {
-        self.navigationRoute = navigationRoute
         self.dependency = dependency
+        self.navigationRoute = navigationRoute
+    }
+
+    override func start() {
+        navigateTo(route: .nowPlaying)
     }
 
     func navigateTo(route: NowPlayingRoute, animated: Bool) {
         switch route {
         case .nowPlaying:
             let usecase = dependency.resolve(type: MovieListUseCase.self)
-
             let viewModel = ImpNowPlayingViewModel(router: router, usecase: usecase)
             let view = NowPlayingViewController()
             view.bind(to: viewModel)
             navigationRoute.pushTo(view, animated: true)
         case .detail:
+            navigationRoute.navigationDidFinish.subscribe(onNext: { [weak self] in
+                self?.$onFinish.onNext($0)
+            }).disposed(by: rx.disposeBag)
+
             navigationRoute.pushTo(MovieDetailViewController(), animated: true)
         }
     }

@@ -10,8 +10,8 @@ import RxSwift
 
 
 /// Trigger navigation from route
-protocol NavigationRoute {
-    var navigationController: UINavigationController { get set }
+protocol NavigationRoute: AnyObject {
+    var navigationController: UINavigationController { get }
     var navigationDidFinish: Observable<Bool> { get }
 
     func pushTo(_ presented: UIViewController, animated: Bool)
