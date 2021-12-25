@@ -32,10 +32,10 @@ protocol Configurable {
 protocol Dependency {
     // Generic service
     func register<Service>(type: Service.Type, factoryClosure: @escaping FactoryClosure)
-    // Receive Array of services
-    func register<Service>(types: [Service.Type], factoryClosure: @escaping FactoryClosure)
     // Create an object that conform protocol
     func resolve<Service>(type: Service.Type) -> Service
+    // Create an object using type
+    func resolve<Service>() -> Service
     // Conform Configurable Protocol
     func resolve<Service: Configurable>(type: Service.Type, configuration: Service.Configuration) -> Service
 }
@@ -51,15 +51,6 @@ class DependencyInjection: Dependency {
         services["\(type)"] = factoryClosure
     }
 
-    func register<Service>(
-        types: [Service.Type],
-        factoryClosure: @escaping FactoryClosure
-    ) {
-        types.forEach { type in
-            services["\(type)"] = factoryClosure
-        }
-    }
-
     func resolve<Service>(
         type: Service.Type
     ) -> Service {
@@ -73,6 +64,11 @@ class DependencyInjection: Dependency {
     ) -> Service where Service: Configurable {
         let service = resolve(type: type)
         service.configure(configuration: configuration)
+        return service
+    }
+
+    func resolve<Service>() -> Service {
+        let service = resolve(type: Service.self)
         return service
     }
 }

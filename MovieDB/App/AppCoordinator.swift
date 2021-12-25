@@ -5,37 +5,48 @@
 //  Created by William on 20/12/21.
 //
 
-import Foundation
 import UIKit
+import RxSwift
 
-final class AppCoordinator: BaseCoordinator {
-    private(set) var navigationController: UINavigationController!
+enum AppRoute: Route {
+    case nowPlaying
+}
+
+final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     private(set) var window: UIWindow?
-
-    let depedency = DependencyInjection()
+    private(set) var navigationRoute: NavigationRoute!
+ 
+    let dependency = DependencyInjection()
 
     init(window: UIWindow?) {
+        self.window = window
+
         super.init()
 
-        self.window = window
-        depedency.registerAllDependencies()
+        dependency.registerAllDependencies()
+        self.navigationRoute = dependency.resolve(type: NavigationRoute.self)
+        self.window?.rootViewController = self.navigationRoute.navigationController
+        self.window?.makeKeyAndVisible()
     }
 
     override func start() {
-        super.start()
-
-        navigationController = UINavigationController()
-        let nowPlayingCoordinator = NowPlayingCoordinator(
-            navigationController: navigationController,
-            dependency: depedency
-        )
-        nowPlayingCoordinator.start()
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-//        let view = NowPlayingViewController()
-//        let viewModel = ImpNowPlayingViewModel()
-//        view.bind(to: viewModel)
-//        navigationController = UINavigationController(rootViewController: view)
-//        window?.rootViewController = navigationController
+        navigateTo(route: .nowPlaying)
     }
+
+    func navigateTo(route: AppRoute, animated: Bool) {
+        switch route {
+        case .nowPlaying:
+
+            let nowPlayingCoordinator = NowPlayingCoordinator(
+                navigationRoute: navigationRoute,
+                dependency: dependency
+            )
+            nowPlayingCoordinator.start()
+
+            navigationRoute.navigationDidFinish.subscribe(onNext: { [weak self] in
+                self?.$onFinish.onNext($0)
+            }).disposed(by: rx.disposeBag)
+        }
+    }
+
 }

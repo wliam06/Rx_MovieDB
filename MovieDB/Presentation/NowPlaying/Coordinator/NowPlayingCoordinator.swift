@@ -6,25 +6,42 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 import UIKit
 
-final class NowPlayingCoordinator: BaseCoordinator {
-    private weak var navigationController: UINavigationController?
-    private var dependency: Dependency
+enum NowPlayingRoute: Route {
+    case nowPlaying
+    case detail
+}
 
-    init(navigationController: UINavigationController, dependency: Dependency) {
-        self.navigationController = navigationController
+final class NowPlayingCoordinator: BaseCoordinator, RoutingFlowCoordinator {
+    private var navigationRoute: NavigationRoute
+    private(set) var dependency: Dependency
+
+    init(navigationRoute: NavigationRoute, dependency: Dependency) {
         self.dependency = dependency
+        self.navigationRoute = navigationRoute
     }
 
     override func start() {
-        super.start()
+        navigateTo(route: .nowPlaying)
+    }
 
-        let usecase =  dependency.resolve(type: MovieListUseCase.self)
-        let viewModel = ImpNowPlayingViewModel(usecase: usecase)
-        let view = NowPlayingViewController()
-        view.bind(to: viewModel)
+    func navigateTo(route: NowPlayingRoute, animated: Bool) {
+        switch route {
+        case .nowPlaying:
+            let usecase = dependency.resolve(type: MovieListUseCase.self)
+            let viewModel = ImpNowPlayingViewModel(router: router, usecase: usecase)
+            let view = NowPlayingViewController()
+            view.bind(to: viewModel)
+            navigationRoute.pushTo(view, animated: true)
+        case .detail:
+            navigationRoute.navigationDidFinish.subscribe(onNext: { [weak self] in
+                self?.$onFinish.onNext($0)
+            }).disposed(by: rx.disposeBag)
 
-        navigationController?.pushViewController(view, animated: true)
+            navigationRoute.pushTo(MovieDetailViewController(), animated: true)
+        }
     }
 }

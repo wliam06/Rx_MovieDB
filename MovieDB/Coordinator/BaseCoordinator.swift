@@ -6,10 +6,10 @@
 //
 
 import RxSwift
+import UIKit
 
 class BaseCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
-    @RxSignal var didFinish: Observable<Bool>
-
+    @RxSignal var onFinish: Observable<Bool>
     func start() {}
 }

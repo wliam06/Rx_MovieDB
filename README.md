@@ -6,9 +6,9 @@ Create TheMovieDB with RxSwift
  - [ ] Show Movie Detail
  - [ ] Unit Test & Snapshot UI
  - [X] Dark Mode
- - [ ] Dependency Injection using Protocol
+ - [X] Dependency Injection using Protocol
  - [ ] Modularity
- - [ ] Navigation Flow
+ - [X] Navigation Flow
  - [ ] Fastlane
  - [ ] [Localization using google sheets](https://github.com/vivek-jl/LocalizationDemo) or [Next](https://github.com/aunnnn/SwiftyLocalization)
  - [ ] CI & CD Bitrise
