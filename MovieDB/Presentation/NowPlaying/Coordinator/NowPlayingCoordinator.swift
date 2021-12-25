@@ -10,45 +10,17 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-//final class NowPlayingCoordinator: BaseCoordinator {
-//    private weak var navigationController: UINavigationController?
-//    private var dependency: Dependency
-//
-//    init(navigationController: UINavigationController, dependency: Dependency) {
-//        self.navigationController = navigationController
-//        self.dependency = dependency
-//    }
-//
-////    override func start() {
-////        super.start()
-////
-////        let usecase = dependency.resolve(type: MovieListUseCase.self)
-////        let viewModel = ImpNowPlayingViewModel(usecase: usecase)
-////        let view = NowPlayingViewController()
-////        view.bind(to: viewModel)
-////
-////        navigationController?.pushViewController(view, animated: true)
-////    }
-//
-//    override func start() -> Observable<Void> {
-//
-//    }
-//}
-
 enum NowPlayingRoute: Route {
     case nowPlaying
+    case detail
 }
 
 final class NowPlayingCoordinator: RoutingFlowCoordinator {
-    var root: Presentable {
-        return self.navigationController ?? UIViewController()
-    }
-
-    private weak var navigationController: UINavigationController?
+    private(set) var navigationRoute: NavigationRoute
     private var dependency: Dependency
 
-    init(navigationController: UINavigationController, dependency: Dependency) {
-        self.navigationController = navigationController
+    init(navigationRoute: NavigationRoute, dependency: Dependency) {
+        self.navigationRoute = navigationRoute
         self.dependency = dependency
     }
 
@@ -56,26 +28,13 @@ final class NowPlayingCoordinator: RoutingFlowCoordinator {
         switch route {
         case .nowPlaying:
             let usecase = dependency.resolve(type: MovieListUseCase.self)
-            let viewModel = ImpNowPlayingViewModel(usecase: usecase)
+
+            let viewModel = ImpNowPlayingViewModel(router: router, usecase: usecase)
             let view = NowPlayingViewController()
             view.bind(to: viewModel)
-
-            navigationController?.pushViewController(view, animated: true)
+            navigationRoute.pushTo(view, animated: true)
+        case .detail:
+            navigationRoute.pushTo(MovieDetailViewController(), animated: true)
         }
     }
-
-//    override func start() {
-//        super.start()
-//
-//        let usecase = dependency.resolve(type: MovieListUseCase.self)
-//        let viewModel = ImpNowPlayingViewModel(usecase: usecase)
-//        let view = NowPlayingViewController()
-//        view.bind(to: viewModel)
-//
-//        navigationController?.pushViewController(view, animated: true)
-//    }
-
-//    override func start() -> Observable<Void> {
-//
-//    }
 }

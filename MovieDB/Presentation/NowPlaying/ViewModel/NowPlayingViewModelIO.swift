@@ -14,6 +14,8 @@ protocol NowPlayingViewModelInput {
     var movies: [MovieResponse] { get }
     var isLoading: Bool { get}
     var page: Int { get }
+
+    func didSelectMovie()
 }
 
 protocol NowPlayingViewModelOutput {

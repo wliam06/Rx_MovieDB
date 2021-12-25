@@ -13,12 +13,6 @@ class NowPlayingViewController: UIViewController, Bindable, HasDisposeBag {
 
     var viewModel: NowPlayingViewModel!
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .colorMode(light: .white, dark: .black)
@@ -41,5 +35,9 @@ class NowPlayingViewController: UIViewController, Bindable, HasDisposeBag {
         ) { index, data, cell in
             cell.configure(poster: data.posterPath)
         }.disposed(by: disposeBag)
+
+        contentView.collectionView.rx.itemSelected.subscribe(onNext: { [weak self] _ in
+            self?.viewModel.didSelectMovie()
+        }).disposed(by: disposeBag)
     }
 }

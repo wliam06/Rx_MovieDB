@@ -21,8 +21,10 @@ final class ImpNowPlayingViewModel: NowPlayingViewModel, HasDisposeBag {
     var moviesResult: BehaviorSubject<[MovieResponse]>.Observer { $movies }
 
     private let usecase: MovieListUseCase
+    private let router: Router<NowPlayingRoute>
 
-    init(usecase: MovieListUseCase) {
+    init(router: Router<NowPlayingRoute>, usecase: MovieListUseCase) {
+        self.router = router
         self.usecase = usecase
 
         initialLoad()
@@ -34,5 +36,9 @@ final class ImpNowPlayingViewModel: NowPlayingViewModel, HasDisposeBag {
             self?.isLoading = false
             self?.movies = $0.results
         }).disposed(by: disposeBag)
+    }
+
+    func didSelectMovie() {
+        self.router.navigateTo(route: .detail)
     }
 }

@@ -13,21 +13,21 @@ enum AppRoute: Route {
 }
 
 final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
-    private(set) var navigationController: UINavigationController!
     private(set) var window: UIWindow?
-
-    let depedency = DependencyInjection()
+    private(set) var navigationRoute: NavigationRoute!
+    private var navigationController = UINavigationController()
+ 
+    let dependency = DependencyInjection()
 
     init(window: UIWindow?) {
-        super.init()
-
         self.window = window
 
-        navigationController = UINavigationController()
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        super.init()
 
-        depedency.registerAllDependencies()
+        dependency.registerAllDependencies()
+        self.navigationRoute = NavigationFlowRoute(navigationController: navigationController)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
     }
 
     override func start() {
@@ -37,39 +37,20 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     func navigateTo(route: AppRoute, animated: Bool) {
         switch route {
         case .nowPlaying:
+
             let nowPlayingCoordinator = NowPlayingCoordinator(
-                navigationController: navigationController,
-                dependency: depedency
+                navigationRoute: navigationRoute,
+                dependency: dependency
             )
-            nowPlayingCoordinator.navigateTo(route: .nowPlaying, animated: true)            
+            nowPlayingCoordinator.navigateTo(
+                route: .nowPlaying,
+                animated: true
+            )
+
+            navigationRoute.navigationDidFinish.subscribe(onNext: { [weak self] in
+                self?.$onFinish.onNext($0)
+            }).disposed(by: rx.disposeBag)
         }
     }
 
-//    func navigateTo(route: Route, animated: Bool) {
-//        guard let route = route as? AppRoute else { return }
-//
-//        switch route {
-//        case .nowPlaying:
-//            let nowPlayingCoordinator = NowPlayingCoordinator(
-//                navigationController: navigationController,
-//                dependency: depedency
-//            )
-//
-//            window?.rootViewController = navigationController
-//            window?.makeKeyAndVisible()
-//        }
-//    }
-    
-//    override func start() {
-//        super.start()
-//
-//        navigationController = UINavigationController()
-//        let nowPlayingCoordinator = NowPlayingCoordinator(
-//            navigationController: navigationController,
-//            dependency: depedency
-//        )
-//        nowPlayingCoordinator.start()
-//        window?.rootViewController = navigationController
-//        window?.makeKeyAndVisible()
-//    }
 }

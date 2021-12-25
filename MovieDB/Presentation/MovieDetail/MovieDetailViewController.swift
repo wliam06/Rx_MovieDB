@@ -12,6 +12,8 @@ class MovieDetailViewController: UIViewController, Bindable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.view.backgroundColor = .white
     }
 
     func bindViewModel() {}

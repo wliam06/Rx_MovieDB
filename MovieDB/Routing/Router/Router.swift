@@ -32,25 +32,12 @@ final class Router<ScreenRoute: Route>: Routable {
 extension Router: ReactiveCompatible {}
 
 extension Routable {
-//    func navigateTo(route: Route) {
-//        navigateTo(route: route, animated: true)
-//    }
     func navigateTo(route: ScreenRoute) {
         navigateTo(route: route, animated: true)
     }
 }
 
 extension Reactive where Base: Routable {
-//    func navigateTo(route: Route) -> AnyObserver<Void>  {
-//        AnyObserver { [unowned base] in
-//            switch $0 {
-//            case .next:
-//                base.navigateTo(route: route)
-//            default:
-//                break
-//            }
-//        }
-//    }
     func navigateTo<ScreenRoute>(route: ScreenRoute) -> AnyObserver<Void>
     where Base.ScreenRoute == ScreenRoute {
         AnyObserver { [unowned base] in
