@@ -35,13 +35,16 @@ final class NowPlayingCoordinator: BaseCoordinator, RoutingFlowCoordinator {
             let viewModel = ImpNowPlayingViewModel(router: router, usecase: usecase)
             let view = NowPlayingViewController()
             view.bind(to: viewModel)
-            navigationRoute.pushTo(view, animated: true)
+            navigationRoute.pushTo(view) { [weak self] in
+                guard let self = self else { return }
+                self.$onFinish.onNext(true)
+            }
         case .detail:
-            navigationRoute.navigationDidFinish.subscribe(onNext: { [weak self] in
-                self?.$onFinish.onNext($0)
-            }).disposed(by: rx.disposeBag)
-
-            navigationRoute.pushTo(MovieDetailViewController(), animated: true)
+            print("navigate to detail")
+            navigationRoute.pushTo(MovieDetailViewController()) { [weak self] in
+                guard let self = self else { return }
+                self.$onFinish.onNext(true)
+            }
         }
     }
 }

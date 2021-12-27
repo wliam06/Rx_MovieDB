@@ -42,11 +42,6 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
                 dependency: dependency
             )
             nowPlayingCoordinator.start()
-
-            navigationRoute.navigationDidFinish.subscribe(onNext: { [weak self] in
-                self?.$onFinish.onNext($0)
-            }).disposed(by: rx.disposeBag)
         }
     }
-
 }
