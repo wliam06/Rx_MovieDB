@@ -12,6 +12,7 @@ import NSObject_Rx
 
 protocol NowPlayingViewModelInput {
     var movies: [MovieResponse] { get }
+//    var movies: MovieListModel? { get }
     var isLoading: Bool { get}
     var page: Int { get }
 
@@ -20,6 +21,7 @@ protocol NowPlayingViewModelInput {
 
 protocol NowPlayingViewModelOutput {
     var activityLoading: BehaviorSubject<Bool>.Observer { get }
+//    var moviesResult: BehaviorSubject<MovieListModel?>.Observer { get }
     var moviesResult: BehaviorSubject<[MovieResponse]>.Observer { get }
     var currentPage: BehaviorSubject<Int>.Observer { get }
 }

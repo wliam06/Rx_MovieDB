@@ -8,15 +8,29 @@
 import UIKit
 import NSObject_Rx
 
-class NowPlayingViewController: UIViewController, Bindable, HasDisposeBag {
+class NowPlayingViewController: ParentViewController, Bindable, HasDisposeBag {
     internal lazy var contentView = NowPlayingView()
 
     var viewModel: NowPlayingViewModel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .colorMode(light: .white, dark: .black)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.setNavigationBarHidden(
+            true,
+            animated: animated
+        )
+    }
+
+    // MARK: - Override method from ViewDidLoad
+    override func setupUI() {
+        super.setupUI()
+
         self.view.addSubview(contentView)
+    }
+
+    override func setupConstraint() {
+        super.setupConstraint()
 
         contentView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)

@@ -41,7 +41,10 @@ final class NowPlayingCoordinator: BaseCoordinator, RoutingFlowCoordinator {
             }
         case .detail:
             print("navigate to detail")
-            navigationRoute.pushTo(MovieDetailViewController()) { [weak self] in
+            let viewModel = ImpMovieDetailViewModel()
+            let view = MovieDetailViewController()
+            view.bind(to: viewModel)
+            navigationRoute.pushTo(view) { [weak self] in
                 guard let self = self else { return }
                 self.$onFinish.onNext(true)
             }

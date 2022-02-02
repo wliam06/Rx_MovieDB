@@ -7,13 +7,25 @@
 
 import UIKit
 
-class MovieDetailViewController: UIViewController, Bindable {
+class MovieDetailViewController: ParentViewController, Bindable {
     var viewModel: MovieDetailViewModel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-        self.view.backgroundColor = .white
+        self.navigationController?.setNavigationBarHidden(
+            false,
+            animated: animated
+        )
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        self.navigationController?.setNavigationBarHidden(
+            true,
+            animated: animated
+        )
     }
 
     func bindViewModel() {}
