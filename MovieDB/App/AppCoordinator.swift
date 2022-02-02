@@ -9,44 +9,30 @@ import UIKit
 import RxSwift
 
 enum AppRoute: Route {
-    case nowPlaying
+    case movieList
 }
 
 final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     private(set) var window: UIWindow?
-    private(set) var navigationRoute: NavigationRoute!
- 
-    let dependency = DependencyInjection()
+    @Injected(\.navRoute) var navigationRoute: NavigationRoute
 
     init(window: UIWindow?) {
         self.window = window
 
         super.init()
 
-        dependency.registerAllDependencies()
-        self.navigationRoute = dependency.resolve(type: NavigationRoute.self)
-        self.window?.rootViewController = self.navigationRoute.navigationController
-        self.window?.makeKeyAndVisible()
+        navigationRoute.setRootVC(window: window)
     }
 
     override func start() {
-        navigateTo(route: .nowPlaying)
+        navigateTo(route: .movieList)
     }
 
     func navigateTo(route: AppRoute, animated: Bool) {
         switch route {
-        case .nowPlaying:
-
-            let nowPlayingCoordinator = NowPlayingCoordinator(
-                navigationRoute: navigationRoute,
-                dependency: dependency
-            )
-            nowPlayingCoordinator.start()
-
-            navigationRoute.navigationDidFinish.subscribe(onNext: { [weak self] in
-                self?.$onFinish.onNext($0)
-            }).disposed(by: rx.disposeBag)
+        case .movieList:
+            let coordinator = MovieListCoordinator()
+            coordinator.start()
         }
     }
-
 }

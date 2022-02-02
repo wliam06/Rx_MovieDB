@@ -11,33 +11,34 @@ import NSObject_Rx
 protocol MovieListUseCase {
     func fetchNowPlaying(
         page: Int
-    ) -> Observable<MovieResultResponse>
+    ) -> Single<MovieResultResponse>
 
     func fetchUpcoming(
         page: Int
-    ) -> Observable<MovieResultResponse>
+    ) -> Single<MovieResultResponse>
 
     func fetchPopular(
         page: Int
-    ) -> Observable<MovieResultResponse>
+    ) -> Single<MovieResultResponse>
 }
 
 final class ImpMovieListUseCase: MovieListUseCase, HasDisposeBag {
-    private let repository: MovieListRepository
+    @Injected(\.movieListRepo) var repository: MovieListRepository
+//    private let repository: MovieListRepository
+//
+//    init(repository: MovieListRepository) {
+//        self.repository = repository
+//    }
 
-    init(repository: MovieListRepository) {
-        self.repository = repository
+    func fetchNowPlaying(page: Int) -> Single<MovieResultResponse> {
+        repository.getNowPlaying(page: page)
     }
 
-    func fetchNowPlaying(page: Int) -> Observable<MovieResultResponse> {
-        repository.getNowPlaying(page: page).asObservable()
+    func fetchUpcoming(page: Int) -> Single<MovieResultResponse> {
+        repository.getUpcoming(page: page)
     }
 
-    func fetchUpcoming(page: Int) -> Observable<MovieResultResponse> {
-        repository.getUpcoming(page: page).asObservable()
-    }
-
-    func fetchPopular(page: Int) -> Observable<MovieResultResponse> {
-        repository.getPopular(page: page).asObservable()
+    func fetchPopular(page: Int) -> Single<MovieResultResponse> {
+        repository.getPopular(page: page)
     }
 }

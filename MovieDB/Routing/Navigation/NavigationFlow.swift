@@ -9,53 +9,40 @@ import UIKit
 import RxSwift
 
 
-/// Trigger navigation from route
-protocol NavigationRoute: AnyObject {
-    var navigationController: UINavigationController { get }
-    var navigationDidFinish: Observable<Bool> { get }
-
-    func pushTo(_ presented: UIViewController, animated: Bool)
-}
-
-extension NavigationRoute {
-    func back(animated: Bool) {
-        if let presented = navigationController.presentedViewController {
-            presented.dismiss(animated: animated)
-        } else {
-            navigationController.popViewController(animated: animated)
-        }
-    }
-
-    func pushTo(_ presented: UIViewController) {
-        pushTo(presented, animated: true)
-    }
-}
-
-extension NavigationRoute where Self: BaseCoordinator {
-    func dismiss(animated: Bool = true) {
-        navigationController.dismiss(animated: animated) {
-            self.$onFinish.onNext(true)
-        }
-    }
-
-    func pushTo(_ presented: UIViewController) {
-        pushTo(presented, animated: true)
-    }
-}
-
 /// Handling navigation flow from route
-final class NavigationFlowRoute: NSObject, NavigationRoute {
+class NavigationFlowRoute: NSObject, NavigationRoute {
     var navigationController: UINavigationController
-    @RxSignal var navigationDidFinish: Observable<Bool>
 
-    init(navigationController: UINavigationController) {
+    private(set) var window: UIWindow?
+    private var closures: [String: NavigationBack] = [:]
+
+    init(navigationController: UINavigationController = UINavigationController()) {
         self.navigationController = navigationController
         super.init()
-        self.navigationController.delegate = self
+        navigationController.delegate = self
     }
 
-    func pushTo(_ presented: UIViewController, animated: Bool) {
+    func pushTo(_ presented: UIViewController, animated: Bool, onBack closure: NavigationBack?) {
+        if let closure = closure {
+            closures.updateValue(closure, forKey: presented.description)
+        }
+
         navigationController.pushViewController(presented, animated: animated)
+    }
+
+    private func executeClosure(_ presented: UIViewController) {
+        guard let closure = closures.removeValue(forKey: presented.description) else { return }
+        closure()
+    }
+
+    func setRootVC(window: UIWindow?) {
+        self.window = window
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
+
+    func setViewControllers(_ controllers: [UIViewController]) {
+        navigationController.setViewControllers(controllers, animated: false)
     }
 }
 
@@ -72,6 +59,6 @@ extension NavigationFlowRoute: UINavigationControllerDelegate {
                 .viewControllers
                 .contains(prevController) else { return }
 
-        self.$navigationDidFinish.onNext(true)
+        executeClosure(prevController)
     }
 }

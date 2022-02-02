@@ -25,11 +25,7 @@ protocol NetworkRequest {
 }
 
 class NetworkSessionRequest: NetworkRequest {
-    private var session: SessionRequest
-
-    init(_ session: SessionRequest) {
-        self.session = session
-    }
+    @Injected(\.sessionRequest) var session: SessionRequest
 
     func request<T: Codable>(_ url: URLRequestConvertible, decodable: T.Type) -> Single<T> {
         return Single<T>.create { observer -> Disposable in

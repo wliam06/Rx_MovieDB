@@ -43,7 +43,7 @@ class NowPlayingView: UIView, HasDisposeBag {
         return collection
     }()
 
-    private(set) var viewModel: NowPlayingViewModel!
+    private(set) var viewModel: MovieListViewModel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
