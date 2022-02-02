@@ -10,15 +10,16 @@ import RxSwift
 
 
 /// Handling navigation flow from route
-final class NavigationFlowRoute: NSObject, NavigationRoute {
+class NavigationFlowRoute: NSObject, NavigationRoute {
     var navigationController: UINavigationController
+
     private(set) var window: UIWindow?
     private var closures: [String: NavigationBack] = [:]
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController = UINavigationController()) {
         self.navigationController = navigationController
         super.init()
-        self.navigationController.delegate = self
+        navigationController.delegate = self
     }
 
     func pushTo(_ presented: UIViewController, animated: Bool, onBack closure: NavigationBack?) {
@@ -38,6 +39,10 @@ final class NavigationFlowRoute: NSObject, NavigationRoute {
         self.window = window
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+
+    func setViewControllers(_ controllers: [UIViewController]) {
+        navigationController.setViewControllers(controllers, animated: false)
     }
 }
 

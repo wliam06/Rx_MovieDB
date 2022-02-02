@@ -22,12 +22,12 @@ final class ImpMovieListViewModel: MovieListViewModel, HasDisposeBag {
     var moviesResult: BehaviorSubject<[MovieResponse]>.Observer { $movies }
 //    var moviesResult: BehaviorSubject<MovieListModel?>.Observer { $movies }
 
-    private let usecase: MovieListUseCase
     private let router: Router<MovieListRoute>
 
-    init(router: Router<MovieListRoute>, usecase: MovieListUseCase) {
+    @Injected(\.movieListUC) var usecase: MovieListUseCase
+    
+    init(router: Router<MovieListRoute>) {
         self.router = router
-        self.usecase = usecase
 
         initialLoad()
     }
@@ -35,7 +35,9 @@ final class ImpMovieListViewModel: MovieListViewModel, HasDisposeBag {
     private func initialLoad() {
         self.isLoading = true
 
-        usecase.fetchNowPlaying(page: page).subscribe(onSuccess: { [weak self] in
+        usecase
+            .fetchNowPlaying(page: page)
+            .subscribe(onSuccess: { [weak self] in
             self?.isLoading = false
             self?.movies = $0.results
         }).disposed(by: disposeBag)

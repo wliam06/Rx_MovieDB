@@ -9,38 +9,30 @@ import UIKit
 import RxSwift
 
 enum AppRoute: Route {
-    case MovieList
+    case movieList
 }
 
 final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     private(set) var window: UIWindow?
-    private(set) var navigationRoute: NavigationRoute!
- 
-    let dependency = DependencyInjection()
+    @Injected(\.navRoute) var navigationRoute: NavigationRoute
 
     init(window: UIWindow?) {
         self.window = window
 
         super.init()
 
-        dependency.registerAllDependencies()
-        let navigation = dependency.resolve(type: NavigationRoute.self)
-        self.navigationRoute = navigation
-        self.navigationRoute.setRootVC(window: window)
+        navigationRoute.setRootVC(window: window)
     }
 
     override func start() {
-        navigateTo(route: .MovieList)
+        navigateTo(route: .movieList)
     }
 
     func navigateTo(route: AppRoute, animated: Bool) {
         switch route {
-        case .MovieList:
-            let movieListCoordinator = MovieListCoordinator(
-                navigationRoute: navigationRoute,
-                dependency: dependency
-            )
-            movieListCoordinator.start()
+        case .movieList:
+            let coordinator = MovieListCoordinator()
+            coordinator.start()
         }
     }
 }

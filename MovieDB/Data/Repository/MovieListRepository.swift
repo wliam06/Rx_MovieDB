@@ -15,29 +15,25 @@ protocol MovieListRepository: AnyObject {
 }
 
 final class ImpMovieListRepository: MovieListRepository {
-    private var networkRequest: NetworkRequest
+    @Injected(\.networkRequest) var network: NetworkRequest
     let dispose = DisposeBag()
 
-    init(networkRequest: NetworkRequest) {
-        self.networkRequest = networkRequest
-    }
-
     func getUpcoming(page: Int) -> Single<MovieResultResponse> {
-        return self.networkRequest.request(
+        return self.network.request(
             MovieEndpoint.getUpcoming(page: page),
             decodable: MovieResultResponse.self
         )
     }
 
     func getNowPlaying(page: Int) -> Single<MovieResultResponse> {
-        return self.networkRequest.request(
+        return self.network.request(
             MovieEndpoint.getNowPlaying(page: page),
             decodable: MovieResultResponse.self
         )
     }
 
     func getPopular(page: Int) -> Single<MovieResultResponse> {
-        return self.networkRequest.request(
+        return self.network.request(
             MovieEndpoint.getPopular(page: page),
             decodable: MovieResultResponse.self
         )

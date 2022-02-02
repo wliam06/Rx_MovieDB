@@ -23,11 +23,12 @@ protocol MovieListUseCase {
 }
 
 final class ImpMovieListUseCase: MovieListUseCase, HasDisposeBag {
-    private let repository: MovieListRepository
-
-    init(repository: MovieListRepository) {
-        self.repository = repository
-    }
+    @Injected(\.movieListRepo) var repository: MovieListRepository
+//    private let repository: MovieListRepository
+//
+//    init(repository: MovieListRepository) {
+//        self.repository = repository
+//    }
 
     func fetchNowPlaying(page: Int) -> Single<MovieResultResponse> {
         repository.getNowPlaying(page: page)

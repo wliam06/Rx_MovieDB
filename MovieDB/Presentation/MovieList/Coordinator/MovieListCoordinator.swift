@@ -16,13 +16,7 @@ enum MovieListRoute: Route {
 }
 
 final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
-    private var navigationRoute: NavigationRoute
-    private(set) var dependency: Dependency
-
-    init(navigationRoute: NavigationRoute, dependency: Dependency) {
-        self.dependency = dependency
-        self.navigationRoute = navigationRoute
-    }
+    @Injected(\.navRoute) var navigationRoute: NavigationRoute
 
     override func start() {
         navigateTo(route: .list)
@@ -31,8 +25,7 @@ final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     func navigateTo(route: MovieListRoute, animated: Bool) {
         switch route {
         case .list:
-            let usecase = dependency.resolve(type: MovieListUseCase.self)
-            let viewModel = ImpMovieListViewModel(router: router, usecase: usecase)
+            let viewModel = ImpMovieListViewModel(router: router)
             let view = MovieListViewController()
             view.bind(to: viewModel)
             navigationRoute.pushTo(view) { [weak self] in

@@ -16,6 +16,7 @@ protocol NavigationRoute: AnyObject {
     var navigationController: UINavigationController { get }
     func pushTo(_ presented: UIViewController, animated: Bool, onBack: NavigationBack?)
     func setRootVC(window: UIWindow?)
+    func setViewControllers(_ controllers: [UIViewController])
 }
 
 extension NavigationRoute {
