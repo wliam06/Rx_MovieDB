@@ -8,7 +8,7 @@
 import Foundation
 
 extension Dependency {
-    func registerNowPlaying() {
+    func registerMovieList() {
         registerMovieListRepository()
         registerMovieListUsecase()
     }

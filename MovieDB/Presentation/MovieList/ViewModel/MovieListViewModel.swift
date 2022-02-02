@@ -1,5 +1,5 @@
 //
-//  NowPlayingViewModel.swift
+//  MovieListViewModel.swift
 //  MovieDB
 //
 //  Created by William on 20/12/21.
@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import NSObject_Rx
 
-final class ImpNowPlayingViewModel: NowPlayingViewModel, HasDisposeBag {
+final class ImpMovieListViewModel: MovieListViewModel, HasDisposeBag {
     // Input
     @RxPublished var page: Int = 1
     @RxPublished var isLoading: Bool = false
@@ -23,9 +23,9 @@ final class ImpNowPlayingViewModel: NowPlayingViewModel, HasDisposeBag {
 //    var moviesResult: BehaviorSubject<MovieListModel?>.Observer { $movies }
 
     private let usecase: MovieListUseCase
-    private let router: Router<NowPlayingRoute>
+    private let router: Router<MovieListRoute>
 
-    init(router: Router<NowPlayingRoute>, usecase: MovieListUseCase) {
+    init(router: Router<MovieListRoute>, usecase: MovieListUseCase) {
         self.router = router
         self.usecase = usecase
 

@@ -15,6 +15,7 @@ public typealias NavigationBack = (() -> ())
 protocol NavigationRoute: AnyObject {
     var navigationController: UINavigationController { get }
     func pushTo(_ presented: UIViewController, animated: Bool, onBack: NavigationBack?)
+    func setRootVC(window: UIWindow?)
 }
 
 extension NavigationRoute {

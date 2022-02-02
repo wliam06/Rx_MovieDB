@@ -1,5 +1,5 @@
 //
-//  NowPlayingViewModelIO.swift
+//  MovieListViewModelIO.swift
 //  MovieDB
 //
 //  Created by William on 22/12/21.
@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-protocol NowPlayingViewModelInput {
+protocol MovieListViewModelInput {
     var movies: [MovieResponse] { get }
 //    var movies: MovieListModel? { get }
     var isLoading: Bool { get}
@@ -19,11 +19,11 @@ protocol NowPlayingViewModelInput {
     func didSelectMovie()
 }
 
-protocol NowPlayingViewModelOutput {
+protocol MovieListViewModelOutput {
     var activityLoading: BehaviorSubject<Bool>.Observer { get }
 //    var moviesResult: BehaviorSubject<MovieListModel?>.Observer { get }
     var moviesResult: BehaviorSubject<[MovieResponse]>.Observer { get }
     var currentPage: BehaviorSubject<Int>.Observer { get }
 }
 
-protocol NowPlayingViewModel: NowPlayingViewModelInput & NowPlayingViewModelOutput {}
+protocol MovieListViewModel: MovieListViewModelInput & MovieListViewModelOutput {}

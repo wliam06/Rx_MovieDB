@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 enum AppRoute: Route {
-    case nowPlaying
+    case MovieList
 }
 
 final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
@@ -24,24 +24,23 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
         super.init()
 
         dependency.registerAllDependencies()
-        self.navigationRoute = dependency.resolve(type: NavigationRoute.self)
-        self.window?.rootViewController = self.navigationRoute.navigationController
-        self.window?.makeKeyAndVisible()
+        let navigation = dependency.resolve(type: NavigationRoute.self)
+        self.navigationRoute = navigation
+        self.navigationRoute.setRootVC(window: window)
     }
 
     override func start() {
-        navigateTo(route: .nowPlaying)
+        navigateTo(route: .MovieList)
     }
 
     func navigateTo(route: AppRoute, animated: Bool) {
         switch route {
-        case .nowPlaying:
-
-            let nowPlayingCoordinator = NowPlayingCoordinator(
+        case .MovieList:
+            let movieListCoordinator = MovieListCoordinator(
                 navigationRoute: navigationRoute,
                 dependency: dependency
             )
-            nowPlayingCoordinator.start()
+            movieListCoordinator.start()
         }
     }
 }

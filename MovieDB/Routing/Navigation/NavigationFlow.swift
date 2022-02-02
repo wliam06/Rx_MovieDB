@@ -12,6 +12,7 @@ import RxSwift
 /// Handling navigation flow from route
 final class NavigationFlowRoute: NSObject, NavigationRoute {
     var navigationController: UINavigationController
+    private(set) var window: UIWindow?
     private var closures: [String: NavigationBack] = [:]
 
     init(navigationController: UINavigationController) {
@@ -31,6 +32,12 @@ final class NavigationFlowRoute: NSObject, NavigationRoute {
     private func executeClosure(_ presented: UIViewController) {
         guard let closure = closures.removeValue(forKey: presented.description) else { return }
         closure()
+    }
+
+    func setRootVC(window: UIWindow?) {
+        self.window = window
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
 }
 

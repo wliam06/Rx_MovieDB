@@ -12,7 +12,7 @@ extension Dependency {
     func registerAllDependencies() {
         registerNavigationFlowRoute()
         registerNetwork()
-        registerNowPlaying()
+        registerMovieList()
     }
 
     func registerNavigationFlowRoute() {
