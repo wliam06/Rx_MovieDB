@@ -1,5 +1,5 @@
 //
-//  NowPlayingCell.swift
+//  SectionMovieCell.swift
 //  MovieDB
 //
 //  Created by William on 20/12/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NowPlayingCell: UICollectionViewCell {
+class SectionMovieCell: UICollectionViewCell {
     private lazy var movieImage = UIImageView()
 
     override init(frame: CGRect) {

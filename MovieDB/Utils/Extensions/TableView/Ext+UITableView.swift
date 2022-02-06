@@ -85,3 +85,10 @@ extension Reactive where Base: UICollectionView {
     }
 
 }
+
+// Remove Header
+extension UITableView {
+    static var removeTableHeaderView: UIView {
+        UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
+    }
+}

@@ -11,8 +11,6 @@ import RxCocoa
 import NSObject_Rx
 
 protocol MovieListViewModelInput {
-    var movies: [MovieResponse] { get }
-//    var movies: MovieListModel? { get }
     var isLoading: Bool { get}
     var page: Int { get }
 
@@ -21,8 +19,15 @@ protocol MovieListViewModelInput {
 
 protocol MovieListViewModelOutput {
     var activityLoading: BehaviorSubject<Bool>.Observer { get }
-//    var moviesResult: BehaviorSubject<MovieListModel?>.Observer { get }
-    var moviesResult: BehaviorSubject<[MovieResponse]>.Observer { get }
+    var nowPlayingResult: BehaviorSubject<[MovieResponse]>.Observer { get }
+    var nowPlayingLoaded: BehaviorSubject<Bool>.Observer { get }
+
+    var upcomingResult: BehaviorSubject<[MovieResponse]>.Observer { get }
+    var upcomingLoaded: BehaviorSubject<Bool>.Observer { get }
+
+    var popularResult: BehaviorSubject<[MovieResponse]>.Observer { get }
+    var popularLoaded: BehaviorSubject<Bool>.Observer { get }
+    
     var currentPage: BehaviorSubject<Int>.Observer { get }
 }
 

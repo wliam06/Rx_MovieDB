@@ -1,5 +1,5 @@
 //
-//  NowPlayingView.swift
+//  UpcomingView.swift
 //  MovieDB
 //
 //  Created by William on 20/12/21.
@@ -10,7 +10,7 @@ import SnapKit
 import Kingfisher
 import NSObject_Rx
 
-class NowPlayingView: UIView, HasDisposeBag {
+class UpcomingView: UIView, HasDisposeBag {
     lazy var indicator: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
         if #available(iOS 13.0, *) {
@@ -26,7 +26,7 @@ class NowPlayingView: UIView, HasDisposeBag {
 
     lazy var title: UILabel = {
         let label = UILabel()
-        label.text = "Now Playing"
+        label.text = "Upcoming"
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
@@ -39,7 +39,7 @@ class NowPlayingView: UIView, HasDisposeBag {
             collectionViewLayout: viewLayout
         )
         collection.backgroundColor = .clear
-        collection.registerCells(NowPlayingCell.self)
+        collection.registerCells(SectionMovieCell.self)
         return collection
     }()
 
@@ -84,7 +84,7 @@ class NowPlayingView: UIView, HasDisposeBag {
     }
 }
 
-extension NowPlayingView: UICollectionViewDelegateFlowLayout {
+extension UpcomingView: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
