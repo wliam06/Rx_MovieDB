@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import NSObject_Rx
 
-final class ImpMovieListViewModel: MovieListViewModel, HasDisposeBag {
+final class ImpMovieListViewModel: HasDisposeBag {
     // Input
     @RxPublished var page: Int = 1
     @RxPublished var isLoading: Bool = false
@@ -22,17 +22,17 @@ final class ImpMovieListViewModel: MovieListViewModel, HasDisposeBag {
     @RxPublished var isUpcomingLoading = true
 
     // Output
-    var currentPage: BehaviorSubject<Int>.Observer { $page }
-    var activityLoading: BehaviorSubject<Bool>.Observer { $isLoading }
-
-    var nowPlayingResult: BehaviorSubject<[MovieResponse]>.Observer { $nowPlaying }
-    var nowPlayingLoaded: BehaviorSubject<Bool>.Observer { $isNowPlayingLoading }
-
-    var upcomingResult: BehaviorSubject<[MovieResponse]>.Observer { $upcoming }
-    var upcomingLoaded: BehaviorSubject<Bool>.Observer { $isPopularLoading }
-
-    var popularResult: BehaviorSubject<[MovieResponse]>.Observer { $popular }
-    var popularLoaded: BehaviorSubject<Bool>.Observer { $isUpcomingLoading }
+//    var currentPage: BehaviorSubject<Int>.Observer { $page }
+//    var activityLoading: BehaviorSubject<Bool>.Observer { $isLoading }
+//
+//    var nowPlayingResult: BehaviorSubject<[MovieResponse]>.Observer { $nowPlaying }
+//    var nowPlayingLoaded: BehaviorSubject<Bool>.Observer { $isNowPlayingLoading }
+//
+//    var upcomingResult: BehaviorSubject<[MovieResponse]>.Observer { $upcoming }
+//    var upcomingLoaded: BehaviorSubject<Bool>.Observer { $isPopularLoading }
+//
+//    var popularResult: BehaviorSubject<[MovieResponse]>.Observer { $popular }
+//    var popularLoaded: BehaviorSubject<Bool>.Observer { $isUpcomingLoading }
 
     private let router: Router<MovieListRoute>
 

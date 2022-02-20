@@ -32,6 +32,7 @@ final class NowPlayingMovieCell: UITableViewCell {
     private lazy var stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.distribution = .fillProportionally
         stack.backgroundColor = .clear
         stack.spacing = 12
         return stack
@@ -67,6 +68,9 @@ final class NowPlayingMovieCell: UITableViewCell {
         stack.snp.makeConstraints {
             $0.top.equalToSuperview().offset(8)
             $0.leading.bottom.trailing.equalToSuperview()
+        }
+        collectionView.snp.makeConstraints {
+            $0.height.equalTo(300)
         }
     }
 }

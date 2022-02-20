@@ -11,13 +11,11 @@ import RxCocoa
 import NSObject_Rx
 
 protocol MovieListViewModelInput {
-    var isLoading: Bool { get}
-    var page: Int { get }
-
-    func didSelectMovie()
+    
 }
 
 protocol MovieListViewModelOutput {
+    var nowPlaying: [MovieResponse] { get }
     var activityLoading: BehaviorSubject<Bool>.Observer { get }
     var nowPlayingResult: BehaviorSubject<[MovieResponse]>.Observer { get }
     var nowPlayingLoaded: BehaviorSubject<Bool>.Observer { get }
@@ -27,7 +25,7 @@ protocol MovieListViewModelOutput {
 
     var popularResult: BehaviorSubject<[MovieResponse]>.Observer { get }
     var popularLoaded: BehaviorSubject<Bool>.Observer { get }
-    
+
     var currentPage: BehaviorSubject<Int>.Observer { get }
 }
 

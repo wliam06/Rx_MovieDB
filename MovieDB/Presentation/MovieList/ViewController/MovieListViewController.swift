@@ -13,10 +13,12 @@ import RxDataSources
 
 class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
     private lazy var tableView: UITableView = {
-//        let table = UITableView(frame: .zero, style: .grouped)
         let table = UITableView(frame: .zero)
         table.backgroundColor = .clear
+        table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
+        table.rowHeight = UITableView.automaticDimension
+        table.estimatedRowHeight = 400
         table.tableHeaderView = UITableView.removeTableHeaderView
         return table
     }()
@@ -34,7 +36,7 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
         return activity
     }()
 
-    var viewModel: MovieListViewModel!
+    var viewModel: ImpMovieListViewModel!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,14 +54,17 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
         self.view.addSubviews(indicator, tableView)
         setupConstraint()
 
-        tableView.registerCells(NowPlayingMovieCell.self)
+        tableView.registerCells(
+            NowPlayingMovieCell.self,
+            SectionMovieCell.self
+        )
     }
 
     override func setupConstraint() {
         super.setupConstraint()
-
         tableView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
         }
         indicator.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -72,31 +77,37 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
     // Binding ViewModel
     func bindViewModel() {
         rx.bind(
-            viewModel.activityLoading ~> indicator.rx.isAnimating
+            viewModel.$isLoading ~> indicator.rx.isAnimating
         )
 
         let nowPlaying = movieSection(
-            source: viewModel.nowPlayingResult,
-            loadingSource: viewModel.nowPlayingLoaded
+            source: viewModel.$nowPlaying,
+            loadingSource: viewModel.$isNowPlayingLoading
         ) { (data, cell: NowPlayingMovieCell) in
                 cell.bind(data: data)
             }
 
+        let popular = movieSection(
+            source: viewModel.$popular,
+            loadingSource: viewModel.$isPopularLoading
+        ) { (data, cell: SectionMovieCell) in
+            cell.bind(sectionTitle: "Popular Movie", data: data)
+        }
+
+        let upcoming = movieSection(
+            source: viewModel.$upcoming,
+            loadingSource: viewModel.$isUpcomingLoading
+        ) { (data, cell: SectionMovieCell) in
+            cell.bind(sectionTitle: "Upcoming Movie", data: data)
+        }
+
         tableView.rx.items(
             sections: Observable.combineLatest([
-                nowPlaying
+                nowPlaying,
+                popular,
+                upcoming
             ])
         )
-        tableView.rx.setDelegate(self).disposed(by: disposeBag)
-//        viewModel.popularResult.bind(
-//            to: upcomingView.collectionView.rx.items(cellType: SectionMovieCell.self)
-//        ) { index, data, cell in
-//            cell.configure(poster: data.posterPath)
-//        }.disposed(by: disposeBag)
-//
-//        upcomingView.collectionView.rx.itemSelected.subscribe(onNext: { [weak self] _ in
-//            self?.viewModel.didSelectMovie()
-//        }).disposed(by: disposeBag)
     }
 
     private func movieSection<Cell: UITableViewCell>(
@@ -111,16 +122,6 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
             TableSectionViewModel.cells(cellCount: 1) { (cell: Cell) in
                 configureCell(data, cell)
             }
-        }
-    }
-}
-
-extension MovieListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 300
-        } else {
-            return UITableView.automaticDimension
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  UpcomingView.swift
+//  SectionMovieCell.swift
 //  MovieDB
 //
 //  Created by William on 20/12/21.
@@ -10,8 +10,8 @@ import SnapKit
 import Kingfisher
 import NSObject_Rx
 
-class UpcomingView: UIView, HasDisposeBag {
-    lazy var indicator: UIActivityIndicatorView = {
+class SectionMovieCell: UITableViewCell, HasDisposeBag {
+    private lazy var indicator: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView()
         if #available(iOS 13.0, *) {
             activity.style = .large
@@ -24,14 +24,13 @@ class UpcomingView: UIView, HasDisposeBag {
         return activity
     }()
 
-    lazy var title: UILabel = {
+    private lazy var title: UILabel = {
         let label = UILabel()
-        label.text = "Upcoming"
-        label.font = .boldSystemFont(ofSize: 16)
+        label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
 
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
         viewLayout.scrollDirection = .horizontal
         let collection = UICollectionView(
@@ -39,30 +38,37 @@ class UpcomingView: UIView, HasDisposeBag {
             collectionViewLayout: viewLayout
         )
         collection.backgroundColor = .clear
-        collection.registerCells(SectionMovieCell.self)
+        collection.registerCells(MovieItemSectionCell.self)
+        collection.delegate = self
+        collection.dataSource = self
+        collection.showsHorizontalScrollIndicator = false
         return collection
     }()
 
-    private(set) var viewModel: MovieListViewModel!
+    private(set) var movies = [MovieResponse]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         setupUI()
         setupConstraint()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupUI() {
-        self.backgroundColor = .clear
-        self.addSubview(indicator)
-        self.addSubview(title)
-        self.addSubview(collectionView)
+    func bind(sectionTitle: String, data: [MovieResponse]) {
+        title.text = sectionTitle
+        movies = data
+    }
 
-        collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+    private func setupUI() {
+        self.contentView.addSubviews(indicator, title, collectionView)
     }
 
     private func setupConstraint() {
@@ -74,17 +80,29 @@ class UpcomingView: UIView, HasDisposeBag {
         }
         title.snp.makeConstraints {
             $0.top.equalToSuperview().offset(8)
-            $0.leading.equalToSuperview().offset(16)
+            $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview().offset(-16)
         }
         collectionView.snp.makeConstraints {
             $0.top.equalTo(title.snp.bottom).offset(8)
             $0.leading.trailing.bottom.equalToSuperview()
+            $0.height.equalTo(300)
         }
     }
 }
 
-extension UpcomingView: UICollectionViewDelegateFlowLayout {
+extension SectionMovieCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: MovieItemSectionCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        let movieUrlPath = movies[indexPath.row].getMovieImg()
+        cell.bind(imageUrl: URL(string: movieUrlPath)!)
+        return cell
+    }
+
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
