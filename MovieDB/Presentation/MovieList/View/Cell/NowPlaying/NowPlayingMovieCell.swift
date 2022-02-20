@@ -6,61 +6,47 @@
 //
 
 import UIKit
+import RxSwift
+import NSObject_Rx
 
 final class NowPlayingMovieCell: UITableViewCell {
-    private lazy var movieImage: UIImageView = {
-        let imageVW = UIImageView()
-        imageVW.backgroundColor = .lightGray
-        return imageVW
-    }()
-    private lazy var containerGradient: GradientView = {
-        let view = GradientView()
-        view.startLocation = 0.25
-        view.endLocation = 0.75
-        view.startColor = .clear
-        view.endColor = .black.withAlphaComponent(0.5)
-        return view
-    }()
     private lazy var title: UILabel = {
         let label = UILabel()
-        label.text = "Movie Title Here"
-        label.numberOfLines = 1
-        label.font = .boldSystemFont(ofSize: 14)
+        label.text = "Now Playing"
+        label.font = .boldSystemFont(ofSize: 18)
         return label
     }()
-    private lazy var rating: UILabel = {
-        let label = UILabel()
-        label.text = "7.3"
-        label.textColor = UIColor(named: "orange_rate")!
-        label.font = .systemFont(ofSize: 10)
-        label.textAlignment = .right
-        return label
+
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = .init(width: UIScreen.main.bounds.size.width, height: 300)
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.showsHorizontalScrollIndicator = false
+        collection.dataSource = self
+        collection.delegate = self
+        collection.backgroundColor = .clear
+        return collection
     }()
-    private lazy var firstSection: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        stack.addMultipleArrangeSubviews(title, rating)
-        return stack
-    }()
-    private lazy var date: UILabel = {
-        let label = UILabel()
-        label.text = "Date here"
-        label.font = .systemFont(ofSize: 12)
-        return label
-    }()
-    private lazy var descStack: UIStackView = {
+
+    private lazy var stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 4
         stack.backgroundColor = .clear
-        stack.addMultipleArrangeSubviews(firstSection, date)
+        stack.spacing = 12
         return stack
     }()
+
+    private(set) var movies = [MovieResponse]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        loadUI()
+        setUI()
+        setConstraint()
     }
 
     required init?(coder: NSCoder) {
@@ -68,26 +54,31 @@ final class NowPlayingMovieCell: UITableViewCell {
     }
 
     func bind(data: [MovieResponse]) {
-        print("now playing title: ", data.first?.title)
+        self.movies = data
     }
 
-    private func loadUI() {
-        self.backgroundColor = .red
-        containerGradient.addSubview(descStack)
-        self.addSubviews(movieImage, containerGradient)
-
-        setupConstraint()
+    private func setUI() {
+        stack.addMultipleArrangeSubviews(title, collectionView)
+        self.contentView.addSubview(stack)
+        collectionView.registerCells(NowPlayingSectionMovie.self)
     }
 
-    private func setupConstraint() {
-        movieImage.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        containerGradient.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-        descStack.snp.makeConstraints {
+    private func setConstraint() {
+        stack.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(8)
             $0.leading.bottom.trailing.equalToSuperview()
         }
+    }
+}
+
+extension NowPlayingMovieCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: NowPlayingSectionMovie = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.bind(data: movies[indexPath.row])
+        return cell
     }
 }

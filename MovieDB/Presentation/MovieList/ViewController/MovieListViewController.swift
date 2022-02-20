@@ -13,11 +13,10 @@ import RxDataSources
 
 class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
     private lazy var tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .grouped)
+//        let table = UITableView(frame: .zero, style: .grouped)
+        let table = UITableView(frame: .zero)
         table.backgroundColor = .clear
         table.showsVerticalScrollIndicator = false
-        table.rowHeight = 140
-        table.estimatedRowHeight = 140
         table.tableHeaderView = UITableView.removeTableHeaderView
         return table
     }()
@@ -53,14 +52,14 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
         self.view.addSubviews(indicator, tableView)
         setupConstraint()
 
-        tableView.registerCells(NowPlayingMovieCell.self, UITableViewCell.self)
+        tableView.registerCells(NowPlayingMovieCell.self)
     }
 
     override func setupConstraint() {
         super.setupConstraint()
 
         tableView.snp.makeConstraints {
-            $0.top.leading.bottom.trailing.equalTo(view.safeAreaLayoutGuide)
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
         indicator.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -76,7 +75,7 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
             viewModel.activityLoading ~> indicator.rx.isAnimating
         )
 
-        let section = movieSection(
+        let nowPlaying = movieSection(
             source: viewModel.nowPlayingResult,
             loadingSource: viewModel.nowPlayingLoaded
         ) { (data, cell: NowPlayingMovieCell) in
@@ -85,9 +84,10 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
 
         tableView.rx.items(
             sections: Observable.combineLatest([
-                section
+                nowPlaying
             ])
         )
+        tableView.rx.setDelegate(self).disposed(by: disposeBag)
 //        viewModel.popularResult.bind(
 //            to: upcomingView.collectionView.rx.items(cellType: SectionMovieCell.self)
 //        ) { index, data, cell in
@@ -97,8 +97,6 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
 //        upcomingView.collectionView.rx.itemSelected.subscribe(onNext: { [weak self] _ in
 //            self?.viewModel.didSelectMovie()
 //        }).disposed(by: disposeBag)
-
-        
     }
 
     private func movieSection<Cell: UITableViewCell>(
@@ -110,17 +108,19 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
         ) -> ()
     ) -> Observable<TableSectionViewModelProtocol> {
         Observable.combineLatest(source, loadingSource) { (data, isLoading) in
-//            if isLoading {
-//                // Return skeleton
-//                return TableSectionViewModel.cells(cellCount: 1) { (cell: UITableViewCell) in }
-//            } else {
-//                return TableSectionViewModel.cells(cellCount: 1) { [weak self] (cell: Cell) in
-//                    configureCell(data, cell)
-//                }
-//            }
-            return TableSectionViewModel.cells(cellCount: 1) { [weak self] (cell: Cell) in
+            TableSectionViewModel.cells(cellCount: 1) { (cell: Cell) in
                 configureCell(data, cell)
             }
+        }
+    }
+}
+
+extension MovieListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 300
+        } else {
+            return UITableView.automaticDimension
         }
     }
 }

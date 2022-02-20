@@ -23,7 +23,7 @@ struct MovieResponse: Codable {
     let title: String
     let genreIds: [Int]?
     let overview: String
-    let posterPath: String?
+    var posterPath: String?
     let backdropPath: String?
     let releaseDate: String?
     let voteAverage: Double?
@@ -35,5 +35,9 @@ struct MovieResponse: Codable {
         case backdropPath = "backdrop_path"
         case releaseDate = "release_date"
         case voteAverage = "vote_average"
+    }
+
+    mutating func getMovieImg() -> String {
+        return NetworkConfig.imageBaseURL + (posterPath ?? "")
     }
 }
