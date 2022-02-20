@@ -1,5 +1,5 @@
 //
-//  NowPlayingCell.swift
+//  MovieItemSectionCell.swift
 //  MovieDB
 //
 //  Created by William on 20/12/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NowPlayingCell: UICollectionViewCell {
+class MovieItemSectionCell: UICollectionViewCell {
     private lazy var movieImage = UIImageView()
 
     override init(frame: CGRect) {
@@ -20,13 +20,8 @@ class NowPlayingCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(poster: String?) {
-        if let poster = poster {
-            let url = URL(string: NetworkConfig.imageBaseURL + poster)
-            movieImage.kf.setImage(with: url)
-        } else {
-            movieImage.backgroundColor = .darkGray
-        }
+    func bind(imageUrl: URL) {
+        movieImage.kf.setImage(with: imageUrl)
     }
 
     private func setupUI() {

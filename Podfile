@@ -7,6 +7,7 @@ def reactive_pods
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
   pod 'NSObject+Rx', '5.2.1'
+  pod 'RxDataSources', '~> 5.0'
 end
 
 def network_pods

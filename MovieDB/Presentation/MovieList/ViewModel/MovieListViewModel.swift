@@ -9,23 +9,35 @@ import Foundation
 import RxSwift
 import NSObject_Rx
 
-final class ImpMovieListViewModel: MovieListViewModel, HasDisposeBag {
+final class ImpMovieListViewModel: HasDisposeBag {
     // Input
     @RxPublished var page: Int = 1
     @RxPublished var isLoading: Bool = false
-    @RxPublished var movies: [MovieResponse] = []
-//    @RxPublished var movies: MovieListModel? = nil
+    @RxPublished var nowPlaying = [MovieResponse]()
+    @RxPublished var popular = [MovieResponse]()
+    @RxPublished var upcoming = [MovieResponse]()
+
+    @RxPublished var isNowPlayingLoading = true
+    @RxPublished var isPopularLoading = true
+    @RxPublished var isUpcomingLoading = true
 
     // Output
-    var currentPage: BehaviorSubject<Int>.Observer { $page }
-    var activityLoading: BehaviorSubject<Bool>.Observer { $isLoading }
-    var moviesResult: BehaviorSubject<[MovieResponse]>.Observer { $movies }
-//    var moviesResult: BehaviorSubject<MovieListModel?>.Observer { $movies }
+//    var currentPage: BehaviorSubject<Int>.Observer { $page }
+//    var activityLoading: BehaviorSubject<Bool>.Observer { $isLoading }
+//
+//    var nowPlayingResult: BehaviorSubject<[MovieResponse]>.Observer { $nowPlaying }
+//    var nowPlayingLoaded: BehaviorSubject<Bool>.Observer { $isNowPlayingLoading }
+//
+//    var upcomingResult: BehaviorSubject<[MovieResponse]>.Observer { $upcoming }
+//    var upcomingLoaded: BehaviorSubject<Bool>.Observer { $isPopularLoading }
+//
+//    var popularResult: BehaviorSubject<[MovieResponse]>.Observer { $popular }
+//    var popularLoaded: BehaviorSubject<Bool>.Observer { $isUpcomingLoading }
 
     private let router: Router<MovieListRoute>
 
     @Injected(\.movieListUC) var usecase: MovieListUseCase
-    
+
     init(router: Router<MovieListRoute>) {
         self.router = router
 
@@ -34,23 +46,17 @@ final class ImpMovieListViewModel: MovieListViewModel, HasDisposeBag {
 
     private func initialLoad() {
         self.isLoading = true
-
-        usecase
-            .fetchNowPlaying(page: page)
-            .subscribe(onSuccess: { [weak self] in
+        
+        Single.zip(
+            usecase.fetchNowPlaying(page: page),
+            usecase.fetchPopular(page: page),
+            usecase.fetchUpcoming(page: page)
+        ).subscribe(onSuccess: { [weak self] (nowPlaying, popular, upcoming) in
             self?.isLoading = false
-            self?.movies = $0.results
+            self?.nowPlaying = nowPlaying.results
+            self?.popular = popular.results
+            self?.upcoming = upcoming.results
         }).disposed(by: disposeBag)
-
-//        _ = Single.zip(
-//            usecase.fetchNowPlaying(page: 1),
-//            usecase.fetchPopular(page: 1),
-//            usecase.fetchUpcoming(page: 1)
-//        ).do(onSuccess: { [weak self] result in
-//            self?.movies?.nowPlaying = result.0.results
-//            self?.movies?.popular = result.1.results
-//            self?.movies?.upcoming = result.2.results
-//        })
     }
 
     func didSelectMovie() {

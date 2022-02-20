@@ -1,6 +1,32 @@
 # Rx_MovieDB
 Create TheMovieDB with RxSwift
 
+## Dependency Injection
+Dependency Injection a technique whereby one subject supplies the dependencies of another object, So that makes a class independent of its dependencies.
+
+### How to use:
+```
+   protocol A {}
+   struct SampleA: A {}
+
+   private struct SampleAProviderKey: InjectionKey {
+      static var currentValue: A = SampleA()
+   }
+
+   // Register
+   Extension InjectedValue {
+      var injectedA: A {
+         get { Self[SampleAProviderKey] }
+         set { Self[SampleAProviderKey] = newValue }
+      }
+   }
+
+   // Implementation
+   struct Loader {
+      @Injected(\.injectedA) var protocolA: A
+   }
+```
+
 ## TODO
  - [ ] Show Movie List Layout (Upcoming, Now Playing, Popular)
  - [ ] Show Movie Detail
