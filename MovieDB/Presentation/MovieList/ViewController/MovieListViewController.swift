@@ -82,10 +82,7 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
             source: viewModel.$nowPlaying,
             loadingSource: viewModel.$isNowPlayingLoading
         ) { (data, cell: NowPlayingMovieCell) in
-            cell.bind(data: data)
-            cell.movieDidTap = { [weak self] in
-                self?.viewModel.didSelectMovie(movie: $0)
-            }
+            cell.bind(data: data, action: self.viewModel.didSelectMovie)
         }
 
         let popular = movieSection(

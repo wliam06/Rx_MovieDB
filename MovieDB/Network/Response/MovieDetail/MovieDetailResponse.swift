@@ -24,6 +24,7 @@ struct MovieDetailResponse: Codable, MoviePoster {
     let tagline: String?
     let voteAvg: Double?
     let voteCount: Double?
+    let genres: [MovieGenreResult]?
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -42,9 +43,15 @@ struct MovieDetailResponse: Codable, MoviePoster {
         case tagline
         case voteAvg = "vote_average"
         case voteCount = "vote_count"
+        case genres
     }
 
     mutating func getMovieImg() -> String {
         return NetworkConfig.imageBaseURL + (posterPath ?? "")
     }
+}
+
+struct MovieGenreResult: Codable {
+    let id: Int?
+    let name: String?
 }

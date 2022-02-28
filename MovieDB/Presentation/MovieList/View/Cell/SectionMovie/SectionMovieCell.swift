@@ -40,8 +40,8 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
         collection.frame.size.height = 300
         collection.backgroundColor = .clear
         collection.registerCells(MovieItemSectionCell.self)
-//        collection.delegate = self
-//        collection.dataSource = self
+        collection.delegate = self
+        collection.dataSource = self
         collection.showsHorizontalScrollIndicator = false
         return collection
     }()
@@ -99,7 +99,9 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
     }
 }
 
-extension SectionMovieCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SectionMovieCell: UICollectionViewDelegate,
+                            UICollectionViewDataSource,
+                            UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return movies.count
     }

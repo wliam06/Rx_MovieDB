@@ -6,13 +6,11 @@
 //
 
 import Foundation
+import RxSwift
+import NSObject_Rx
 
-protocol MovieDetailViewModelInput {}
-protocol MovieDetailViewModelOutput {}
-
-protocol MovieDetailViewModel: MovieDetailViewModelInput & MovieDetailViewModelOutput {}
-
-final class ImpMovieDetailViewModel: MovieDetailViewModel {
+final class MovieDetailViewModel: HasDisposeBag {
+    @RxPublished var movie: MovieDetailResponse?
 
     @Injected(\.movieDetailUC) var usecase: MovieDetailUseCase
     
@@ -20,5 +18,15 @@ final class ImpMovieDetailViewModel: MovieDetailViewModel {
 
     init(_ movieId: Int) {
         self.movieId = movieId
+
+        initialLoad()
+    }
+
+    private func initialLoad() {
+        usecase
+            .fetchMovieDetail(id: movieId)
+            .subscribe(onSuccess: {
+                self.movie = $0
+            }).disposed(by: disposeBag)
     }
 }

@@ -33,7 +33,7 @@ final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
                 self.$onFinish.onNext(true)
             }
         case .detail(let id):
-            let viewModel = ImpMovieDetailViewModel(id)
+            let viewModel = MovieDetailViewModel(id)
             let view = MovieDetailViewController()
             view.bind(to: viewModel)
             navigationRoute.pushTo(view) { [weak self] in
