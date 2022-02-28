@@ -79,12 +79,23 @@ class TableSectionCellViewModel: TableSectionViewModelProtocol {
         self.onSelect = onSelect
     }
     
-    convenience init(configureCell: @escaping (_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell, onSelect: (() -> ())? = nil, count: Int = 1) {
+    convenience init(
+        configureCell: @escaping (
+            _ tableView: UITableView,
+            _ indexPath: IndexPath
+        ) -> UITableViewCell,
+        onSelect: (() -> ())? = nil,
+        count: Int = 1
+    ) {
         self.init(configureCell: Array(repeating: configureCell, count: count),
                   onSelect: onSelect == nil ? nil : Array(repeating: onSelect!, count: count))
     }
     
-    func configureCell(indexPath: IndexPath, value: Any, tableView: UITableView) -> UITableViewCell {
+    func configureCell(
+        indexPath: IndexPath,
+        value: Any,
+        tableView: UITableView
+    ) -> UITableViewCell {
         guard configureCell.count > indexPath.row else { return UITableViewCell() }
         return configureCell[indexPath.row](tableView, indexPath)
     }
@@ -111,7 +122,8 @@ extension Reactive where Base: UITableView {
         
         let d1 = sections.bind(to: relay)
         
-        let dataSource: RxTableViewSectionedReloadDataSource<SectionModel<Int, Any>> = RxTableViewSectionedReloadDataSource(configureCell: { _, tableView, indexPath, item in
+        let dataSource: RxTableViewSectionedReloadDataSource<SectionModel<Int, Any>> = RxTableViewSectionedReloadDataSource(
+            configureCell: { _, tableView, indexPath, item in
             relay.value[indexPath.section].configureCell(indexPath: indexPath, value: item, tableView: tableView)
         })
         

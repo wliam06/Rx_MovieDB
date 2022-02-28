@@ -14,6 +14,8 @@ class MovieItemSectionCell: UICollectionViewCell {
         super.init(frame: frame)
 
         setupUI()
+
+        self.contentView.isUserInteractionEnabled = true
     }
 
     required init?(coder: NSCoder) {
@@ -25,8 +27,8 @@ class MovieItemSectionCell: UICollectionViewCell {
     }
 
     private func setupUI() {
-        self.addSubview(movieImage)
-        movieImage.backgroundColor = .darkGray
+        self.contentView.addSubview(movieImage)
+        movieImage.kf.indicatorType = .activity
         movieImage.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

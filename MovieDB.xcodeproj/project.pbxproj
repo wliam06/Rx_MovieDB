@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		35028DF327747DFA00991CE7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35028DF227747DFA00991CE7 /* Router.swift */; };
+		3538FE0927CCAAE7003D47A2 /* SampleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538FE0727CCAAE7003D47A2 /* SampleCollectionViewCell.swift */; };
+		3538FE0A27CCAAE7003D47A2 /* SampleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3538FE0827CCAAE7003D47A2 /* SampleCollectionViewCell.xib */; };
 		354BD99D27C22CD100774AE8 /* NowPlayingSectionMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354BD99C27C22CD000774AE8 /* NowPlayingSectionMovie.swift */; };
 		354BD9A027C247F300774AE8 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354BD99F27C247F300774AE8 /* DynamicCollectionView.swift */; };
 		354DC1E02770BD0B00FAA6D2 /* RxPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DC1DF2770BD0A00FAA6D2 /* RxPublished.swift */; };
@@ -63,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		35028DF227747DFA00991CE7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		3538FE0727CCAAE7003D47A2 /* SampleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCollectionViewCell.swift; sourceTree = "<group>"; };
+		3538FE0827CCAAE7003D47A2 /* SampleCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleCollectionViewCell.xib; sourceTree = "<group>"; };
 		354BD99C27C22CD000774AE8 /* NowPlayingSectionMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingSectionMovie.swift; sourceTree = "<group>"; };
 		354BD99F27C247F300774AE8 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		354DC1DF2770BD0A00FAA6D2 /* RxPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPublished.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 			children = (
 				354DC1F12770CD6D00FAA6D2 /* MovieItemSectionCell.swift */,
 				354DC1E22770BE9A00FAA6D2 /* SectionMovieCell.swift */,
+				3538FE0727CCAAE7003D47A2 /* SampleCollectionViewCell.swift */,
+				3538FE0827CCAAE7003D47A2 /* SampleCollectionViewCell.xib */,
 			);
 			path = SectionMovie;
 			sourceTree = "<group>";
@@ -687,6 +693,7 @@
 			files = (
 				356C6CA926C65C16007A0F67 /* LaunchScreen.storyboard in Resources */,
 				356C6CA626C65C16007A0F67 /* Assets.xcassets in Resources */,
+				3538FE0A27CCAAE7003D47A2 /* SampleCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,6 +770,7 @@
 				35790F3E277091600038B210 /* MovieListViewController.swift in Sources */,
 				35790F35277090460038B210 /* BaseCoordinator.swift in Sources */,
 				35D5A0A127AFB04F0015CDD0 /* TableSectionViewModel.swift in Sources */,
+				3538FE0927CCAAE7003D47A2 /* SampleCollectionViewCell.swift in Sources */,
 				35790F3327708FF60038B210 /* Coordinator.swift in Sources */,
 				35D5A0A827AFB2020015CDD0 /* GradientView.swift in Sources */,
 				354BD9A027C247F300774AE8 /* DynamicCollectionView.swift in Sources */,

@@ -21,19 +21,6 @@ final class ImpMovieListViewModel: HasDisposeBag {
     @RxPublished var isPopularLoading = true
     @RxPublished var isUpcomingLoading = true
 
-    // Output
-//    var currentPage: BehaviorSubject<Int>.Observer { $page }
-//    var activityLoading: BehaviorSubject<Bool>.Observer { $isLoading }
-//
-//    var nowPlayingResult: BehaviorSubject<[MovieResponse]>.Observer { $nowPlaying }
-//    var nowPlayingLoaded: BehaviorSubject<Bool>.Observer { $isNowPlayingLoading }
-//
-//    var upcomingResult: BehaviorSubject<[MovieResponse]>.Observer { $upcoming }
-//    var upcomingLoaded: BehaviorSubject<Bool>.Observer { $isPopularLoading }
-//
-//    var popularResult: BehaviorSubject<[MovieResponse]>.Observer { $popular }
-//    var popularLoaded: BehaviorSubject<Bool>.Observer { $isUpcomingLoading }
-
     private let router: Router<MovieListRoute>
 
     @Injected(\.movieListUC) var usecase: MovieListUseCase
@@ -59,7 +46,7 @@ final class ImpMovieListViewModel: HasDisposeBag {
         }).disposed(by: disposeBag)
     }
 
-    func didSelectMovie() {
+    func didSelectMovie(movie: MovieResponse) {
         self.router.navigateTo(route: .detail)
     }
 }

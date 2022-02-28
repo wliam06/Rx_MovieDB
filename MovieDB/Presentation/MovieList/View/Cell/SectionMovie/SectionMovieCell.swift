@@ -37,6 +37,7 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
             frame: .zero,
             collectionViewLayout: viewLayout
         )
+        collection.frame.size.height = 300
         collection.backgroundColor = .clear
         collection.registerCells(MovieItemSectionCell.self)
         collection.delegate = self
@@ -45,17 +46,24 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
         return collection
     }()
 
-    private(set) var movies = [MovieResponse]() {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    private lazy var stackContent: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 12
+        stack.distribution = .fill
+        return stack
+    }()
+
+    private(set) var movies = [MovieResponse]()
+
+    var movieDidTap: ((MovieResponse) -> Void)?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         setupUI()
         setupConstraint()
+        setupCollection()
     }
     
     required init?(coder: NSCoder) {
@@ -65,10 +73,14 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
     func bind(sectionTitle: String, data: [MovieResponse]) {
         title.text = sectionTitle
         movies = data
+
+        collectionView.reloadData()
     }
 
     private func setupUI() {
-        self.contentView.addSubviews(indicator, title, collectionView)
+        self.contentView.backgroundColor = .clear
+        stackContent.addMultipleArrangeSubviews(title, collectionView)
+        self.contentView.addSubviews(indicator, stackContent)
     }
 
     private func setupConstraint() {
@@ -78,16 +90,17 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
             $0.width.equalTo(30)
             $0.height.equalTo(30)
         }
-        title.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(8)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview().offset(-16)
+        stackContent.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(24)
+            $0.leading.bottom.trailing.equalToSuperview()
         }
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(title.snp.bottom).offset(8)
-            $0.leading.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(300)
+            $0.height.equalTo(300).priority(.low)
         }
+    }
+
+    private func setupCollection() {
+        
     }
 }
 
@@ -97,10 +110,19 @@ extension SectionMovieCell: UICollectionViewDelegate, UICollectionViewDataSource
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard movies.count > 0 else {
+            return UICollectionViewCell()
+        }
+
         let cell: MovieItemSectionCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         let movieUrlPath = movies[indexPath.row].getMovieImg()
         cell.bind(imageUrl: URL(string: movieUrlPath)!)
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard movies.count > 0 else { return }
+        self.movieDidTap?(movies[indexPath.row])
     }
 
     func collectionView(
@@ -110,7 +132,7 @@ extension SectionMovieCell: UICollectionViewDelegate, UICollectionViewDataSource
     ) -> CGSize {
         let width = collectionView.bounds.width
         let size = (width - 30) / 2
-        return CGSize(width: size, height: size / 0.6)
+        return CGSize(width: size, height: 300)
     }
 
     func collectionView(
