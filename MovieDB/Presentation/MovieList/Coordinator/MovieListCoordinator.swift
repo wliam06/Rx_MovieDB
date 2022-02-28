@@ -12,7 +12,7 @@ import UIKit
 
 enum MovieListRoute: Route {
     case list
-    case detail
+    case detail(id: Int)
 }
 
 final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
@@ -32,8 +32,8 @@ final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
                 guard let self = self else { return }
                 self.$onFinish.onNext(true)
             }
-        case .detail:
-            let viewModel = ImpMovieDetailViewModel()
+        case .detail(let id):
+            let viewModel = ImpMovieDetailViewModel(id)
             let view = MovieDetailViewController()
             view.bind(to: viewModel)
             navigationRoute.pushTo(view) { [weak self] in

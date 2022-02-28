@@ -47,6 +47,6 @@ final class ImpMovieListViewModel: HasDisposeBag {
     }
 
     func didSelectMovie(movie: MovieResponse) {
-        self.router.navigateTo(route: .detail)
+        self.router.navigateTo(route: .detail(id: movie.id))
     }
 }

@@ -12,4 +12,13 @@ protocol MovieDetailViewModelOutput {}
 
 protocol MovieDetailViewModel: MovieDetailViewModelInput & MovieDetailViewModelOutput {}
 
-final class ImpMovieDetailViewModel: MovieDetailViewModel {}
+final class ImpMovieDetailViewModel: MovieDetailViewModel {
+
+    @Injected(\.movieDetailUC) var usecase: MovieDetailUseCase
+    
+    private(set) var movieId: Int
+
+    init(_ movieId: Int) {
+        self.movieId = movieId
+    }
+}

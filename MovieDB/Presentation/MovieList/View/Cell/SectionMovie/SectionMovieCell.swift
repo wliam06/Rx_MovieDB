@@ -40,8 +40,8 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
         collection.frame.size.height = 300
         collection.backgroundColor = .clear
         collection.registerCells(MovieItemSectionCell.self)
-        collection.delegate = self
-        collection.dataSource = self
+//        collection.delegate = self
+//        collection.dataSource = self
         collection.showsHorizontalScrollIndicator = false
         return collection
     }()
@@ -63,7 +63,6 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
 
         setupUI()
         setupConstraint()
-        setupCollection()
     }
     
     required init?(coder: NSCoder) {
@@ -97,10 +96,6 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
         collectionView.snp.makeConstraints {
             $0.height.equalTo(300).priority(.low)
         }
-    }
-
-    private func setupCollection() {
-        
     }
 }
 
