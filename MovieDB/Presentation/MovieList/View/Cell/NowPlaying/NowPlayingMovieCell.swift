@@ -10,13 +10,6 @@ import RxSwift
 import NSObject_Rx
 
 final class NowPlayingMovieCell: UITableViewCell {
-    private lazy var title: UILabel = {
-        let label = UILabel()
-        label.text = "Now Playing"
-        label.font = .boldSystemFont(ofSize: 18)
-        return label
-    }()
-
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -44,6 +37,8 @@ final class NowPlayingMovieCell: UITableViewCell {
         }
     }
 
+    var movieDidTap: ((MovieResponse) -> Void)?
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUI()
@@ -54,12 +49,13 @@ final class NowPlayingMovieCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(data: [MovieResponse]) {
+    func bind(data: [MovieResponse], action: ((MovieResponse) -> Void)? = nil) {
         self.movies = data
+        movieDidTap = action
     }
 
     private func setUI() {
-        stack.addMultipleArrangeSubviews(title, collectionView)
+        stack.addMultipleArrangeSubviews(collectionView)
         self.contentView.addSubview(stack)
         collectionView.registerCells(NowPlayingSectionMovie.self)
     }
@@ -80,9 +76,17 @@ extension NowPlayingMovieCell: UICollectionViewDataSource, UICollectionViewDeleg
         return movies.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell: NowPlayingSectionMovie = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         cell.bind(data: movies[indexPath.row])
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard movies.count > 0 else { return }
+        self.movieDidTap?(movies[indexPath.row])
     }
 }

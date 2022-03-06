@@ -18,7 +18,6 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
         table.rowHeight = UITableView.automaticDimension
-        table.estimatedRowHeight = 400
         table.tableHeaderView = UITableView.removeTableHeaderView
         return table
     }()
@@ -63,8 +62,7 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
     override func setupConstraint() {
         super.setupConstraint()
         tableView.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-24)
+            $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         indicator.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -84,14 +82,17 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
             source: viewModel.$nowPlaying,
             loadingSource: viewModel.$isNowPlayingLoading
         ) { (data, cell: NowPlayingMovieCell) in
-                cell.bind(data: data)
-            }
+            cell.bind(data: data, action: self.viewModel.didSelectMovie)
+        }
 
         let popular = movieSection(
             source: viewModel.$popular,
             loadingSource: viewModel.$isPopularLoading
         ) { (data, cell: SectionMovieCell) in
             cell.bind(sectionTitle: "Popular Movie", data: data)
+            cell.movieDidTap = { [weak self] in
+                self?.viewModel.didSelectMovie(movie: $0)
+            }
         }
 
         let upcoming = movieSection(
@@ -99,9 +100,12 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
             loadingSource: viewModel.$isUpcomingLoading
         ) { (data, cell: SectionMovieCell) in
             cell.bind(sectionTitle: "Upcoming Movie", data: data)
+            cell.movieDidTap = { [weak self] in
+                self?.viewModel.didSelectMovie(movie: $0)
+            }
         }
 
-        tableView.rx.items(
+        _ = tableView.rx.items(
             sections: Observable.combineLatest([
                 nowPlaying,
                 popular,

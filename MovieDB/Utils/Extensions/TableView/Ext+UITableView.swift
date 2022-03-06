@@ -63,7 +63,10 @@ extension Reactive where Base: UITableView {
         -> Disposable where Source.Element == Sequence {
         return { source in
             return { configureCell in
-                return self.items(cellIdentifier: cellType.reuseIdentifier, cellType: cellType)(source)(configureCell)
+                return self.items(
+                    cellIdentifier: cellType.reuseIdentifier,
+                    cellType: cellType
+                )(source)(configureCell)
             }
         }
     }

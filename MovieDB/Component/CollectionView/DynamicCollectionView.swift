@@ -2,20 +2,24 @@
 //  DynamicCollectionView.swift
 //  MovieDB
 //
-//  Created by William on 20/02/22.
+//  Created by William on 06/03/22.
 //
 
 import UIKit
 
 class DynamicCollectionView: UICollectionView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if bounds.size != intrinsicContentSize {
-            self.invalidateIntrinsicContentSize()
+    override func reloadData() {
+        super.reloadData()
+        self.invalidateIntrinsicContentSize()
+    }
+
+    override var contentSize: CGSize {
+        didSet {
+            invalidateIntrinsicContentSize()
         }
     }
-    
+
     override var intrinsicContentSize: CGSize {
-        return collectionViewLayout.collectionViewContentSize
+        return contentSize
     }
 }
