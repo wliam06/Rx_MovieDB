@@ -17,6 +17,7 @@ class MovieDetailViewController: ParentViewController, Bindable, HasDisposeBag {
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
         table.rowHeight = UITableView.automaticDimension
+//        table.estimatedRowHeight = 120
         table.contentInsetAdjustmentBehavior = .never
         return table
     }()

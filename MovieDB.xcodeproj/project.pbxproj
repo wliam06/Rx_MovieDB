@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		35028DF327747DFA00991CE7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35028DF227747DFA00991CE7 /* Router.swift */; };
 		351E678127D486DD00A1C2D4 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E678027D486DD00A1C2D4 /* DynamicCollectionView.swift */; };
+		351E678327D4A1B800A1C2D4 /* Exp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351E678227D4A1B800A1C2D4 /* Exp.xib */; };
 		3538FE1227CCACE7003D47A2 /* MovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538FE1127CCACE7003D47A2 /* MovieDBTests.swift */; };
 		3538FE1B27CCB1B9003D47A2 /* MovieDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538FE1A27CCB1B9003D47A2 /* MovieDetailResponse.swift */; };
 		3538FE1F27CCB2C2003D47A2 /* MovieDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538FE1E27CCB2C2003D47A2 /* MovieDetailUseCase.swift */; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		35028DF227747DFA00991CE7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		351E678027D486DD00A1C2D4 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
+		351E678227D4A1B800A1C2D4 /* Exp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Exp.xib; sourceTree = "<group>"; };
 		3538FE0F27CCACE7003D47A2 /* MovieDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3538FE1127CCACE7003D47A2 /* MovieDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBTests.swift; sourceTree = "<group>"; };
 		3538FE1A27CCB1B9003D47A2 /* MovieDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailResponse.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 		356C6C9026C65C14007A0F67 = {
 			isa = PBXGroup;
 			children = (
+				351E678227D4A1B800A1C2D4 /* Exp.xib */,
 				356C6C9B26C65C14007A0F67 /* MovieDB */,
 				3538FE1027CCACE7003D47A2 /* MovieDBTests */,
 				356C6C9A26C65C14007A0F67 /* Products */,
@@ -862,6 +865,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351E678327D4A1B800A1C2D4 /* Exp.xib in Resources */,
 				356C6CA926C65C16007A0F67 /* LaunchScreen.storyboard in Resources */,
 				356C6CA626C65C16007A0F67 /* Assets.xcassets in Resources */,
 			);

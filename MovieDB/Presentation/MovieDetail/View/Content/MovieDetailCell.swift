@@ -13,6 +13,9 @@ class MovieDetailCell: UITableViewCell {
         label.text = "Name:"
         label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .left
+        label.snp.makeConstraints {
+            $0.width.equalTo(120)
+        }
         return label
     }()
     private lazy var movieName: UILabel = {
@@ -25,7 +28,6 @@ class MovieDetailCell: UITableViewCell {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 12
-        stack.distribution = .fillProportionally
         stack.addMultipleArrangeSubviews(titleName, movieName)
         return stack
     }()
@@ -35,6 +37,9 @@ class MovieDetailCell: UITableViewCell {
         label.text = "Release Date:"
         label.font = .boldSystemFont(ofSize: 16)
         label.textAlignment = .left
+        label.snp.makeConstraints {
+            $0.width.equalTo(120)
+        }
         return label
     }()
     private lazy var releaseDate: UILabel = {
@@ -114,6 +119,11 @@ class MovieDetailCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        selectionStyle = .none
+    }
+
     func bind(movie: MovieDetailResponse?) {
         guard let movie = movie else { return }
         movieName.text = movie.title ?? "-"
@@ -126,7 +136,7 @@ class MovieDetailCell: UITableViewCell {
             self.genres = genres
 
             let newHeight = genres.count > 3 ? defaultHeight + defaultHeight : defaultHeight
-            genreSection.snp.updateConstraints {
+            genreSection.snp.makeConstraints {
                 $0.height.equalTo(newHeight)
             }
             genreCollection.reloadData()
@@ -144,9 +154,6 @@ class MovieDetailCell: UITableViewCell {
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-16)
             $0.bottom.equalToSuperview().offset(-8)
-        }
-        genreCollection.snp.makeConstraints {
-            $0.height.equalTo(defaultHeight)
         }
     }
 }
