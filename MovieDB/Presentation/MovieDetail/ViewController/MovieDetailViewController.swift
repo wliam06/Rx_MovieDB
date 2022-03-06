@@ -56,25 +56,16 @@ class MovieDetailViewController: ParentViewController, Bindable, HasDisposeBag {
     }
 
     func bindViewModel() {
-//        rx.bind(
-//            viewModel.$movie ~> { [weak self] in
-//                guard let self = self,
-//                      var result = $0 else { return }
-//                let url = URL(string: result.getMovieImg())!
-////                self.headerView.bind(url: url)
-////                self.tableView.reloadData()
-//            }
-//        )
-//        viewModel
-//            .$movie
-//            .bind(
-//                to: tableView.rx.items(cellType: MovieDetailCell.self)
-//            ) { [weak self] index, value, cell in
-//
-//            }
+        viewModel.$movie.bind(
+            to: tableView.rx.items(cellType: MovieDetailCell.self)
+        ) { [weak self] _, item, cell in
+            var data = item
+            cell.bind(movie: item)
+            self?.headerView.bind(data.getMovieImg())
+            
+        }.disposed(by: disposeBag)
     }
 }
-
 extension MovieDetailViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,

@@ -10,12 +10,13 @@ import UIKit
 class CategoryItemCell: UICollectionViewCell {
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .white
         return view
     }()
     private lazy var title: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12)
+        label.textAlignment = .center
         return label
     }()
 
@@ -28,7 +29,7 @@ class CategoryItemCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 12)
         label.text = text
         label.sizeToFit()
-        return CGSize(width: label.frame.width + 40, height: 32)
+        return CGSize(width: label.frame.width + 26, height: 32)
     }
 
     var name: String? {
@@ -38,7 +39,7 @@ class CategoryItemCell: UICollectionViewCell {
             containerView.layer.borderWidth = 1.5
             containerView.layer.masksToBounds = false
             containerView.layer.cornerRadius = 16
-            containerView.layer.borderColor = UIColor.darkGray.cgColor
+            containerView.layer.borderColor = UIColor.black.cgColor
 
             self.title.text = name
         }
@@ -55,6 +56,7 @@ class CategoryItemCell: UICollectionViewCell {
     }
 
     private func setUI() {
+        self.contentView.backgroundColor = .clear
         containerView.addSubview(title)
         self.contentView.addSubview(containerView)
 
@@ -63,10 +65,7 @@ class CategoryItemCell: UICollectionViewCell {
         }
 
         title.snp.makeConstraints {
-            $0.top.equalTo(containerView.snp.top).offset(4)
-            $0.bottom.equalTo(containerView.snp.bottom).offset(-4)
-            $0.leading.equalTo(containerView.snp.leading).offset(16)
-            $0.trailing.equalTo(containerView.snp.trailing).offset(-16)
+            $0.edges.equalTo(containerView)
         }
     }
 }

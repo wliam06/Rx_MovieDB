@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35028DF327747DFA00991CE7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35028DF227747DFA00991CE7 /* Router.swift */; };
+		351E678127D486DD00A1C2D4 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351E678027D486DD00A1C2D4 /* DynamicCollectionView.swift */; };
 		3538FE1227CCACE7003D47A2 /* MovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538FE1127CCACE7003D47A2 /* MovieDBTests.swift */; };
 		3538FE1B27CCB1B9003D47A2 /* MovieDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538FE1A27CCB1B9003D47A2 /* MovieDetailResponse.swift */; };
 		3538FE1F27CCB2C2003D47A2 /* MovieDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538FE1E27CCB2C2003D47A2 /* MovieDetailUseCase.swift */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		35028DF227747DFA00991CE7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		351E678027D486DD00A1C2D4 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		3538FE0F27CCACE7003D47A2 /* MovieDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3538FE1127CCACE7003D47A2 /* MovieDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBTests.swift; sourceTree = "<group>"; };
 		3538FE1A27CCB1B9003D47A2 /* MovieDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailResponse.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				3538FE3927CCD10B003D47A2 /* Category */,
+				351E678027D486DD00A1C2D4 /* DynamicCollectionView.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -947,6 +950,7 @@
 				35D5A0A427AFB0D50015CDD0 /* NowPlayingMovieCell.swift in Sources */,
 				354BD99D27C22CD100774AE8 /* NowPlayingSectionMovie.swift in Sources */,
 				35790F3E277091600038B210 /* MovieListViewController.swift in Sources */,
+				351E678127D486DD00A1C2D4 /* DynamicCollectionView.swift in Sources */,
 				35790F35277090460038B210 /* BaseCoordinator.swift in Sources */,
 				35D5A0A127AFB04F0015CDD0 /* TableSectionViewModel.swift in Sources */,
 				35790F3327708FF60038B210 /* Coordinator.swift in Sources */,

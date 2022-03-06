@@ -10,7 +10,7 @@ import RxSwift
 import NSObject_Rx
 
 final class MovieDetailViewModel: HasDisposeBag {
-    @RxPublished var movie: MovieDetailResponse?
+    @RxPublished var movie = [MovieDetailResponse]()
 
     @Injected(\.movieDetailUC) var usecase: MovieDetailUseCase
     
@@ -26,7 +26,8 @@ final class MovieDetailViewModel: HasDisposeBag {
         usecase
             .fetchMovieDetail(id: movieId)
             .subscribe(onSuccess: {
-                self.movie = $0
+//                self.movie = $0
+                self.movie.append($0)
             }).disposed(by: disposeBag)
     }
 }

@@ -20,8 +20,10 @@ class MovieDetailHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(url: URL) {
-        image.kf.setImage(with: url)
+    func bind(_ movieImg: String) {
+        if let url = URL(string: movieImg) {
+            image.kf.setImage(with: url)
+        }
     }
 
     private func setupUI() {
