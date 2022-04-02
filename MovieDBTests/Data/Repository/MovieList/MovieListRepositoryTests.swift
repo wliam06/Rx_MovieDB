@@ -20,43 +20,34 @@ class MovieListRepositoryTests: XCTestCase {
     }
 
     func test_successGetUpComingMovie() {
-        let expectation = self.expectation(description: "success get upcoming movie list")
         var response = [MovieResponse]()
 
         repo?.stubbedGetUpcomingResult = .just(mock.response())
         repo?.getUpcoming(page: 1).subscribe(onSuccess: {
             response = $0.results
-            expectation.fulfill()
         }, onFailure: nil).disposed(by: disposeBag)
-        waitForExpectations(timeout: 1)
 
         XCTAssertEqual(mock.response().results, response)
     }
 
     func test_successGetNowPlayingMovie() {
-        let expectation = self.expectation(description: "success get now playing movie list")
         var response = [MovieResponse]()
 
         repo?.stubbedGetNowPlayingResult = .just(mock.response())
         repo?.getNowPlaying(page: 1).subscribe(onSuccess: {
             response = $0.results
-            expectation.fulfill()
         }, onFailure: nil).disposed(by: disposeBag)
-        waitForExpectations(timeout: 1)
 
         XCTAssertEqual(mock.response().results, response)
     }
 
     func test_successGetPopularMovie() {
-        let expectation = self.expectation(description: "success get now playing movie list")
         var response = [MovieResponse]()
 
         repo?.stubbedGetPopularResult = .just(mock.response())
         repo?.getPopular(page: 1).subscribe(onSuccess: {
             response = $0.results
-            expectation.fulfill()
         }, onFailure: nil).disposed(by: disposeBag)
-        waitForExpectations(timeout: 1)
 
         XCTAssertEqual(mock.response().results, response)
     }

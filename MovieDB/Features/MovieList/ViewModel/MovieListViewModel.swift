@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import NSObject_Rx
 
-final class ImpMovieListViewModel: HasDisposeBag {
+class ImpMovieListViewModel: HasDisposeBag {
     // Input
     @RxPublished var page: Int = 1
     @RxPublished var isLoading: Bool = false
