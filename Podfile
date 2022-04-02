@@ -28,4 +28,10 @@ target 'MovieDB' do
   reactive_pods
   network_pods
   layout_pods
+
+  target 'MovieDBTests' do
+    inherit! :search_paths
+    # Pods for testing
+    testing_pods
+  end
 end
