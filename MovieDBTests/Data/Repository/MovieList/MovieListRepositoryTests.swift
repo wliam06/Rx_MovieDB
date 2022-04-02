@@ -10,17 +10,16 @@ import RxSwift
 
 @testable import MovieDB
 class MovieListRepositoryTests: XCTestCase {
-    var scheduler: ConcurrentDispatchQueueScheduler?
     var repo: MockMovieListRepo?
-
+    let mock = MockMovieResultResponse()
     let disposeBag = DisposeBag()
+    
     override func setUp() {
         super.setUp()
         repo = MockMovieListRepo()
     }
 
     func test_successGetUpComingMovie() {
-        let mock = MockMovieResultResponse()
         let expectation = self.expectation(description: "success get upcoming movie list")
         var response = [MovieResponse]()
 
@@ -35,7 +34,6 @@ class MovieListRepositoryTests: XCTestCase {
     }
 
     func test_successGetNowPlayingMovie() {
-        let mock = MockMovieResultResponse()
         let expectation = self.expectation(description: "success get now playing movie list")
         var response = [MovieResponse]()
 
@@ -50,7 +48,6 @@ class MovieListRepositoryTests: XCTestCase {
     }
 
     func test_successGetPopularMovie() {
-        let mock = MockMovieResultResponse()
         let expectation = self.expectation(description: "success get now playing movie list")
         var response = [MovieResponse]()
 
