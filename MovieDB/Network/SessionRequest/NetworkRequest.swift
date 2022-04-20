@@ -20,7 +20,7 @@ public enum NetworkError: Error {
     }
 }
 
-protocol NetworkRequest {
+protocol NetworkRequest: AnyObject {
     func request<T: Codable>(_ url: URLRequestConvertible, decodable: T.Type) -> Single<T>
 }
 

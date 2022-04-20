@@ -14,7 +14,7 @@ protocol MovieListRepository: AnyObject {
     func getPopular(page: Int) -> Single<MovieResultResponse>
 }
 
-class ImpMovieListRepository: MovieListRepository {
+final class ImpMovieListRepository: MovieListRepository {
     @Injected(\.networkRequest) var network: NetworkRequest
     let dispose = DisposeBag()
 

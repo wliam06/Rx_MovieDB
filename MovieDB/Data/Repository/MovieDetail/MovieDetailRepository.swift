@@ -8,11 +8,11 @@
 import RxSwift
 import Alamofire
 
-protocol MovieDetailRepository {
+protocol MovieDetailRepository: AnyObject {
     func getMovieDetail(_ id: Int) -> Single<MovieDetailResponse>
 }
 
-final class ImpMovieDetailRepository: MovieDetailRepository {
+class ImpMovieDetailRepository: MovieDetailRepository {
     @Injected(\.networkRequest) var network: NetworkRequest
 
     func getMovieDetail(_ id: Int) -> Single<MovieDetailResponse> {

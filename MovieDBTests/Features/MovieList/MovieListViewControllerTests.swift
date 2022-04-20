@@ -13,9 +13,6 @@ class MovieListViewControllerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-
-        mock = MockMovieListViewModel(router: <#Router<MovieListRoute>#>)
+//        mock = MockMovieListViewModel(router: <#Router<MovieListRoute>#>)
     }
-
-    
 }

@@ -13,7 +13,7 @@ class MovieListRepositoryTests: XCTestCase {
     var repo: MockMovieListRepo?
     let mock = MockMovieResultResponse()
     let disposeBag = DisposeBag()
-    
+
     override func setUp() {
         super.setUp()
         repo = MockMovieListRepo()
@@ -30,6 +30,18 @@ class MovieListRepositoryTests: XCTestCase {
         XCTAssertEqual(mock.response().results, response)
     }
 
+    func test_invalidGetUpComingMovie() {
+        let expectation = self.expectation(description: "Should throw error")
+        repo?.stubbedGetUpcomingResult = .error(MockErrorResponse.someError)
+        repo?.getUpcoming(page: 1).subscribe(onSuccess: { _ in
+            XCTFail("Should not success")
+        }, onFailure: { _ in
+            expectation.fulfill()
+        }).disposed(by: disposeBag)
+
+        wait(for: [expectation], timeout: 0.1)
+    }
+
     func test_successGetNowPlayingMovie() {
         var response = [MovieResponse]()
 
@@ -41,6 +53,18 @@ class MovieListRepositoryTests: XCTestCase {
         XCTAssertEqual(mock.response().results, response)
     }
 
+    func test_invalidGetNowPlayingMovie() {
+        let expectation = self.expectation(description: "Should throw error")
+        repo?.stubbedGetNowPlayingResult = .error(MockErrorResponse.someError)
+        repo?.getNowPlaying(page: 1).subscribe(onSuccess: { _ in
+            XCTFail("Should not success")
+        }, onFailure: { _ in
+            expectation.fulfill()
+        }).disposed(by: disposeBag)
+
+        wait(for: [expectation], timeout: 0.1)
+    }
+
     func test_successGetPopularMovie() {
         var response = [MovieResponse]()
 
@@ -50,5 +74,17 @@ class MovieListRepositoryTests: XCTestCase {
         }, onFailure: nil).disposed(by: disposeBag)
 
         XCTAssertEqual(mock.response().results, response)
+    }
+
+    func test_invalidGetPopularMovie() {
+        let expectation = self.expectation(description: "Should throw error")
+        repo?.stubbedGetPopularResult = .error(MockErrorResponse.someError)
+        repo?.getPopular(page: 1).subscribe(onSuccess: { _ in
+            XCTFail("Should not success")
+        }, onFailure: { _ in
+            expectation.fulfill()
+        }).disposed(by: disposeBag)
+
+        wait(for: [expectation], timeout: 0.1)
     }
 }

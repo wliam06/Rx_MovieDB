@@ -33,7 +33,7 @@ class ImpMovieListViewModel: HasDisposeBag {
 
     private func initialLoad() {
         self.isLoading = true
-        
+
         Single.zip(
             usecase.fetchNowPlaying(page: page),
             usecase.fetchPopular(page: page),
