@@ -1,4 +1,6 @@
 # Rx_MovieDB
+[![Build Status](https://app.travis-ci.com/wliamgho/Rx_MovieDB.svg?token=pCriY64sTCpk2oMg2rev&branch=develop)](https://app.travis-ci.com/wliamgho/Rx_MovieDB)
+[![codecov](https://codecov.io/gh/wliamgho/Rx_MovieDB/branch/develop/graph/badge.svg?token=bBBnmEsPQE)](https://codecov.io/gh/wliamgho/Rx_MovieDB)
 Create TheMovieDB with RxSwift
 
 ## Dependency Injection
