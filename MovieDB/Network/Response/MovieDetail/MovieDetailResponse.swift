@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct MovieDetailResponse: Codable, MoviePoster {
+struct MovieDetailResponse: Codable, Equatable, MoviePoster {
+    static func == (lhs: MovieDetailResponse, rhs: MovieDetailResponse) -> Bool {
+        return lhs.id == rhs.id
+    }
+
     let adult: Bool?
     let backdropPath: String?
     let budget: Double?

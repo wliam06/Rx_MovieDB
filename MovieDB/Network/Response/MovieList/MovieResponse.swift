@@ -22,7 +22,7 @@ protocol MoviePoster: Codable {
     mutating func getMovieImg() -> String
 }
 
-struct MovieResponse: Codable, MoviePoster {
+struct MovieResponse: Codable, Equatable, MoviePoster {
     let id: Int
     let title: String
     let genreIds: [Int]?

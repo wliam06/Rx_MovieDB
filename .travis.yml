@@ -1,0 +1,8 @@
+language: osx
+osx_image: xcode13.3
+language: swift
+script:
+  # - xcodebuild -scheme MovieDB -workspace MovieDB.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8 OS=15.4' build -enableCodeCoverage YES test
+  - fastlane scan --scheme MovieDB --device "iPhone 8"
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -J MovieDB -t f5aea74b-61ac-4d2b-9cdd-ee6a534bbb35
