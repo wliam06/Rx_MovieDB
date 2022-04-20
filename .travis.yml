@@ -1,6 +1,6 @@
 language: swift
 osx_image: xcode13.3
 script:
-  - xcodebuild -scheme MovieDB -workspace MovieDB.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8' build -enableCodeCoverage YES test
+  - xcodebuild -scheme MovieDB -workspace MovieDB.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8 OS=15.4' build -enableCodeCoverage YES test
 after_success:
   - bash <(curl -s https://codecov.io/bash) -J MovieDB
