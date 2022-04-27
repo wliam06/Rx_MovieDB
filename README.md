@@ -43,3 +43,6 @@ Dependency Injection a technique whereby one subject supplies the dependencies o
  - [ ] Code Coverage (CodeCov) or [Sonarqube](https://medium.com/@pranay.urkude/sonarqube-integration-with-ios-b76df8405014)
  - [ ] [State machine](https://github.com/ReactKit/SwiftState)
  - [ ] [Submodules For Core, Product, Utils, Helper (Advance)](https://www.youtube.com/watch?v=y7w9oz2zcEU&t=988s)
+
+## Optional
+ - [ ] Using Texture
