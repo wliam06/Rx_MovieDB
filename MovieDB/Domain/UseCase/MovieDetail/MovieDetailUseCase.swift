@@ -8,7 +8,7 @@
 import RxSwift
 import NSObject_Rx
 
-protocol MovieDetailUseCase {
+protocol MovieDetailUseCase: AnyObject {
     func fetchMovieDetail(id: Int) -> Single<MovieDetailResponse>
 }
 

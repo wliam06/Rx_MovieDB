@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-final class ImpMovieListViewModel: ParentViewModel {
+class ImpMovieListViewModel: ParentViewModel {
     // Input
     @RxPublished var page: Int = 1
     @RxPublished var nowPlaying = [MovieResponse]()

@@ -22,6 +22,7 @@ class MockMovieDetailUseCase: MovieDetailUseCase {
         invokedFetchMovieDetailCount += 1
         invokedFetchMovieDetailParameters = (id, ())
         invokedFetchMovieDetailParametersList.append((id, ()))
-        return stubbedFetchMovieDetailResult
+//        return stubbedFetchMovieDetailResult
+        return fetchMovieDetail(id: id)
     }
 }
