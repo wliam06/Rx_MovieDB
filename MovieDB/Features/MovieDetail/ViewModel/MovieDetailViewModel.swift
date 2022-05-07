@@ -26,7 +26,6 @@ final class MovieDetailViewModel: HasDisposeBag {
         usecase
             .fetchMovieDetail(id: movieId)
             .subscribe(onSuccess: {
-//                self.movie = $0
                 self.movie.append($0)
             }).disposed(by: disposeBag)
     }

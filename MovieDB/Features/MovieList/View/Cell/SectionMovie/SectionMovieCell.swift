@@ -69,10 +69,14 @@ class SectionMovieCell: UITableViewCell, HasDisposeBag {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(sectionTitle: String, data: [MovieResponse]) {
+    func bind(
+        sectionTitle: String,
+        data: [MovieResponse],
+        action: ((MovieResponse) -> Void)? = nil
+    ) {
         title.text = sectionTitle
         movies = data
-
+        movieDidTap = action
         collectionView.reloadData()
     }
 

@@ -7,19 +7,13 @@
 
 import Foundation
 import RxSwift
-import NSObject_Rx
 
-class ImpMovieListViewModel: HasDisposeBag {
+final class ImpMovieListViewModel: ParentViewModel {
     // Input
     @RxPublished var page: Int = 1
-    @RxPublished var isLoading: Bool = false
     @RxPublished var nowPlaying = [MovieResponse]()
     @RxPublished var popular = [MovieResponse]()
     @RxPublished var upcoming = [MovieResponse]()
-
-    @RxPublished var isNowPlayingLoading = true
-    @RxPublished var isPopularLoading = true
-    @RxPublished var isUpcomingLoading = true
 
     private let router: Router<MovieListRoute>
 
@@ -27,19 +21,25 @@ class ImpMovieListViewModel: HasDisposeBag {
 
     init(router: Router<MovieListRoute>) {
         self.router = router
+        super.init()
+    }
 
-        initialLoad()
+    // MARK: - ViewController Lifecycle
+    override func didLoad() {
+        super.didLoad()
+
+        self.initialLoad()
     }
 
     private func initialLoad() {
-        self.isLoading = true
+        self.viewState = .loading
 
         Single.zip(
             usecase.fetchNowPlaying(page: page),
             usecase.fetchPopular(page: page),
             usecase.fetchUpcoming(page: page)
         ).subscribe(onSuccess: { [weak self] (nowPlaying, popular, upcoming) in
-            self?.isLoading = false
+            self?.viewState = .finish
             self?.nowPlaying = nowPlaying.results
             self?.popular = popular.results
             self?.upcoming = upcoming.results

@@ -11,7 +11,7 @@ import RxCocoa
 import NSObject_Rx
 import RxDataSources
 
-class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
+class MovieListViewController: ParentViewController, Bindable {
     private lazy var tableView: UITableView = {
         let table = UITableView(frame: .zero)
         table.backgroundColor = .clear
@@ -57,6 +57,8 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
             NowPlayingMovieCell.self,
             SectionMovieCell.self
         )
+
+        viewModel.didLoad()
     }
 
     override func setupConstraint() {
@@ -65,44 +67,51 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
             $0.top.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         indicator.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview()
-            $0.width.equalTo(30)
-            $0.height.equalTo(30)
+            $0.centerX.centerY.equalToSuperview()
+            $0.height.width.equalTo(30)
         }
     }
 
     // Binding ViewModel
     func bindViewModel() {
         rx.bind(
-            viewModel.$isLoading ~> indicator.rx.isAnimating
+            viewModel.$viewState ~> { [weak self] in
+                switch $0 {
+                case .start, .loading:
+                    self?.indicator.startAnimating()
+                default:
+                    self?.indicator.stopAnimating()
+                }
+            }
         )
 
         let nowPlaying = movieSection(
-            source: viewModel.$nowPlaying,
-            loadingSource: viewModel.$isNowPlayingLoading
+            source: viewModel.$nowPlaying
         ) { (data, cell: NowPlayingMovieCell) in
-            cell.bind(data: data, action: self.viewModel.didSelectMovie)
+            cell.bind(
+                data: data,
+                action: self.viewModel.didSelectMovie(movie:)
+            )
         }
 
         let popular = movieSection(
-            source: viewModel.$popular,
-            loadingSource: viewModel.$isPopularLoading
+            source: viewModel.$popular
         ) { (data, cell: SectionMovieCell) in
-            cell.bind(sectionTitle: "Popular Movie", data: data)
-            cell.movieDidTap = { [weak self] in
-                self?.viewModel.didSelectMovie(movie: $0)
-            }
+            cell.bind(
+                sectionTitle: "Popular Movie",
+                data: data,
+                action: self.viewModel.didSelectMovie(movie:)
+            )
         }
 
         let upcoming = movieSection(
-            source: viewModel.$upcoming,
-            loadingSource: viewModel.$isUpcomingLoading
+            source: viewModel.$upcoming
         ) { (data, cell: SectionMovieCell) in
-            cell.bind(sectionTitle: "Upcoming Movie", data: data)
-            cell.movieDidTap = { [weak self] in
-                self?.viewModel.didSelectMovie(movie: $0)
-            }
+            cell.bind(
+                sectionTitle: "Upcoming Movie",
+                data: data,
+                action: self.viewModel.didSelectMovie(movie:)
+            )
         }
 
         _ = tableView.rx.items(
@@ -116,13 +125,12 @@ class MovieListViewController: ParentViewController, Bindable, HasDisposeBag {
 
     private func movieSection<Cell: UITableViewCell>(
         source: Observable<[MovieResponse]>,
-        loadingSource: Observable<Bool>,
         configureCell: @escaping(
             _ data: [MovieResponse],
             _ cell: Cell
         ) -> ()
     ) -> Observable<TableSectionViewModelProtocol> {
-        Observable.combineLatest(source, loadingSource) { (data, isLoading) in
+        source.map { data in
             TableSectionViewModel.cells(cellCount: 1) { (cell: Cell) in
                 configureCell(data, cell)
             }
