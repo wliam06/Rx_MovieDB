@@ -13,9 +13,9 @@ class ServiceTests {
     @Injected(\.sessionRequest) var session: SessionRequest
     init() {}
 }
+
 class InjectedTests: XCTestCase {
     func testInjectServiceSession() {
-        let session = ServiceTests()
-//        XCTAssertNotNil(session.session)
+        
     }
 }

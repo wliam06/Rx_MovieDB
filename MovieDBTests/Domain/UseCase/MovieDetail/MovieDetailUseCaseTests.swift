@@ -13,6 +13,7 @@ class MovieDetailUseCaseTests: XCTestCase {
     var usecase: ImpMovieDetailUseCase!
     var repo: MockMovieDetailRepo!
     let mock = MockMovieDetailResponse()
+    let mockMovie = MockMovieDetailModel()
 
     let disposeBag = DisposeBag()
 
@@ -28,10 +29,13 @@ class MovieDetailUseCaseTests: XCTestCase {
     }
 
     func test_successFetchMovieDetail() {
+        var movie: MovieDetailModel!
         repo.stubbedGetMovieDetailResult = .just(mock.response())
-        _ = usecase.fetchMovieDetail(id: 1)
+        usecase.fetchMovieDetail(id: 1).subscribe(onSuccess: {
+            movie = $0
+        }).disposed(by: disposeBag)
 
-        XCTAssertEqual(repo.invokedGetMovieDetailCount, 1)
         XCTAssertTrue(repo.invokedGetMovieDetail)
+        XCTAssertEqual(movie, mockMovie.result())
     }
 }

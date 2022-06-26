@@ -10,38 +10,27 @@ import RxSwift
 
 @testable import MovieDB
 class MovieDetailRepositoryTests: XCTestCase {
-    var repo: MockMovieDetailRepo? // SUT
-    var mockRepo: MockImpMovieDetailRepo?
+    var sut: ImpMovieDetailRepository! // sut
+    var network: MockNetworkRequest!
     let mock = MockMovieDetailResponse()
     let disposeBag = DisposeBag()
 
     override func setUp() {
         super.setUp()
-        mockRepo = MockImpMovieDetailRepo()
-        repo = MockMovieDetailRepo()
+        sut = ImpMovieDetailRepository()
+        network = MockNetworkRequest()
+        sut.network = network
     }
 
     func test_successGetMovieDetail() {
-        var response: MovieDetailResponse?
-
-        repo?.stubbedGetMovieDetailResult = .just(mock.response())
-        repo?.getMovieDetail(1).subscribe(onSuccess: {
-            response = $0
-        }).disposed(by: disposeBag)
-
-        XCTAssertEqual(mock.response(), response!)
-        XCTAssertNotNil(response)
+        network.stubbedRequestResult = .just(mock.response())
+        _ = sut.getMovieDetail(1)
+        XCTAssertTrue(network.invokedRequest)
     }
 
     func test_invalidGetMovieDetail() {
-        let expectation = self.expectation(description: "Should throw error")
-        repo?.stubbedGetMovieDetailResult = .error(MockErrorResponse.someError)
-        repo?.getMovieDetail(1).subscribe(onSuccess: { _ in
-            XCTFail("Should not success")
-        }, onFailure: { _ in
-            expectation.fulfill()
-        }).disposed(by: disposeBag)
-
-        wait(for: [expectation], timeout: 0.1)
+        network.stubbedRequestResult = .error(MockErrorResponse.someError)
+        _ = sut.getMovieDetail(1)
+        XCTAssertTrue(network.invokedRequest)
     }
 }

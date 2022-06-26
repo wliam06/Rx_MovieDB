@@ -10,6 +10,7 @@ import RxSwift
 import RxTest
 
 @testable import MovieDB
+
 class MockMovieDetailRepo: MovieDetailRepository {
 
     var invokedGetMovieDetail = false

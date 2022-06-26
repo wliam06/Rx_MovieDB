@@ -53,9 +53,9 @@ class MockMovieDetailModel {
     func result() -> MovieDetailModel {
         let genres = MovieGenreResult(id: 1, name: "genre")
         return MovieDetailModel(
-            title: "title",
-            releaseDate: "1-1-1",
-            overview: "lalala",
+            title: "Movie Title",
+            releaseDate: "release",
+            overview: "overview",
             movieImg: "movies.png",
             genres: [genres]
         )
