@@ -28,12 +28,7 @@ class ImpMovieListViewModel: ParentViewModel {
     override func didLoad() {
         super.didLoad()
 
-        self.initialLoad()
-    }
-
-    private func initialLoad() {
         self.viewState = .loading
-
         Single.zip(
             usecase.fetchNowPlaying(page: page),
             usecase.fetchPopular(page: page),

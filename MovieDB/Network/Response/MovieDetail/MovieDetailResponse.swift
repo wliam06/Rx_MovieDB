@@ -50,7 +50,7 @@ struct MovieDetailResponse: Codable, Equatable, MoviePoster {
         case genres
     }
 
-    mutating func getMovieImg() -> String {
+    func getMovieImg() -> String {
         return NetworkConfig.imageBaseURL + (posterPath ?? "")
     }
 }

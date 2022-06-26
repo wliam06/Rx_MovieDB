@@ -35,6 +35,8 @@ class MovieDetailViewController: ParentViewController, Bindable {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
+        viewModel.didDisappear()
+
         self.navigationController?.setNavigationBarHidden(
             true,
             animated: animated
@@ -44,6 +46,7 @@ class MovieDetailViewController: ParentViewController, Bindable {
     override func setupUI() {
         super.setupUI()
 
+        viewModel.didLoad()
         self.view.addSubview(tableView)
 
         tableView.snp.makeConstraints {
@@ -59,9 +62,8 @@ class MovieDetailViewController: ParentViewController, Bindable {
         viewModel.$movie.bind(
             to: tableView.rx.items(cellType: MovieDetailCell.self)
         ) { [weak self] _, item, cell in
-            var data = item
             cell.bind(movie: item)
-            self?.headerView.bind(data.getMovieImg())
+            self?.headerView.bind(item.movieImg)
             
         }.disposed(by: disposeBag)
     }

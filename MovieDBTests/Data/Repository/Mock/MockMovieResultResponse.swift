@@ -48,3 +48,16 @@ class MockMovieDetailResponse {
         )
     }
 }
+
+class MockMovieDetailModel {
+    func result() -> MovieDetailModel {
+        let genres = MovieGenreResult(id: 1, name: "genre")
+        return MovieDetailModel(
+            title: "title",
+            releaseDate: "1-1-1",
+            overview: "lalala",
+            movieImg: "movies.png",
+            genres: [genres]
+        )
+    }
+}

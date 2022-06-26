@@ -107,7 +107,7 @@ class MovieDetailCell: UITableViewCell {
     var defaultHeight: CGFloat = 40
 
     private var genres = [MovieGenreResult]()
-    var item: MovieDetailResponse?
+    var item: MovieDetailModel?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -124,11 +124,10 @@ class MovieDetailCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    func bind(movie: MovieDetailResponse?) {
-        guard let movie = movie else { return }
-        movieName.text = movie.title ?? "-"
-        releaseDate.text = movie.releaseDate ?? "-"
-        desc.text = movie.overview ?? "-"
+    func bind(movie: MovieDetailModel) {
+        movieName.text = movie.title
+        releaseDate.text = movie.releaseDate
+        desc.text = movie.overview
 
         // Set movie genre
         if let genres = movie.genres {

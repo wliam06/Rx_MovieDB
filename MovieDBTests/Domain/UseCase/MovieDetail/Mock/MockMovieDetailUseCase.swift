@@ -9,20 +9,20 @@ import XCTest
 import RxSwift
 
 @testable import MovieDB
+
 class MockMovieDetailUseCase: MovieDetailUseCase {
 
     var invokedFetchMovieDetail = false
     var invokedFetchMovieDetailCount = 0
     var invokedFetchMovieDetailParameters: (id: Int, Void)?
     var invokedFetchMovieDetailParametersList = [(id: Int, Void)]()
-    var stubbedFetchMovieDetailResult: Single<MovieDetailResponse>!
+    var stubbedFetchMovieDetailResult: Single<MovieDetailModel>!
 
-    func fetchMovieDetail(id: Int) -> Single<MovieDetailResponse> {
+    func fetchMovieDetail(id: Int) -> Single<MovieDetailModel> {
         invokedFetchMovieDetail = true
         invokedFetchMovieDetailCount += 1
         invokedFetchMovieDetailParameters = (id, ())
         invokedFetchMovieDetailParametersList.append((id, ()))
-//        return stubbedFetchMovieDetailResult
-        return fetchMovieDetail(id: id)
+        return stubbedFetchMovieDetailResult
     }
 }
