@@ -24,8 +24,9 @@ class MovieDetailUseCaseTests: XCTestCase {
         usecase.repository = repo
     }
     override func tearDown() {
-        super.tearDown()
         usecase = nil
+        repo = nil
+        super.tearDown()
     }
 
     func test_successFetchMovieDetail() {

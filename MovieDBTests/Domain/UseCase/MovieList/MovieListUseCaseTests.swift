@@ -23,9 +23,9 @@ class MovieListUseCaseTests: XCTestCase {
     }
 
     override func tearDown() {
-        super.tearDown()
         usecase = nil
         repository = nil
+        super.tearDown()
     }
 
     func test_successFetchNowPlaying() {

@@ -26,6 +26,13 @@ class MovieDetailViewModelTests: XCTestCase {
         viewModel.usecase = usecase
     }
 
+    override func tearDown() {
+        viewModel = nil
+        usecase = nil
+        mock = nil
+        super.tearDown()
+    }
+
     func testSuccessDidLoad() {
         usecase.stubbedFetchMovieDetailResult = .just(mock.result())
         viewModel.didLoad()

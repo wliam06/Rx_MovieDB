@@ -22,6 +22,12 @@ class MovieDetailRepositoryTests: XCTestCase {
         sut.network = network
     }
 
+    override func tearDown() {
+        sut = nil
+        network = nil
+        super.tearDown()
+    }
+
     func test_successGetMovieDetail() {
         network.stubbedRequestResult = .just(mock.response())
         _ = sut.getMovieDetail(1)

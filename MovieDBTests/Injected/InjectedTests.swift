@@ -8,14 +8,6 @@
 import XCTest
 
 @testable import MovieDB
-
-class ServiceTests {
-    @Injected(\.sessionRequest) var session: SessionRequest
-    init() {}
-}
-
 class InjectedTests: XCTestCase {
-    func testInjectServiceSession() {
-        
-    }
+    
 }
