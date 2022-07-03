@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import NSObject_Rx
 
-class MovieDetailViewController: ParentViewController, Bindable, HasDisposeBag {
+class MovieDetailViewController: ParentViewController, Bindable {
     private lazy var headerView = MovieDetailHeaderView()
     private lazy var tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .grouped)
@@ -17,7 +17,6 @@ class MovieDetailViewController: ParentViewController, Bindable, HasDisposeBag {
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
         table.rowHeight = UITableView.automaticDimension
-//        table.estimatedRowHeight = 120
         table.contentInsetAdjustmentBehavior = .never
         return table
     }()
@@ -36,6 +35,8 @@ class MovieDetailViewController: ParentViewController, Bindable, HasDisposeBag {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
 
+        viewModel.didDisappear()
+
         self.navigationController?.setNavigationBarHidden(
             true,
             animated: animated
@@ -45,6 +46,7 @@ class MovieDetailViewController: ParentViewController, Bindable, HasDisposeBag {
     override func setupUI() {
         super.setupUI()
 
+        viewModel.didLoad()
         self.view.addSubview(tableView)
 
         tableView.snp.makeConstraints {
@@ -60,9 +62,8 @@ class MovieDetailViewController: ParentViewController, Bindable, HasDisposeBag {
         viewModel.$movie.bind(
             to: tableView.rx.items(cellType: MovieDetailCell.self)
         ) { [weak self] _, item, cell in
-            var data = item
             cell.bind(movie: item)
-            self?.headerView.bind(data.getMovieImg())
+            self?.headerView.bind(item.movieImg)
             
         }.disposed(by: disposeBag)
     }

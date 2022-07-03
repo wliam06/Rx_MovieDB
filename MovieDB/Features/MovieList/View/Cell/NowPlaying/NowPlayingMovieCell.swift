@@ -49,7 +49,10 @@ final class NowPlayingMovieCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func bind(data: [MovieResponse], action: ((MovieResponse) -> Void)? = nil) {
+    func bind(
+        data: [MovieResponse],
+        action: ((MovieResponse) -> Void)? = nil
+    ) {
         self.movies = data
         movieDidTap = action
     }

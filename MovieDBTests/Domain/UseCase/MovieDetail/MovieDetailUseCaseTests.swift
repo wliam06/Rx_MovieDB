@@ -10,23 +10,33 @@ import RxSwift
 
 @testable import MovieDB
 class MovieDetailUseCaseTests: XCTestCase {
-    var usecase: MockMovieDetailUseCase?
+    var usecase: ImpMovieDetailUseCase!
+    var repo: MockMovieDetailRepo!
     let mock = MockMovieDetailResponse()
+    let mockMovie = MockMovieDetailModel()
+
     let disposeBag = DisposeBag()
 
     override func setUp() {
         super.setUp()
-        usecase = MockMovieDetailUseCase()
+        usecase = ImpMovieDetailUseCase()
+        repo = MockMovieDetailRepo()
+        usecase.repository = repo
+    }
+    override func tearDown() {
+        usecase = nil
+        repo = nil
+        super.tearDown()
     }
 
     func test_successFetchMovieDetail() {
-        var response: MovieDetailResponse?
-
-        usecase?.stubbedFetchMovieDetailResult = .just(mock.response())
-        usecase?.fetchMovieDetail(id: 1).subscribe(onSuccess: {
-            response = $0
+        var movie: MovieDetailModel!
+        repo.stubbedGetMovieDetailResult = .just(mock.response())
+        usecase.fetchMovieDetail(id: 1).subscribe(onSuccess: {
+            movie = $0
         }).disposed(by: disposeBag)
 
-        XCTAssertEqual(mock.response(), response!)
+        XCTAssertTrue(repo.invokedGetMovieDetail)
+        XCTAssertEqual(movie, mockMovie.result())
     }
 }

@@ -10,7 +10,6 @@ import XCTest
 @testable import MovieDB
 
 class MockMovieListViewModel: ImpMovieListViewModel {
-
     var invokedPageSetter = false
     var invokedPageSetterCount = 0
     var invokedPage: Int?
@@ -30,28 +29,6 @@ class MockMovieListViewModel: ImpMovieListViewModel {
             invokedPageGetter = true
             invokedPageGetterCount += 1
             return stubbedPage
-        }
-    }
-
-    var invokedIsLoadingSetter = false
-    var invokedIsLoadingSetterCount = 0
-    var invokedIsLoading: Bool?
-    var invokedIsLoadingList = [Bool]()
-    var invokedIsLoadingGetter = false
-    var invokedIsLoadingGetterCount = 0
-    var stubbedIsLoading: Bool! = false
-
-    override var isLoading: Bool {
-        set {
-            invokedIsLoadingSetter = true
-            invokedIsLoadingSetterCount += 1
-            invokedIsLoading = newValue
-            invokedIsLoadingList.append(newValue)
-        }
-        get {
-            invokedIsLoadingGetter = true
-            invokedIsLoadingGetterCount += 1
-            return stubbedIsLoading
         }
     }
 
@@ -121,72 +98,6 @@ class MockMovieListViewModel: ImpMovieListViewModel {
         }
     }
 
-    var invokedIsNowPlayingLoadingSetter = false
-    var invokedIsNowPlayingLoadingSetterCount = 0
-    var invokedIsNowPlayingLoading: Bool?
-    var invokedIsNowPlayingLoadingList = [Bool]()
-    var invokedIsNowPlayingLoadingGetter = false
-    var invokedIsNowPlayingLoadingGetterCount = 0
-    var stubbedIsNowPlayingLoading: Bool! = false
-
-    override var isNowPlayingLoading: Bool {
-        set {
-            invokedIsNowPlayingLoadingSetter = true
-            invokedIsNowPlayingLoadingSetterCount += 1
-            invokedIsNowPlayingLoading = newValue
-            invokedIsNowPlayingLoadingList.append(newValue)
-        }
-        get {
-            invokedIsNowPlayingLoadingGetter = true
-            invokedIsNowPlayingLoadingGetterCount += 1
-            return stubbedIsNowPlayingLoading
-        }
-    }
-
-    var invokedIsPopularLoadingSetter = false
-    var invokedIsPopularLoadingSetterCount = 0
-    var invokedIsPopularLoading: Bool?
-    var invokedIsPopularLoadingList = [Bool]()
-    var invokedIsPopularLoadingGetter = false
-    var invokedIsPopularLoadingGetterCount = 0
-    var stubbedIsPopularLoading: Bool! = false
-
-    override var isPopularLoading: Bool {
-        set {
-            invokedIsPopularLoadingSetter = true
-            invokedIsPopularLoadingSetterCount += 1
-            invokedIsPopularLoading = newValue
-            invokedIsPopularLoadingList.append(newValue)
-        }
-        get {
-            invokedIsPopularLoadingGetter = true
-            invokedIsPopularLoadingGetterCount += 1
-            return stubbedIsPopularLoading
-        }
-    }
-
-    var invokedIsUpcomingLoadingSetter = false
-    var invokedIsUpcomingLoadingSetterCount = 0
-    var invokedIsUpcomingLoading: Bool?
-    var invokedIsUpcomingLoadingList = [Bool]()
-    var invokedIsUpcomingLoadingGetter = false
-    var invokedIsUpcomingLoadingGetterCount = 0
-    var stubbedIsUpcomingLoading: Bool! = false
-
-    override var isUpcomingLoading: Bool {
-        set {
-            invokedIsUpcomingLoadingSetter = true
-            invokedIsUpcomingLoadingSetterCount += 1
-            invokedIsUpcomingLoading = newValue
-            invokedIsUpcomingLoadingList.append(newValue)
-        }
-        get {
-            invokedIsUpcomingLoadingGetter = true
-            invokedIsUpcomingLoadingGetterCount += 1
-            return stubbedIsUpcomingLoading
-        }
-    }
-
     var invokedUsecaseSetter = false
     var invokedUsecaseSetterCount = 0
     var invokedUsecase: MovieListUseCase?
@@ -209,6 +120,36 @@ class MockMovieListViewModel: ImpMovieListViewModel {
         }
     }
 
+    var invokedViewStateSetter = false
+    var invokedViewStateSetterCount = 0
+    var invokedViewState: ViewState?
+    var invokedViewStateList = [ViewState]()
+    var invokedViewStateGetter = false
+    var invokedViewStateGetterCount = 0
+    var stubbedViewState: ViewState!
+
+    override var viewState: ViewState {
+        set {
+            invokedViewStateSetter = true
+            invokedViewStateSetterCount += 1
+            invokedViewState = newValue
+            invokedViewStateList.append(newValue)
+        }
+        get {
+            invokedViewStateGetter = true
+            invokedViewStateGetterCount += 1
+            return stubbedViewState
+        }
+    }
+
+    var invokedDidLoad = false
+    var invokedDidLoadCount = 0
+
+    override func didLoad() {
+        invokedDidLoad = true
+        invokedDidLoadCount += 1
+    }
+
     var invokedDidSelectMovie = false
     var invokedDidSelectMovieCount = 0
     var invokedDidSelectMovieParameters: (movie: MovieResponse, Void)?
@@ -219,5 +160,21 @@ class MockMovieListViewModel: ImpMovieListViewModel {
         invokedDidSelectMovieCount += 1
         invokedDidSelectMovieParameters = (movie, ())
         invokedDidSelectMovieParametersList.append((movie, ()))
+    }
+
+    var invokedWillAppear = false
+    var invokedWillAppearCount = 0
+
+    override func willAppear() {
+        invokedWillAppear = true
+        invokedWillAppearCount += 1
+    }
+
+    var invokedDidDisappear = false
+    var invokedDidDisappearCount = 0
+
+    override func didDisappear() {
+        invokedDidDisappear = true
+        invokedDidDisappearCount += 1
     }
 }

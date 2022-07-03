@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 import NSObject_Rx
 
-final class MovieDetailViewModel: HasDisposeBag {
-    @RxPublished var movie = [MovieDetailResponse]()
+final class MovieDetailViewModel: ParentViewModel {
+    @RxPublished var movie = [MovieDetailModel]()
 
     @Injected(\.movieDetailUC) var usecase: MovieDetailUseCase
     
@@ -18,16 +18,21 @@ final class MovieDetailViewModel: HasDisposeBag {
 
     init(_ movieId: Int) {
         self.movieId = movieId
-
-        initialLoad()
     }
 
-    private func initialLoad() {
+    override func didLoad() {
+        super.didLoad()
+
         usecase
             .fetchMovieDetail(id: movieId)
-            .subscribe(onSuccess: {
-//                self.movie = $0
-                self.movie.append($0)
+            .subscribe(onSuccess: { [weak self] in
+                self?.movie.append($0)
             }).disposed(by: disposeBag)
+    }
+
+    override func didDisappear() {
+        super.didDisappear()
+
+        self.movie.removeAll()
     }
 }
