@@ -27,9 +27,3 @@ extension InjectedValue {
         set { Self[MockMovieDetailUsecaseInjection.self] = newValue }
     }
 }
-
-class MovieDetailInjectionTests: XCTest {
-    override func setUp() {
-        super.setUp()
-    }
-}
