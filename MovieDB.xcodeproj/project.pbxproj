@@ -87,6 +87,7 @@
 		35E3810B2804506C00FA24F4 /* MockErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3810A2804506C00FA24F4 /* MockErrorResponse.swift */; };
 		35E381102804577000FA24F4 /* MockNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E3810F2804577000FA24F4 /* MockNetworkRequest.swift */; };
 		35E381122804596200FA24F4 /* NetworkRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E381112804596200FA24F4 /* NetworkRequestTests.swift */; };
+		35F770F028733735009A0A2D /* MockInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F770EF28733735009A0A2D /* MockInjection.swift */; };
 		8EC82FC6C41CDB975CDF19F5 /* Pods_MovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F50A37300CAEF24C445FCEA /* Pods_MovieDBTests.framework */; };
 		F99EEC6433C45D8128A751EA /* Pods_MovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E331C4D4479BFF461452A337 /* Pods_MovieDB.framework */; };
 /* End PBXBuildFile section */
@@ -185,6 +186,7 @@
 		35E3810A2804506C00FA24F4 /* MockErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockErrorResponse.swift; sourceTree = "<group>"; };
 		35E3810F2804577000FA24F4 /* MockNetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkRequest.swift; sourceTree = "<group>"; };
 		35E381112804596200FA24F4 /* NetworkRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestTests.swift; sourceTree = "<group>"; };
+		35F770EF28733735009A0A2D /* MockInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInjection.swift; sourceTree = "<group>"; };
 		4B7141CF54A4C02EB7C2F4A8 /* Pods-MovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB.release.xcconfig"; path = "Target Support Files/Pods-MovieDB/Pods-MovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		653029143C89CE425E57FC12 /* Pods-MovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDBTests.release.xcconfig"; path = "Target Support Files/Pods-MovieDBTests/Pods-MovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F50A37300CAEF24C445FCEA /* Pods_MovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -540,6 +542,7 @@
 		355B0A262868490E0068838F /* Injected */ = {
 			isa = PBXGroup;
 			children = (
+				35F770EE28733017009A0A2D /* Mock */,
 				356CBD922871A3FE00D84782 /* Network */,
 				35B9E34828686ACD00683D8D /* MovieList */,
 				35B9E3432868604800683D8D /* MovieDetail */,
@@ -1049,6 +1052,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		35F770EE28733017009A0A2D /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				35F770EF28733735009A0A2D /* MockInjection.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		56BDF10900F4890FE204D8AC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1259,6 +1270,7 @@
 				35B9E34A28686ADE00683D8D /* MovieListInjectionTests.swift in Sources */,
 				35E3810B2804506C00FA24F4 /* MockErrorResponse.swift in Sources */,
 				351E678A27D4AA0800A1C2D4 /* MockMovieListRepo.swift in Sources */,
+				35F770F028733735009A0A2D /* MockInjection.swift in Sources */,
 				3521E42527F86315009EC8DF /* MockMovieListUseCase.swift in Sources */,
 				3521E43527F87A28009EC8DF /* MovieDetailUseCaseTests.swift in Sources */,
 				3521E43D27F87D3B009EC8DF /* MockMovieListViewModel.swift in Sources */,

@@ -9,6 +9,7 @@ Dependency Injection a technique whereby one subject supplies the dependencies o
 
 ### How to use:
 ```
+// Strong References
    protocol A {}
    struct SampleA: A {}
 
@@ -24,9 +25,27 @@ Dependency Injection a technique whereby one subject supplies the dependencies o
       }
    }
 
-   // Implementation
+##########################
+
+// Weak References
+   protocol B {}
+   struct SampleB: B {}
+   private struct SampleBProviderKey: InjectionWeakKey {
+      static weak var currentValue: B?
+   }
+
+   // Register
+   extension InjectedWeakValue {
+      var injectedB: B? {
+         get { Self[SampleBProviderKey] }
+         set { Self[SampleBProviderKey] = newValue }
+      }
+   }
+
+// Implementation
    struct Loader {
-      @Injected(\.injectedA) var protocolA: A
+      @Injected(\.injectedA) var protocolA: A //  Strong references
+      @InjectedWeak(\.injectedB) var protocolB // Optional value (weak references)
    }
 ```
 
@@ -35,7 +54,7 @@ Dependency Injection a technique whereby one subject supplies the dependencies o
  - [ ] Show Movie Detail
  - [ ] Unit Test & Snapshot UI
  - [X] Dark Mode
- - [X] Dependency Injection using Protocol
+ - [X] Create Dependency Injection
  - [ ] Modularity
  - [X] Navigation Flow
  - [ ] Fastlane

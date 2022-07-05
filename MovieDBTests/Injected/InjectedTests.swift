@@ -6,8 +6,18 @@
 //
 
 import XCTest
-
 @testable import MovieDB
-class InjectedTests: XCTestCase {
+
+class MockInjectedValue: InjectionKey {
     
+}
+
+class InjectedTests: XCTest {
+    @Injected(\.strongInjection) var injectTest: Injection
+
+    func testBasicInjection() {
+        let mock = MockInjection()
+        injectTest.update(name: "Strong")
+        XCTAssertTrue(mock.invokedUpdate)
+    }
 }
