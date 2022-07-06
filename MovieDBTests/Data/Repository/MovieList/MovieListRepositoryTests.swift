@@ -47,57 +47,23 @@ class MovieListRepositoryTests: XCTestCase {
         network.stubbedRequestResult = .just(mock.response())
         _ = sut.getNowPlaying(page: 1)
         XCTAssertTrue(network.invokedRequest)
-//        var response = [MovieResponse]()
-//
-//        repo?.stubbedGetNowPlayingResult = .just(mock.response())
-//        repo?.getNowPlaying(page: 1).subscribe(onSuccess: {
-//            response = $0.results
-//        }, onFailure: nil).disposed(by: disposeBag)
-//
-//        XCTAssertEqual(mock.response().results, response)
     }
 
     func test_invalidGetNowPlayingMovie() {
         network.stubbedRequestResult = .error(MockErrorResponse.someError)
         _ = sut.getNowPlaying(page: 1)
         XCTAssertTrue(network.invokedRequest)
-//        let expectation = self.expectation(description: "Should throw error")
-//        repo?.stubbedGetNowPlayingResult = .error(MockErrorResponse.someError)
-//        repo?.getNowPlaying(page: 1).subscribe(onSuccess: { _ in
-//            XCTFail("Should not success")
-//        }, onFailure: { _ in
-//            expectation.fulfill()
-//        }).disposed(by: disposeBag)
-//
-//        wait(for: [expectation], timeout: 0.1)
     }
 
     func test_successGetPopularMovie() {
         network.stubbedRequestResult = .just(mock.response())
         _ = sut.getPopular(page: 1)
         XCTAssertTrue(network.invokedRequest)
-//        var response = [MovieResponse]()
-//
-//        repo?.stubbedGetPopularResult = .just(mock.response())
-//        repo?.getPopular(page: 1).subscribe(onSuccess: {
-//            response = $0.results
-//        }, onFailure: nil).disposed(by: disposeBag)
-//
-//        XCTAssertEqual(mock.response().results, response)
     }
 
     func test_invalidGetPopularMovie() {
         network.stubbedRequestResult = .error(MockErrorResponse.someError)
         _ = sut.getPopular(page: 1)
         XCTAssertTrue(network.invokedRequest)
-//        let expectation = self.expectation(description: "Should throw error")
-//        repo?.stubbedGetPopularResult = .error(MockErrorResponse.someError)
-//        repo?.getPopular(page: 1).subscribe(onSuccess: { _ in
-//            XCTFail("Should not success")
-//        }, onFailure: { _ in
-//            expectation.fulfill()
-//        }).disposed(by: disposeBag)
-//
-//        wait(for: [expectation], timeout: 0.1)
     }
 }
