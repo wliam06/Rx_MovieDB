@@ -8,16 +8,25 @@
 import XCTest
 @testable import MovieDB
 
-class MockInjectedValue: InjectionKey {
-    
-}
+class MockInjectionTest: XCTestCase {
+    var sut: ImpInjection!
+    var mock: MockImpInjection!
 
-class InjectedTests: XCTest {
-    @Injected(\.strongInjection) var injectTest: Injection
+    override func setUp() {
+        super.setUp()
+        sut = ImpInjection(name: "NAME")
+        mock = MockImpInjection()
+        sut.injected = mock
+    }
 
-    func testBasicInjection() {
-        let mock = MockInjection()
-        injectTest.update(name: "Strong")
-        XCTAssertTrue(mock.invokedUpdate)
+    override func tearDown() {
+        sut = nil
+        mock = nil
+        super.tearDown()
+    }
+
+    func testBasicInject() {
+        sut.update(name: "Mock")
+        XCTAssert(sut.name!.contains("Mock"))
     }
 }

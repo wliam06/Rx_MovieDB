@@ -5,6 +5,9 @@
       location = "group:MovieDB.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:ModuleManager/ModuleManager.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

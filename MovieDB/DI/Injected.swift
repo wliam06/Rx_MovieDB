@@ -26,7 +26,7 @@ public protocol InjectionKey {
 }
 
 /// Provides access to injected dependencies.
-struct InjectedValue {
+public struct InjectedValue {
     /// Only used as an accessor to the computed properties within extensions of `InjectedValue`.
     private static var current = InjectedValue()
 
@@ -44,9 +44,9 @@ struct InjectedValue {
 }
 
 @propertyWrapper
-struct Injected<T> {
+public struct Injected<T> {
     private let keyPath: WritableKeyPath<InjectedValue, T>
-    var wrappedValue: T {
+    public var wrappedValue: T {
         get { InjectedValue[keyPath] }
         set { InjectedValue[keyPath] = newValue }
     }

@@ -8,36 +8,32 @@
 import XCTest
 
 @testable import MovieDB
-protocol Injection: AnyObject {
-    func update(name: String)
+
+class MockImpInjectionKey: InjectionKey {
+    static var currentValue: InjectionProtocol = MockImpInjection()
 }
 
-class MockInjection: Injection {
+extension InjectedValue {
+    var strongInjection: InjectionProtocol {
+        get { Self[MockImpInjectionKey.self] }
+        set { Self[MockImpInjectionKey.self] = newValue }
+    }
+}
+
+// Mock Injection
+class MockImpInjection: InjectionProtocol {
 
     var invokedUpdate = false
     var invokedUpdateCount = 0
     var invokedUpdateParameters: (name: String, Void)?
     var invokedUpdateParametersList = [(name: String, Void)]()
+    var stubbedUpdateResult: String! = ""
 
-    func update(name: String) {
+    func update(name: String) -> String {
         invokedUpdate = true
         invokedUpdateCount += 1
         invokedUpdateParameters = (name, ())
         invokedUpdateParametersList.append((name, ()))
-    }
-}
-
-private struct StrongInjectionKey: InjectionKey {
-    static var currentValue: Injection = MockInjection()
-}
-
-extension InjectedValue {
-    var strongInjection: Injection {
-        get {
-            Self[StrongInjectionKey.self]
-        }
-        set {
-            Self[StrongInjectionKey.self] = newValue
-        }
+        return stubbedUpdateResult
     }
 }

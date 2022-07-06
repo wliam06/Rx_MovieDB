@@ -5,7 +5,9 @@
 Implementation The Movie DB using RxSwift.
 
 ## Dependency Injection
-Dependency Injection a technique whereby one subject supplies the dependencies of another object, So that makes a class independent of its dependencies.
+Dependency Injection a technique whereby one subject supplies the dependencies of another object, So that makes a class independent of it's dependencies.
+I used Swift property-wrapper, keypath-based as dependency injection system. The keypaths ensure compile-time safety for all injectable services.
+The property wrapper allows injecting dependencies and reduces code clutter on the implementation side. The static subscript used to make sure we don't end up with side effects and weird outcomes due to inconsistent dependency references.
 
 ### How to use:
 ```
