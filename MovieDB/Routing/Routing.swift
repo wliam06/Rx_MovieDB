@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RxSwift
 
 protocol RoutingFlowCoordinator: Routable, ReactiveCompatible {}
 extension RoutingFlowCoordinator {

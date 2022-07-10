@@ -5,7 +5,16 @@
       location = "group:MovieDB.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:ModuleManager/ModuleManager.xcodeproj">
+      location = "group:Core/Core.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MovieKit/MovieKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Networking/Networking.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:RxFramework/RxFramework.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

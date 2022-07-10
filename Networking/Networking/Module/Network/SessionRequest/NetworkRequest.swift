@@ -7,6 +7,7 @@
 
 import RxSwift
 import Alamofire
+import Core
 
 public enum NetworkError: Error {
     case BadRequest

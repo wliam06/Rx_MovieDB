@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import MovieKit
 
 final class NetworkReachability {
     static let shared = NetworkReachability()

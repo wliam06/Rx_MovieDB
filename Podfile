@@ -1,37 +1,52 @@
-# Uncomment the next line to define a global platform for your project
 platform :ios, '12.0'
+inhibit_all_warnings!
 
-use_frameworks!
-
-def reactive_pods
-  pod 'RxSwift', '6.2.0'
-  pod 'RxCocoa', '6.2.0'
-  pod 'NSObject+Rx', '5.2.1'
-  pod 'RxDataSources', '~> 5.0'
-end
-
-def network_pods
-  pod 'Alamofire', '5.4.3'
-end
-
-def layout_pods
-  pod 'SnapKit', '5.0.1'
-  pod 'Kingfisher', '~> 7.0'
-end
-
-def testing_pods
-  pod 'RxBlocking', '6.2.0'
-  pod 'RxTest', '6.2.0'
-end
+plugin 'cocoapods-pod-merge'
+workspace 'MovieDB.xcworkspace'
 
 target 'MovieDB' do
-  reactive_pods
-  network_pods
-  layout_pods
+  use_frameworks!
+  pod 'UISwift', path: 'MergedPods/UISwift'
+  pod 'RxFrameworkSwift', path: 'MergedPods/RxFrameworkSwift'
 
   target 'MovieDBTests' do
     inherit! :search_paths
     # Pods for testing
-    testing_pods
+    # testing_pods
+  end
+end
+
+target 'Core' do
+  use_frameworks!
+  project 'Core/Core.xcodeproj'
+end
+
+target 'MovieKit' do
+  use_frameworks!
+  project 'MovieKit/MovieKit.xcodeproj'
+
+  pod 'RxFrameworkSwift', path: 'MergedPods/RxFrameworkSwift'
+  pod 'UISwift', path: 'MergedPods/UISwift'
+end
+
+target 'Networking' do
+  use_frameworks!
+  project 'Networking/Networking.xcodeproj'
+
+  # pod 'RxFrameworkSwift', path => 'MergedPods/RxFrameworkSwift'
+  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift'
+  pod 'RxFrameworkSwift', path: 'MergedPods/RxFrameworkSwift'
+end
+
+target 'RxFramework' do
+  use_modular_headers!
+  project 'RxFramework/RxFramework.xcodeproj'
+
+  pod 'RxFrameworkSwift', path: 'MergedPods/RxFrameworkSwift'
+end
+
+pre_install do |installer|
+  installer.analysis_result.specifications.each do |specs|
+    specs.swift_version = '5'
   end
 end
