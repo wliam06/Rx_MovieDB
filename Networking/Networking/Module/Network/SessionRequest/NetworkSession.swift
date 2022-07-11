@@ -20,15 +20,15 @@ class NetworkSession {
         ]
     }
 
-    static let session: Session = {
+    
+    static let session: SessionManager = {
         let config = URLSessionConfiguration.default
         config.httpCookieAcceptPolicy = .never
         config.httpCookieStorage = nil
         config.urlCache = nil
-        config.headers = httpHeader
-        let sesion = Session(
-            configuration: config,
-            startRequestsImmediately: true
+        config.httpAdditionalHeaders = httpHeader
+        let sesion = SessionManager(
+            configuration: config
         )
         return sesion
     }()

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SnapKit
+import UISwift
 
 class CategoryItemCell: UICollectionViewCell {
     private lazy var containerView: UIView = {

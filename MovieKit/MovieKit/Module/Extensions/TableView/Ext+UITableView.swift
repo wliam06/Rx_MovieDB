@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxFramework
 import RxSwift
 import RxCocoa
 

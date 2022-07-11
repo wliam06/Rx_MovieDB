@@ -5,6 +5,7 @@
 //  Created by William on 20/12/21.
 //
 
+import RxFramework
 import RxSwift
 import Alamofire
 import Core
@@ -52,7 +53,7 @@ class NetworkSessionRequest: NetworkRequest {
                     case (.some(503), _):
                         observer(.failure(NetworkError.ServiceUnavailable))
                     default:
-                        Logger.error(response.error?.localizedDescription ?? "Error Request")
+//                        Logger.error(response.error?.localizedDescription ?? "Error Request")
                         observer(.failure(response.error!))
                     }
                 }

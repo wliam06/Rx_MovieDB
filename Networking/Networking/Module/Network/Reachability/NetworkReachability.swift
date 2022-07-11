@@ -6,64 +6,69 @@
 //
 
 import Alamofire
-import MovieKit
 
 final class NetworkReachability {
+    
     static let shared = NetworkReachability()
     let reachabilityManager = NetworkReachabilityManager()
-    private var alertView = AlertViewController.shared
+//    private var alertView = AlertViewController.shared
 
     func startNetworkMonitoring() {
-      reachabilityManager?.startListening { status in
-        switch status {
+        reachabilityManager?.startListening()
+        switch reachabilityManager?.networkReachabilityStatus {
         case .notReachable:
-            self.showOfflineAlert {
-                self.startNetworkMonitoring()
-            }
-        case .reachable(.cellular):
-          self.dismissOfflineAlert()
-        case .reachable(.ethernetOrWiFi):
-          self.dismissOfflineAlert()
+//            self.showOfflineAlert {
+//                self.startNetworkMonitoring()
+//            }
+            print("Not reachable")
+        case .reachable(.wwan), .reachable(.ethernetOrWiFi):
+            self.dismissOfflineAlert()
         case .unknown:
-          print("Unknown network state")
+            print("Unknown network state")
+        case .none:
+            self.dismissOfflineAlert()
         }
-      }
     }
 
     func showErrorResponse(_ statusCode: NetworkError?, callback: (() -> Void)?) {
         switch statusCode {
         case .BadRequest:
-            showErroWithMessage(title: "Bad Request",
-                                message: "We could not process that action",
-                                callback: callback)
+            print("bad request")
+//            showErroWithMessage(title: "Bad Request",
+//                                message: "We could not process that action",
+//                                callback: callback)
         case .Forbidden:
-            showErroWithMessage(title: "Forbidden",
-                                message: "You exceeded the rate limit",
-                                callback: callback)
+            print("Forbidden")
+//            showErroWithMessage(title: "Forbidden",
+//                                message: "You exceeded the rate limit",
+//                                callback: callback)
         case .NotFound:
-            showErroWithMessage(title: "Not Found",
-                                message: "The requested resource could not be found",
-                                callback: callback)
+            print("NotFound")
+//            showErroWithMessage(title: "Not Found",
+//                                message: "The requested resource could not be found",
+//                                callback: callback)
         case .InternalServerError:
-            showErroWithMessage(title: "Internal Server Error",
-                                message: "We had a problem with our server. Please try again later",
-                                callback: callback)
+            print("Internal ServerError")
+//            showErroWithMessage(title: "Internal Server Error",
+//                                message: "We had a problem with our server. Please try again later",
+//                                callback: callback)
         case .ServiceUnavailable:
-            showErroWithMessage(title: "Service Unavailable",
-                                message: "We are temporarily offline for maintenance. Please try again later",
-                                callback: callback)
+            print("service unavailable")
+//            showErroWithMessage(title: "Service Unavailable",
+//                                message: "We are temporarily offline for maintenance. Please try again later",
+//                                callback: callback)
         default:
             return
         }
     }
 
-    private func showErroWithMessage(title: String, message: String, callback: (() -> Void)?) {
-        alertView.showAlert(title, message, onAction: callback)
-    }
-
-    func showOfflineAlert(callback: (() -> Void)?) {
-        alertView.showAlert("No Network", "Please connect to network and try again", onAction: callback)
-    }
+//    private func showErroWithMessage(title: String, message: String, callback: (() -> Void)?) {
+//        alertView.showAlert(title, message, onAction: callback)
+//    }
+//
+//    func showOfflineAlert(callback: (() -> Void)?) {
+//        alertView.showAlert("No Network", "Please connect to network and try again", onAction: callback)
+//    }
 
     func dismissOfflineAlert() {
         let rootViewController = UIApplication.shared.windows.first?.rootViewController

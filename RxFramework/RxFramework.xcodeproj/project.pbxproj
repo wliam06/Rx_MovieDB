@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		004D73519C8A1F56DAA02FED /* libPods-RxFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A24BC3AE2618D7F2A4983AE3 /* libPods-RxFramework.a */; };
 		3501F2FA287AA38F00CE8C87 /* RxFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 3501F2F9287AA38F00CE8C87 /* RxFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3501F308287AA42E00CE8C87 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F301287AA42D00CE8C87 /* Proxy.swift */; };
 		3501F309287AA42E00CE8C87 /* RxPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F303287AA42E00CE8C87 /* RxPublished.swift */; };
 		3501F30A287AA42E00CE8C87 /* RxSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F304287AA42E00CE8C87 /* RxSignal.swift */; };
 		3501F30B287AA42E00CE8C87 /* Rx+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F306287AA42E00CE8C87 /* Rx+ActivityIndicator.swift */; };
 		3501F30C287AA42E00CE8C87 /* RxBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F307287AA42E00CE8C87 /* RxBinding.swift */; };
+		C340572BAC732A6DFBA2839A /* Pods_RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D6E2140CF74DD9EADFD65F /* Pods_RxFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		3501F304287AA42E00CE8C87 /* RxSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxSignal.swift; sourceTree = "<group>"; };
 		3501F306287AA42E00CE8C87 /* Rx+ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		3501F307287AA42E00CE8C87 /* RxBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxBinding.swift; sourceTree = "<group>"; };
-		A24BC3AE2618D7F2A4983AE3 /* libPods-RxFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RxFramework.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4D6E2140CF74DD9EADFD65F /* Pods_RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89D934631D6FC1D625DDBD2 /* Pods-RxFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.release.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -34,7 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				004D73519C8A1F56DAA02FED /* libPods-RxFramework.a in Frameworks */,
+				C340572BAC732A6DFBA2839A /* Pods_RxFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,7 +109,7 @@
 		CA59B1C8D4E1577AA719F021 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A24BC3AE2618D7F2A4983AE3 /* libPods-RxFramework.a */,
+				B4D6E2140CF74DD9EADFD65F /* Pods_RxFramework.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -282,7 +282,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -340,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -366,7 +366,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -397,7 +397,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

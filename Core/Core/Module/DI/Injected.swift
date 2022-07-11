@@ -31,13 +31,13 @@ public struct InjectedValue {
     private static var current = InjectedValue()
 
     /// Updating the `currentValue` of `InjectionKey` instances.
-    static subscript<K>(key: K.Type) -> K.Value where K: InjectionKey {
+    public static subscript<K>(key: K.Type) -> K.Value where K: InjectionKey {
         get { key.currentValue }
         set { key.currentValue = newValue}
     }
 
     /// Update and references dependencies directly.
-    static subscript<T>(_ keyPath: WritableKeyPath<InjectedValue, T>) -> T {
+    public static subscript<T>(_ keyPath: WritableKeyPath<InjectedValue, T>) -> T {
         get { current[keyPath: keyPath] }
         set { current[keyPath: keyPath] = newValue }
     }
@@ -51,7 +51,7 @@ public struct Injected<T> {
         set { InjectedValue[keyPath] = newValue }
     }
 
-    init(_ keyPath: WritableKeyPath<InjectedValue, T>) {
+    public init(_ keyPath: WritableKeyPath<InjectedValue, T>) {
         self.keyPath = keyPath
     }
 }

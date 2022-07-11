@@ -6,7 +6,6 @@
 //
 
 import RxSwift
-import Alamofire
 
 protocol MovieDetailRepository: AnyObject {
     func getMovieDetail(_ id: Int) -> Single<MovieDetailResponse>
