@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Networking
 
 class NowPlayingSectionMovie: UICollectionViewCell {
     private lazy var containerGradient: GradientView = {

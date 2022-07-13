@@ -1,0 +1,6 @@
+
+group 'NetworkSwift'
+    swift_version! '5.0'
+
+    pod 'Kingfisher'
+end

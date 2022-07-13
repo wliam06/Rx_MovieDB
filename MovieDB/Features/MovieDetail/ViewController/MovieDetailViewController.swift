@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import NSObject_Rx
+import MovieKit
 
 class MovieDetailViewController: ParentViewController, Bindable {
     private lazy var headerView = MovieDetailHeaderView()

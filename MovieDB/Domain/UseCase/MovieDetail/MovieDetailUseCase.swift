@@ -7,6 +7,8 @@
 
 import RxSwift
 import NSObject_Rx
+import Core
+import Networking
 
 protocol MovieDetailUseCase: AnyObject {
     func fetchMovieDetail(id: Int) -> Single<MovieDetailModel>

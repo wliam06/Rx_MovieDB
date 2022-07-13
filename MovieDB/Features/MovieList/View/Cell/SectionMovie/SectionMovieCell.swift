@@ -6,9 +6,12 @@
 //
 
 import UIKit
-import SnapKit
-import Kingfisher
+//import SnapKit
+//import Kingfisher
 import NSObject_Rx
+import MovieKit
+import RxFramework
+import Networking
 
 class SectionMovieCell: UITableViewCell, HasDisposeBag {
     private lazy var indicator: UIActivityIndicatorView = {

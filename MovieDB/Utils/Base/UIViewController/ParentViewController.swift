@@ -7,6 +7,7 @@
 
 import UIKit
 import NSObject_Rx
+import MovieKit
 
 class ParentViewController: UIViewController, HasDisposeBag {
     enum ViewState {

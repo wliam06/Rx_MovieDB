@@ -6,8 +6,10 @@
 //
 
 import UIKit
-import RxSwift
-import NSObject_Rx
+//import RxSwift
+//import NSObject_Rx
+import RxFramework
+import Networking
 
 final class NowPlayingMovieCell: UITableViewCell {
     private lazy var collectionView: UICollectionView = {

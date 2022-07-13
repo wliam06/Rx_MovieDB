@@ -5,7 +5,7 @@
 //  Created by William on 20/12/21.
 //
 
-import Foundation
+import Core
 
 // MARK: - MovieList Repo
 private struct MovieListRepoProviderKey: InjectionKey {

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MovieKit
+import Networking
 
 class MovieDetailHeaderView: UIView {
     private lazy var image = UIImageView()

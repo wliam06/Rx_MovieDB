@@ -6,7 +6,8 @@
 //
 
 import RxSwift
-import Alamofire
+import Networking
+import Core
 
 protocol MovieListRepository: AnyObject {
     func getUpcoming(page: Int) -> Single<MovieResultResponse>
