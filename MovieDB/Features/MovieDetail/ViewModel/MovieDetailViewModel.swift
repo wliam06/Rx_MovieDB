@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import NSObject_Rx
+import Core
 
 final class MovieDetailViewModel: ParentViewModel {
     @RxPublished var movie = [MovieDetailModel]()

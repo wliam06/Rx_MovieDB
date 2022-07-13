@@ -18,12 +18,12 @@ private struct NetworkSessionProviderKey: InjectionKey {
 }
 
 extension InjectedValue {
-    var sessionRequest: SessionRequest {
+    public var sessionRequest: SessionRequest {
         get { Self[NetworkSessionProviderKey.self] }
         set { Self[NetworkSessionProviderKey.self] = newValue }
     }
 
-    var networkRequest: NetworkRequest {
+    public var networkRequest: NetworkRequest {
         get { Self[NetworkRequestProviderKey.self] }
         set { Self[NetworkRequestProviderKey.self] = newValue }
     }

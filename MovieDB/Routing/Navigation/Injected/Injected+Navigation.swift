@@ -5,6 +5,8 @@
 //  Created by William on 02/02/22.
 //
 
+import Core
+
 private struct NavigationFlowProviderKey: InjectionKey {
     static var currentValue: NavigationRoute = NavigationFlowRoute()
 }

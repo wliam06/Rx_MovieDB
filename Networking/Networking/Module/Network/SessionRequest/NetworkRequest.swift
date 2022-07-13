@@ -22,14 +22,14 @@ public enum NetworkError: Error {
     }
 }
 
-protocol NetworkRequest: AnyObject {
+public protocol NetworkRequest: AnyObject {
     func request<T: Codable>(_ url: URLRequestConvertible, decodable: T.Type) -> Single<T>
 }
 
-class NetworkSessionRequest: NetworkRequest {
+open class NetworkSessionRequest: NetworkRequest {
     @Injected(\.sessionRequest) var session: SessionRequest
 
-    func request<T: Codable>(_ url: URLRequestConvertible, decodable: T.Type) -> Single<T> {
+    public func request<T: Codable>(_ url: URLRequestConvertible, decodable: T.Type) -> Single<T> {
         return Single<T>.create { observer -> Disposable in
             let request = self.session.dataRequest(urlRequest: url)
                 .validate()

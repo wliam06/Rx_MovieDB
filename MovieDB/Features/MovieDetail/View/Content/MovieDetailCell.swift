@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import MovieKit
+import Networking
 
 class MovieDetailCell: UITableViewCell {
     private lazy var titleName: UILabel = {

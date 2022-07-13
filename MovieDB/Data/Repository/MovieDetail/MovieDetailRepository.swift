@@ -5,6 +5,8 @@
 //  Created by William on 28/02/22.
 //
 
+import Networking
+import Core
 import RxSwift
 
 protocol MovieDetailRepository: AnyObject {

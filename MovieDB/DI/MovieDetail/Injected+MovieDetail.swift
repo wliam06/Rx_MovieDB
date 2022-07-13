@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Core
 
 // MARK: - MovieDetail Repo
 private struct MovieDetailRepoProviderKey: InjectionKey {

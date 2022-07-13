@@ -9,13 +9,13 @@ import UIKit
 
 extension UIView {
     /// add Multiple subviews using Variadic
-    func addSubviews(_ view: UIView...) -> Void {
+    public func addSubviews(_ view: UIView...) -> Void {
         view.forEach { self.addSubview($0) }
     }
 }
 
 extension UIStackView {
-    func addMultipleArrangeSubviews(_ view: UIView...) -> Void {
+    public func addMultipleArrangeSubviews(_ view: UIView...) -> Void {
         view.forEach {
             self.addArrangedSubview($0)
         }

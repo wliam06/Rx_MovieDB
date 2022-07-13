@@ -10,12 +10,12 @@ import RxFramework
 import RxSwift
 import RxCocoa
 
-protocol ReusableView: AnyObject {
+public protocol ReusableView: AnyObject {
     static var reuseIdentifier: String { get }
 }
 
 extension ReusableView where Self: UIView {
-    static var reuseIdentifier: String {
+    public static var reuseIdentifier: String {
         return String(describing: self)
     }
 }
@@ -24,13 +24,13 @@ extension UITableViewCell: ReusableView { }
 extension UICollectionViewCell: ReusableView { }
 
 extension UITableView {
-    func registerCells(_ cellClasses: UITableViewCell.Type...) {
+    public func registerCells(_ cellClasses: UITableViewCell.Type...) {
         for type in cellClasses {
             register(type, forCellReuseIdentifier: type.reuseIdentifier)
         }
     }
     
-    func dequeueReusableCell<T: UITableViewCell>(forIndexPath indexPath: IndexPath) -> T {
+    public func dequeueReusableCell<T: UITableViewCell>(forIndexPath indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
         }
@@ -40,13 +40,13 @@ extension UITableView {
 }
 
 extension UICollectionView {
-    func registerCells(_ cellClasses: UICollectionViewCell.Type...) {
+    public func registerCells(_ cellClasses: UICollectionViewCell.Type...) {
         for type in cellClasses {
             register(type, forCellWithReuseIdentifier: type.reuseIdentifier)
         }
     }
     
-    func dequeueReusableCell<T: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> T {
+    public func dequeueReusableCell<T: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
         }
@@ -57,7 +57,7 @@ extension UICollectionView {
 
 extension Reactive where Base: UITableView {
     
-    func items<Sequence: Swift.Sequence, Cell: UITableViewCell, Source: ObservableType>
+    public func items<Sequence: Swift.Sequence, Cell: UITableViewCell, Source: ObservableType>
         (cellType: Cell.Type = Cell.self)
         -> (_ source: Source)
         -> (_ configureCell: @escaping (Int, Sequence.Element, Cell) -> Void)
@@ -76,7 +76,7 @@ extension Reactive where Base: UITableView {
 
 extension Reactive where Base: UICollectionView {
     
-    func items<Sequence: Swift.Sequence, Cell: UICollectionViewCell, Source: ObservableType>
+    public func items<Sequence: Swift.Sequence, Cell: UICollectionViewCell, Source: ObservableType>
         (cellType: Cell.Type = Cell.self)
         -> (_ source: Source)
         -> (_ configureCell: @escaping (Int, Sequence.Element, Cell) -> Void)
@@ -92,7 +92,7 @@ extension Reactive where Base: UICollectionView {
 
 // Remove Header
 extension UITableView {
-    static var removeTableHeaderView: UIView {
+    public static var removeTableHeaderView: UIView {
         UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNormalMagnitude))
     }
 }

@@ -8,11 +8,11 @@
 import Foundation
 import Alamofire
 
-protocol SessionRequest: AnyObject {
+public protocol SessionRequest: AnyObject {
     func dataRequest(urlRequest: URLRequestConvertible) -> DataRequest
 }
 
-class NetworkSession {
+public class NetworkSession {
     static var httpHeader: HTTPHeaders {
         return [
             "Content-Type": NetworkConfig.contentType,
@@ -20,7 +20,6 @@ class NetworkSession {
         ]
     }
 
-    
     static let session: SessionManager = {
         let config = URLSessionConfiguration.default
         config.httpCookieAcceptPolicy = .never
@@ -35,7 +34,7 @@ class NetworkSession {
 }
 
 extension NetworkSession: SessionRequest {
-    func dataRequest(urlRequest: URLRequestConvertible) -> DataRequest {
+    public func dataRequest(urlRequest: URLRequestConvertible) -> DataRequest {
         return NetworkSession.session.request(urlRequest)
     }
 }

@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct MovieResultResponse: Codable {
-    let page: Int
-    let totalPages: Int
-    let results: [MovieResponse]
+public struct MovieResultResponse: Codable {
+    public let page: Int
+    public let totalPages: Int
+    public let results: [MovieResponse]
 
     private enum CodingKeys: String, CodingKey {
         case page, results
@@ -18,19 +18,19 @@ struct MovieResultResponse: Codable {
     }
 }
 
-protocol MoviePoster: Codable {
+public protocol MoviePoster: Codable {
     mutating func getMovieImg() -> String
 }
 
-struct MovieResponse: Codable, Equatable, MoviePoster {
-    let id: Int
-    let title: String
-    let genreIds: [Int]?
-    let overview: String
-    var posterPath: String?
-    let backdropPath: String?
-    let releaseDate: String?
-    let voteAverage: Double?
+public struct MovieResponse: Codable, Equatable, MoviePoster {
+    public let id: Int
+    public let title: String
+    public let genreIds: [Int]?
+    public let overview: String
+    public var posterPath: String?
+    public let backdropPath: String?
+    public let releaseDate: String?
+    public let voteAverage: Double?
 
     private enum CodingKeys: String, CodingKey {
         case id, title, overview
@@ -41,7 +41,7 @@ struct MovieResponse: Codable, Equatable, MoviePoster {
         case voteAverage = "vote_average"
     }
 
-    mutating func getMovieImg() -> String {
+    public mutating func getMovieImg() -> String {
         return NetworkConfig.imageBaseURL + (posterPath ?? "")
     }
 }

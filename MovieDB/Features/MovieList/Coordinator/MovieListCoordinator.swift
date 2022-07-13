@@ -5,10 +5,10 @@
 //  Created by William on 20/12/21.
 //
 
-import Foundation
 import RxSwift
 import RxCocoa
 import UIKit
+import Core
 
 enum MovieListRoute: Route {
     case list

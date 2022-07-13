@@ -7,28 +7,28 @@
 
 import Foundation
 
-struct MovieDetailResponse: Codable, Equatable, MoviePoster {
-    static func == (lhs: MovieDetailResponse, rhs: MovieDetailResponse) -> Bool {
+public struct MovieDetailResponse: Codable, Equatable, MoviePoster {
+    public static func == (lhs: MovieDetailResponse, rhs: MovieDetailResponse) -> Bool {
         return lhs.id == rhs.id
     }
 
-    let adult: Bool?
-    let backdropPath: String?
-    let budget: Double?
-    let homepage: String?
-    let id: Int
-    let language: String?
-    let title: String?
-    let overview: String?
-    let popularity: Double?
-    let posterPath: String?
-    let releaseDate: String?
-    let revenue: Double?
-    let runtime: Double?
-    let tagline: String?
-    let voteAvg: Double?
-    let voteCount: Double?
-    let genres: [MovieGenreResult]?
+    public let adult: Bool?
+    public let backdropPath: String?
+    public let budget: Double?
+    public let homepage: String?
+    public let id: Int
+    public let language: String?
+    public let title: String?
+    public let overview: String?
+    public let popularity: Double?
+    public let posterPath: String?
+    public let releaseDate: String?
+    public let revenue: Double?
+    public let runtime: Double?
+    public let tagline: String?
+    public let voteAvg: Double?
+    public let voteCount: Double?
+    public let genres: [MovieGenreResult]?
 
     enum CodingKeys: String, CodingKey {
         case adult
@@ -50,12 +50,12 @@ struct MovieDetailResponse: Codable, Equatable, MoviePoster {
         case genres
     }
 
-    func getMovieImg() -> String {
+    public func getMovieImg() -> String {
         return NetworkConfig.imageBaseURL + (posterPath ?? "")
     }
 }
 
-struct MovieGenreResult: Codable {
-    let id: Int?
-    let name: String?
+public struct MovieGenreResult: Codable {
+    public let id: Int?
+    public let name: String?
 }

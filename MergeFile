@@ -4,9 +4,3 @@ group 'NetworkSwift'
 
     pod 'Kingfisher'
 end
-
-group 'UISwift'
-    swift_version! '5.0'
-
-    pod 'SnapKit'
-end

@@ -7,6 +7,8 @@
 
 import Foundation
 import RxSwift
+import Core
+import Networking
 
 class ImpMovieListViewModel: ParentViewModel {
     // Input

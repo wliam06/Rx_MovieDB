@@ -7,8 +7,6 @@ plugin 'cocoapods-pod-merge'
 workspace 'MovieDB.xcworkspace'
 
 target 'MovieDB' do
-  # pod 'UISwift', path: 'MergedPods/UISwift'
-  # pod 'RxFrameworkSwift', path: 'MergedPods/RxFrameworkSwift'
 
   target 'MovieDBTests' do
     inherit! :search_paths
@@ -27,8 +25,9 @@ end
 
 target 'MovieKit' do
   project 'MovieKit/MovieKit.xcodeproj'
+  use_frameworks! :linkage => :static
 
-  pod 'UISwift', path: 'MergedPods/UISwift'
+  pod 'SnapKit'
 
   target 'MovieKitTests' do
     inherit! :search_paths
@@ -37,8 +36,9 @@ end
 
 target 'Networking' do
   project 'Networking/Networking.xcodeproj'
-
+  use_frameworks! :linkage => :static
   pod 'NetworkSwift', path: 'MergedPods/NetworkSwift'
+  # pod 'Kingfisher'
   pod 'Alamofire'
 
   target 'NetworkingTests' do

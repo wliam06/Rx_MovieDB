@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import Networking
 
-struct MovieDetailModel: Equatable {
-    static func == (lhs: MovieDetailModel, rhs: MovieDetailModel) -> Bool {
+public struct MovieDetailModel: Equatable {
+    public static func == (lhs: MovieDetailModel, rhs: MovieDetailModel) -> Bool {
         return lhs.title == rhs.title
     }
     
-    let title: String
-    let releaseDate: String
-    let overview: String
-    let movieImg: String
-    let genres: [MovieGenreResult]?
+    public let title: String
+    public let releaseDate: String
+    public let overview: String
+    public let movieImg: String
+    public let genres: [MovieGenreResult]?
 }

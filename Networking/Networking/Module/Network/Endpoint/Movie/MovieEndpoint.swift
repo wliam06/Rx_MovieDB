@@ -7,7 +7,7 @@
 
 import Alamofire
 
-enum MovieEndpoint: Endpoint, URLRequestConvertible {
+public enum MovieEndpoint: Endpoint, URLRequestConvertible {
     case getNowPlaying(page: Int)
     case getPopular(page: Int)
     case getUpcoming(page: Int)
@@ -41,7 +41,7 @@ enum MovieEndpoint: Endpoint, URLRequestConvertible {
         }
     }
 
-    func asURLRequest() throws -> URLRequest {
+    public func asURLRequest() throws -> URLRequest {
         var urlRequest = request
         switch self {
         default:

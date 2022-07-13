@@ -7,6 +7,8 @@
 
 import RxSwift
 import NSObject_Rx
+import Networking
+import Core
 
 protocol MovieListUseCase {
     func fetchNowPlaying(

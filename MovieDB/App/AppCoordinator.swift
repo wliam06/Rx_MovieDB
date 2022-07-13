@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Core
 
 enum AppRoute: Route {
     case movieList

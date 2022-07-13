@@ -8,8 +8,10 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import NSObject_Rx
-import RxDataSources
+//import NSObject_Rx
+//import RxDataSources
+import RxFramework
+import Networking
 
 class MovieListViewController: ParentViewController, Bindable {
     private lazy var tableView: UITableView = {

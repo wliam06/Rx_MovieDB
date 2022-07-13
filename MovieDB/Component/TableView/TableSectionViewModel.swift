@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import MovieKit
 
 /// wraps content of a signle table section
 protocol TableSectionViewModelProtocol: AnyObject {
