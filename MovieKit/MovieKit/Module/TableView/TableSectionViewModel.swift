@@ -11,20 +11,20 @@ import RxCocoa
 import RxDataSources
 
 /// wraps content of a signle table section
-protocol TableSectionViewModelProtocol: AnyObject {
+public protocol TableSectionViewModelProtocol: AnyObject {
     func configureCell(indexPath: IndexPath, value: Any, tableView: UITableView) -> UITableViewCell
     func onSelect(index: Int)
     var items: [Any] { get }
 }
 
 /// section model constrained to same data type and same cell type across all section cells
-class TableSectionViewModel<ObjectClass, CellClass: UITableViewCell>: TableSectionViewModelProtocol {
+public class TableSectionViewModel<ObjectClass, CellClass: UITableViewCell>: TableSectionViewModelProtocol {
     
     private var configureCell: ((_ index: Int, _ value: ObjectClass, _ cell: CellClass) -> ())
     private var onSelect: ((_ index: Int, _ value: ObjectClass) -> ())?
     private var entries: [ObjectClass]
     
-    init(entries: [ObjectClass],
+    public init(entries: [ObjectClass],
          configureCell: @escaping ((_ index: Int, _ value: ObjectClass, _ cell: CellClass) -> ()),
          onSelect: ((_ index: Int, _ value: ObjectClass) -> ())? = nil) {
         self.entries = entries
@@ -32,23 +32,23 @@ class TableSectionViewModel<ObjectClass, CellClass: UITableViewCell>: TableSecti
         self.onSelect = onSelect
     }
     
-    func configureCell(indexPath: IndexPath, value: Any, tableView: UITableView) -> UITableViewCell {
+    public func configureCell(indexPath: IndexPath, value: Any, tableView: UITableView) -> UITableViewCell {
         let cell: CellClass = tableView.dequeueReusableCell(forIndexPath: indexPath)
         configureCell(indexPath.row, value as! ObjectClass, cell)
         return cell
     }
     
-    func onSelect(index: Int) {
+    public func onSelect(index: Int) {
         guard entries.count > index else { return }
         onSelect?(index, entries[index])
     }
     
-    var items: [Any] {
+    public var items: [Any] {
         entries
     }
     
     /// shortcut for abstraction
-    var asProtocol: TableSectionViewModelProtocol {
+    public var asProtocol: TableSectionViewModelProtocol {
         self as TableSectionViewModelProtocol
     }
     
@@ -61,7 +61,7 @@ extension TableSectionViewModel where ObjectClass == Int {
     ///   - cellCount: cell count
     ///   - configureCell: cell configuration
     /// - Returns: section converted to procol for convenience
-    static func cells(cellCount: Int = 1, configureCell: @escaping ((_ cell: CellClass) -> ())) -> TableSectionViewModelProtocol {
+    public static func cells(cellCount: Int = 1, configureCell: @escaping ((_ cell: CellClass) -> ())) -> TableSectionViewModelProtocol {
         TableSectionViewModel(entries: Array(0..<cellCount), configureCell: { _, _, cell in
             configureCell(cell)
         }).asProtocol
@@ -70,16 +70,16 @@ extension TableSectionViewModel where ObjectClass == Int {
 }
 
 /// section model without data type supporting different types of cells
-class TableSectionCellViewModel: TableSectionViewModelProtocol {
+public class TableSectionCellViewModel: TableSectionViewModelProtocol {
     private let configureCell: [(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell]
     private let onSelect: [(() -> ())?]?
     
-    init(configureCell: [(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell], onSelect: [(() -> ())?]? = nil) {
+    public init(configureCell: [(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell], onSelect: [(() -> ())?]? = nil) {
         self.configureCell = configureCell
         self.onSelect = onSelect
     }
     
-    convenience init(
+    public convenience init(
         configureCell: @escaping (
             _ tableView: UITableView,
             _ indexPath: IndexPath
@@ -91,7 +91,7 @@ class TableSectionCellViewModel: TableSectionViewModelProtocol {
                   onSelect: onSelect == nil ? nil : Array(repeating: onSelect!, count: count))
     }
     
-    func configureCell(
+    public func configureCell(
         indexPath: IndexPath,
         value: Any,
         tableView: UITableView
@@ -100,22 +100,22 @@ class TableSectionCellViewModel: TableSectionViewModelProtocol {
         return configureCell[indexPath.row](tableView, indexPath)
     }
     
-    func onSelect(index: Int) {
+    public func onSelect(index: Int) {
         guard (onSelect?.count ?? 0) > index else { return }
         onSelect?[index]?()
     }
     
-    lazy var items: [Any] = Array(0..<configureCell.count)
+    public lazy var items: [Any] = Array(0..<configureCell.count)
     
     /// shortcut for abstraction
-    var asProtocol: TableSectionViewModelProtocol {
+    public var asProtocol: TableSectionViewModelProtocol {
         self as TableSectionViewModelProtocol
     }
 }
 
 extension Reactive where Base: UITableView {
     
-    func items<Source: ObservableType>(sections: Source)
+    public func items<Source: ObservableType>(sections: Source)
         -> Disposable
         where Source.Element == [TableSectionViewModelProtocol] {
         let relay = BehaviorRelay<Source.Element>(value: [])
@@ -140,7 +140,7 @@ extension Reactive where Base: UITableView {
         return CompositeDisposable(d1, d2, d3)
     }
     
-    func items<Source: ObservableType>(section: Source) -> Disposable
+    public func items<Source: ObservableType>(section: Source) -> Disposable
         where Source.Element == TableSectionViewModelProtocol {
             return items(sections: section.map { [$0] })
     }

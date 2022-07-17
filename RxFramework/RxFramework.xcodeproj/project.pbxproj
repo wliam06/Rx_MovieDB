@@ -13,6 +13,7 @@
 		3501F30A287AA42E00CE8C87 /* RxSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F304287AA42E00CE8C87 /* RxSignal.swift */; };
 		3501F30B287AA42E00CE8C87 /* Rx+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F306287AA42E00CE8C87 /* Rx+ActivityIndicator.swift */; };
 		3501F30C287AA42E00CE8C87 /* RxBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F307287AA42E00CE8C87 /* RxBinding.swift */; };
+		35056D9C2880241F004AC1CE /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35056D9B2880241F004AC1CE /* export.swift */; };
 		C340572BAC732A6DFBA2839A /* Pods_RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D6E2140CF74DD9EADFD65F /* Pods_RxFramework.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		3501F304287AA42E00CE8C87 /* RxSignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxSignal.swift; sourceTree = "<group>"; };
 		3501F306287AA42E00CE8C87 /* Rx+ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		3501F307287AA42E00CE8C87 /* RxBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxBinding.swift; sourceTree = "<group>"; };
+		35056D9B2880241F004AC1CE /* export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = "<group>"; };
 		B4D6E2140CF74DD9EADFD65F /* Pods_RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89D934631D6FC1D625DDBD2 /* Pods-RxFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.release.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -44,6 +46,7 @@
 		3501F2EC287AA38F00CE8C87 = {
 			isa = PBXGroup;
 			children = (
+				35056D9B2880241F004AC1CE /* export.swift */,
 				3501F2F8287AA38F00CE8C87 /* RxFramework */,
 				3501F2F7287AA38F00CE8C87 /* Products */,
 				71F17CCF2BEF741F453A09D7 /* Pods */,
@@ -222,6 +225,7 @@
 				3501F30C287AA42E00CE8C87 /* RxBinding.swift in Sources */,
 				3501F30B287AA42E00CE8C87 /* Rx+ActivityIndicator.swift in Sources */,
 				3501F309287AA42E00CE8C87 /* RxPublished.swift in Sources */,
+				35056D9C2880241F004AC1CE /* export.swift in Sources */,
 				3501F308287AA42E00CE8C87 /* Proxy.swift in Sources */,
 				3501F30A287AA42E00CE8C87 /* RxSignal.swift in Sources */,
 			);

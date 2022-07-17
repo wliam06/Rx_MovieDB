@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import RxSwift
+import RxFramework
 import Core
 
 enum AppRoute: Route {

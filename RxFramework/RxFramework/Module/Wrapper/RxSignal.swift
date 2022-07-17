@@ -9,13 +9,13 @@ import Foundation
 import RxSwift
 
 @propertyWrapper
-class RxSignal<Value> {
+public class RxSignal<Value> {
     private var relay = PublishSubject<Value>()
 
-    var wrappedValue: Observable<Value>
-    var projectedValue: AnyObserver<Value>
+    public var wrappedValue: Observable<Value>
+    public var projectedValue: AnyObserver<Value>
 
-    init() {
+    public init() {
         projectedValue = .init(relay)
         wrappedValue = relay.asObservable()
     }

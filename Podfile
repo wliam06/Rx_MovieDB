@@ -6,8 +6,8 @@ plugin 'cocoapods-pod-merge'
 
 workspace 'MovieDB.xcworkspace'
 
+# MainApp
 target 'MovieDB' do
-
   target 'MovieDBTests' do
     inherit! :search_paths
     # Pods for testing
@@ -15,6 +15,23 @@ target 'MovieDB' do
   end
 end
 
+# Features
+target 'MovieList' do
+  project 'MovieList/MovieList.xcodeproj'
+  use_frameworks!
+  target 'MovieListTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'MovieDetail' do
+  project 'MovieDetail/MovieDetail.xcodeproj'
+  target 'MovieDetailTests' do
+    inherit! :search_paths
+  end
+end
+
+# Core
 target 'Core' do
   project 'Core/Core.xcodeproj'
 
@@ -23,6 +40,7 @@ target 'Core' do
   end
 end
 
+# UIKIt
 target 'MovieKit' do
   project 'MovieKit/MovieKit.xcodeproj'
   use_frameworks! :linkage => :static
@@ -34,11 +52,12 @@ target 'MovieKit' do
   end
 end
 
+# Network
 target 'Networking' do
-  project 'Networking/Networking.xcodeproj'
   use_frameworks! :linkage => :static
+  project 'Networking/Networking.xcodeproj'
+
   pod 'NetworkSwift', path: 'MergedPods/NetworkSwift'
-  # pod 'Kingfisher'
   pod 'Alamofire'
 
   target 'NetworkingTests' do
@@ -46,6 +65,7 @@ target 'Networking' do
   end
 end
 
+# 3rd party custom
 target 'RxFramework' do
   project 'RxFramework/RxFramework.xcodeproj'
   use_frameworks! :linkage => :static

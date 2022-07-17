@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CategoryItemCell: UICollectionViewCell {
+public class CategoryItemCell: UICollectionViewCell {
     private lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -21,7 +21,7 @@ class CategoryItemCell: UICollectionViewCell {
         return label
     }()
 
-    static func size(text: String?) -> CGSize {
+    public static func size(text: String?) -> CGSize {
         guard let text = text else {
             return .zero
         }
@@ -33,7 +33,7 @@ class CategoryItemCell: UICollectionViewCell {
         return CGSize(width: label.frame.width + 26, height: 32)
     }
 
-    var name: String? {
+    public var name: String? {
         didSet {
             guard let name = self.name else { return }
 

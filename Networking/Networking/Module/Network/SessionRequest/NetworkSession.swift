@@ -13,6 +13,7 @@ public protocol SessionRequest: AnyObject {
 }
 
 public class NetworkSession {
+    public static let shared = NetworkSession()
     static var httpHeader: HTTPHeaders {
         return [
             "Content-Type": NetworkConfig.contentType,

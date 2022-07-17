@@ -8,7 +8,13 @@
       location = "group:MovieDB.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:MovieDetail/MovieDetail.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MovieKit/MovieKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:MovieList/MovieList.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Networking/Networking.xcodeproj">

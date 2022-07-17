@@ -8,7 +8,6 @@
 import RxFramework
 import RxSwift
 import Alamofire
-import Core
 
 public enum NetworkError: Error {
     case BadRequest
@@ -26,8 +25,12 @@ public protocol NetworkRequest: AnyObject {
     func request<T: Codable>(_ url: URLRequestConvertible, decodable: T.Type) -> Single<T>
 }
 
-open class NetworkSessionRequest: NetworkRequest {
-    @Injected(\.sessionRequest) var session: SessionRequest
+public class NetworkSessionRequest: NetworkRequest {
+    private(set) var session: SessionRequest
+
+    public init(sessionRequest: SessionRequest = NetworkSession.shared) {
+        self.session = sessionRequest
+    }
 
     public func request<T: Codable>(_ url: URLRequestConvertible, decodable: T.Type) -> Single<T> {
         return Single<T>.create { observer -> Disposable in

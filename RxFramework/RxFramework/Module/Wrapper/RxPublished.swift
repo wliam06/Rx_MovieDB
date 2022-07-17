@@ -10,9 +10,9 @@ import RxSwift
 /// Wrapped value type
 /// Same as Combine, @Published
 @propertyWrapper
-class RxPublished<Value> {
-    let projectedValue: BehaviorSubject<Value>
-    var wrappedValue: Value {
+public class RxPublished<Value> {
+    public let projectedValue: BehaviorSubject<Value>
+    public var wrappedValue: Value {
         get {
             try! projectedValue.value()
         }
@@ -21,7 +21,7 @@ class RxPublished<Value> {
         }
     }
 
-    init(wrappedValue: Value) {
+    public init(wrappedValue: Value) {
         self.projectedValue = BehaviorSubject<Value>(value: wrappedValue)
     }
 }

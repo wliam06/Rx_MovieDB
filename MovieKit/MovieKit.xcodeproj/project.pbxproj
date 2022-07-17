@@ -18,7 +18,11 @@
 		351F9AB62878054200F030F1 /* Ext+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F9AB12878054200F030F1 /* Ext+UITableView.swift */; };
 		351F9AB72878054200F030F1 /* Ext+StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F9AB32878054200F030F1 /* Ext+StackView.swift */; };
 		351F9AB82878054200F030F1 /* Ext+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F9AB52878054200F030F1 /* Ext+UIColor.swift */; };
+		352912B12884021000C5CFE5 /* MockParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352912B02884021000C5CFE5 /* MockParentViewModel.swift */; };
+		3538C22528813E4000BECB1F /* ParentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538C22228813E4000BECB1F /* ParentViewModel.swift */; };
+		3538C22628813E4000BECB1F /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3538C22428813E4000BECB1F /* ParentViewController.swift */; };
 		35E57CD2287AC274002D360E /* RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35E57CD1287AC274002D360E /* RxFramework.framework */; };
+		35EBB5DE2883FBAF00F4D145 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBB5DD2883FBAF00F4D145 /* Bindable.swift */; };
 		9275AA98FB61D0A1BBA571B7 /* Pods_MovieKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 622DAF44BCE672B51F4A9050 /* Pods_MovieKit.framework */; };
 		964A5CD5075A5DF5A27813CE /* Pods_MovieKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B740B83A90D4D09DEDB65AEE /* Pods_MovieKitTests.framework */; };
 /* End PBXBuildFile section */
@@ -47,7 +51,11 @@
 		351F9AB12878054200F030F1 /* Ext+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+UITableView.swift"; sourceTree = "<group>"; };
 		351F9AB32878054200F030F1 /* Ext+StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+StackView.swift"; sourceTree = "<group>"; };
 		351F9AB52878054200F030F1 /* Ext+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+UIColor.swift"; sourceTree = "<group>"; };
+		352912B02884021000C5CFE5 /* MockParentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockParentViewModel.swift; sourceTree = "<group>"; };
+		3538C22228813E4000BECB1F /* ParentViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewModel.swift; sourceTree = "<group>"; };
+		3538C22428813E4000BECB1F /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		35E57CD1287AC274002D360E /* RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35EBB5DD2883FBAF00F4D145 /* Bindable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		622DAF44BCE672B51F4A9050 /* Pods_MovieKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		674B85122240C10075F30D91 /* Pods-MovieKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieKit.debug.xcconfig"; path = "Target Support Files/Pods-MovieKit/Pods-MovieKit.debug.xcconfig"; sourceTree = "<group>"; };
 		8117FE89D095C64961DF0065 /* Pods-MovieKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieKit.release.xcconfig"; path = "Target Support Files/Pods-MovieKit/Pods-MovieKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 		351F9A92287801E000F030F1 /* MovieKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				352912B02884021000C5CFE5 /* MockParentViewModel.swift */,
 				351F9A93287801E000F030F1 /* MovieKitTests.swift */,
 			);
 			path = MovieKitTests;
@@ -130,6 +139,8 @@
 		351F9A9E2878027400F030F1 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				35EBB5DC2883FBAF00F4D145 /* Binder */,
+				3538C22028813E4000BECB1F /* Base */,
 				351F9AAF2878054200F030F1 /* Extensions */,
 				351F9A9F2878027400F030F1 /* Gradient */,
 				351F9AA12878027400F030F1 /* TableView */,
@@ -211,6 +222,39 @@
 				351F9AB52878054200F030F1 /* Ext+UIColor.swift */,
 			);
 			path = Color;
+			sourceTree = "<group>";
+		};
+		3538C22028813E4000BECB1F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3538C22128813E4000BECB1F /* ViewModel */,
+				3538C22328813E4000BECB1F /* UIViewController */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3538C22128813E4000BECB1F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3538C22228813E4000BECB1F /* ParentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3538C22328813E4000BECB1F /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3538C22428813E4000BECB1F /* ParentViewController.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		35EBB5DC2883FBAF00F4D145 /* Binder */ = {
+			isa = PBXGroup;
+			children = (
+				35EBB5DD2883FBAF00F4D145 /* Bindable.swift */,
+			);
+			path = Binder;
 			sourceTree = "<group>";
 		};
 		F837DFDC5145F9EA0A35E27B /* Frameworks */ = {
@@ -383,9 +427,12 @@
 			files = (
 				351F9AA82878027400F030F1 /* GradientView.swift in Sources */,
 				351F9AB62878054200F030F1 /* Ext+UITableView.swift in Sources */,
+				3538C22528813E4000BECB1F /* ParentViewModel.swift in Sources */,
 				351F9AA92878027400F030F1 /* TableSectionViewModel.swift in Sources */,
+				35EBB5DE2883FBAF00F4D145 /* Bindable.swift in Sources */,
 				351F9AAA2878027400F030F1 /* CategoryItemCell.swift in Sources */,
 				351F9AB72878054200F030F1 /* Ext+StackView.swift in Sources */,
+				3538C22628813E4000BECB1F /* ParentViewController.swift in Sources */,
 				351F9AB82878054200F030F1 /* Ext+UIColor.swift in Sources */,
 				351F9AAB2878027400F030F1 /* AlertViewController.swift in Sources */,
 				351F9A89287801E000F030F1 /* MovieKit.docc in Sources */,
@@ -396,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				352912B12884021000C5CFE5 /* MockParentViewModel.swift in Sources */,
 				351F9A94287801E000F030F1 /* MovieKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
