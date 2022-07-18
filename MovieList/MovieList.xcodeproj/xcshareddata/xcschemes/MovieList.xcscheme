@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3547AC732877EF950031E377"
-               BuildableName = "Core.framework"
-               BlueprintName = "Core"
-               ReferencedContainer = "container:Core.xcodeproj">
+               BlueprintIdentifier = "354DD8F42883F88E00F3C629"
+               BuildableName = "MovieList.framework"
+               BlueprintName = "MovieList"
+               ReferencedContainer = "container:MovieList.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3547AC732877EF950031E377"
-            BuildableName = "Core.framework"
-            BlueprintName = "Core"
-            ReferencedContainer = "container:Core.xcodeproj">
+            BlueprintIdentifier = "354DD8F42883F88E00F3C629"
+            BuildableName = "MovieList.framework"
+            BlueprintName = "MovieList"
+            ReferencedContainer = "container:MovieList.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -43,10 +43,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3547AC7D2877EF950031E377"
-               BuildableName = "CoreTests.xctest"
-               BlueprintName = "CoreTests"
-               ReferencedContainer = "container:Core.xcodeproj">
+               BlueprintIdentifier = "354DD8FC2883F88F00F3C629"
+               BuildableName = "MovieListTests.xctest"
+               BlueprintName = "MovieListTests"
+               ReferencedContainer = "container:MovieList.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,10 +71,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3547AC732877EF950031E377"
-            BuildableName = "Core.framework"
-            BlueprintName = "Core"
-            ReferencedContainer = "container:Core.xcodeproj">
+            BlueprintIdentifier = "354DD8F42883F88E00F3C629"
+            BuildableName = "MovieList.framework"
+            BlueprintName = "MovieList"
+            ReferencedContainer = "container:MovieList.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

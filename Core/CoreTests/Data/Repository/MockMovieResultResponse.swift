@@ -5,8 +5,8 @@
 //  Created by William on 06/03/22.
 //
 
-import XCTest
 
+@testable import Networking
 public class MockMovieResultResponse {
     public init() {}
     public func response() -> MovieResultResponse {

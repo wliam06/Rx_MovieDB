@@ -7,8 +7,7 @@
 
 import XCTest
 import RxSwift
-
-@testable import Core
+import Core
 
 public class MockMovieDetailUseCase: MovieDetailUseCase {
 

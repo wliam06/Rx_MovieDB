@@ -12,7 +12,7 @@ public struct MovieDetailModel: Equatable {
     public static func == (lhs: MovieDetailModel, rhs: MovieDetailModel) -> Bool {
         return lhs.title == rhs.title
     }
-    
+
     public let title: String
     public let releaseDate: String
     public let overview: String

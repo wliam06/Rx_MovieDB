@@ -43,7 +43,7 @@ class MovieDetailUseCaseTests: XCTestCase {
     }
 }
 
-public class MockMovieDetailModel {
+class MockMovieDetailModel {
     func result() -> MovieDetailModel {
         return MovieDetailModel(
             title: "Movie Title",

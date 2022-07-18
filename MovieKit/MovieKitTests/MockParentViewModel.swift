@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import MovieDB
+@testable import MovieKit
 
 class MockParentViewModel: ParentViewModel {
 

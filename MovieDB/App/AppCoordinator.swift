@@ -8,6 +8,7 @@
 import UIKit
 import RxFramework
 import Core
+import MovieList
 
 enum AppRoute: Route {
     case movieList
@@ -32,8 +33,7 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     func navigateTo(route: AppRoute, animated: Bool) {
         switch route {
         case .movieList:
-            let coordinator = MovieListCoordinator()
-            coordinator.start()
+            let movie = MovieListModule.configure()
         }
     }
 }

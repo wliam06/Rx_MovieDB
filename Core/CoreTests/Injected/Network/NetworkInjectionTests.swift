@@ -5,9 +5,9 @@
 //  Created by William on 03/07/22.
 //
 
-import XCTest
+//import XCTest
 
-@testable import Core
+//@testable import Core
 //
 //class MockNetworkRequestInjectionTests: InjectionKey {
 //    static var currentValue: NetworkRequest = MockNetworkRequest()

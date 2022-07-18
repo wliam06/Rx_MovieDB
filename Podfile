@@ -18,7 +18,6 @@ end
 # Features
 target 'MovieList' do
   project 'MovieList/MovieList.xcodeproj'
-  use_frameworks!
   target 'MovieListTests' do
     inherit! :search_paths
   end
@@ -34,7 +33,6 @@ end
 # Core
 target 'Core' do
   project 'Core/Core.xcodeproj'
-
   target 'CoreTests' do
     inherit! :search_paths
   end
@@ -75,3 +73,24 @@ target 'RxFramework' do
   pod 'NSObject+Rx', '5.2.1'
   pod 'RxDataSources', '~> 5.0'
 end
+
+post_install do |installer_representation|
+  installer_representation.pods_project.targets.each do |target|
+    
+    target.build_configurations.each do |config|
+      if config.name == 'Release'
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'RELEASE=1']
+      elsif config.name == 'Debug'
+        config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'DEBUG=1']
+      end
+
+      # config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+      # if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.1
+      #   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.1'
+      # end
+      config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = '$(inherited)'
+
+    end
+  end
+end
+

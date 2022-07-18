@@ -6,10 +6,28 @@
 //
 
 import XCTest
-import Core
+//import Core
 import RxFramework
 
+@testable import Core
 @testable import MovieDetail
+
+public class MockMovieDetailModel {
+    func result() -> MovieDetailModel {
+        return MovieDetailModel(
+            title: "Movie Title",
+            releaseDate: "release",
+            overview: "overview",
+            movieImg: "movies.png",
+            genres: nil
+        )
+    }
+}
+
+public enum MockErrorResponse: Error {
+    case someError
+}
+
 class MovieDetailViewModelTests: XCTestCase {
     var viewModel: MovieDetailViewModel!
     var usecase: MockMovieDetailUseCase!
@@ -54,3 +72,4 @@ class MovieDetailViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.movie.count, 0)
     }
 }
+

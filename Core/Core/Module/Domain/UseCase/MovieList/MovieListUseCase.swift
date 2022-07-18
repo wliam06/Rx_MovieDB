@@ -8,7 +8,7 @@
 import RxFramework
 import Networking
 
-protocol MovieListUseCase {
+public protocol MovieListUseCase {
     func fetchNowPlaying(
         page: Int
     ) -> Single<MovieResultResponse>

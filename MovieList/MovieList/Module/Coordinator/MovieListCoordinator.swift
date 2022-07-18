@@ -8,6 +8,7 @@
 import UIKit
 import RxFramework
 import Core
+import MovieDetail
 
 enum MovieListRoute: Route {
     case list
@@ -32,13 +33,14 @@ final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
                 self.$onFinish.onNext(true)
             }
         case .detail(let id):
-            let viewModel = MovieDetailViewModel(id)
-            let view = MovieDetailViewController()
-            view.bind(to: viewModel)
-            navigationRoute.pushTo(view) { [weak self] in
-                guard let self = self else { return }
-                self.$onFinish.onNext(true)
-            }
+            _ = MovieDetailModule.configure(movieId: id)
+//            let viewModel = MovieDetailViewModel(id)
+//            let view = MovieDetailViewController()
+//            view.bind(to: viewModel)
+//            navigationRoute.pushTo(view) { [weak self] in
+//                guard let self = self else { return }
+//                self.$onFinish.onNext(true)
+//            }
         }
     }
 }

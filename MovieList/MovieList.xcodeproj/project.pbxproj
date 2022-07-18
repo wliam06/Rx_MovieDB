@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		352912782884019600C5CFE5 /* MockMovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352912762884019600C5CFE5 /* MockMovieListViewModel.swift */; };
 		352912792884019600C5CFE5 /* MovieListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352912772884019600C5CFE5 /* MovieListViewControllerTests.swift */; };
+		3531123928842E0E00043A1B /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3531123828842E0E00043A1B /* Module.swift */; };
+		353112402884303400043A1B /* MovieDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3531123F2884303400043A1B /* MovieDetail.framework */; };
 		354DD8FE2883F88F00F3C629 /* MovieList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354DD8F52883F88E00F3C629 /* MovieList.framework */; };
 		354DD9032883F88F00F3C629 /* MovieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DD9022883F88F00F3C629 /* MovieListTests.swift */; };
 		354DD9042883F88F00F3C629 /* MovieList.h in Headers */ = {isa = PBXBuildFile; fileRef = 354DD8F82883F88E00F3C629 /* MovieList.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,6 +43,8 @@
 		0440E853405BA5C57D49F6FD /* Pods-MovieList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieList.debug.xcconfig"; path = "Target Support Files/Pods-MovieList/Pods-MovieList.debug.xcconfig"; sourceTree = "<group>"; };
 		352912762884019600C5CFE5 /* MockMovieListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMovieListViewModel.swift; sourceTree = "<group>"; };
 		352912772884019600C5CFE5 /* MovieListViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewControllerTests.swift; sourceTree = "<group>"; };
+		3531123828842E0E00043A1B /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		3531123F2884303400043A1B /* MovieDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MovieDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		354DD8F52883F88E00F3C629 /* MovieList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MovieList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		354DD8F82883F88E00F3C629 /* MovieList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieList.h; sourceTree = "<group>"; };
 		354DD8FD2883F88F00F3C629 /* MovieListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				353112402884303400043A1B /* MovieDetail.framework in Frameworks */,
 				35BAC8432883F8C8002E198B /* MovieKit.framework in Frameworks */,
 				35BAC8472883F8C8002E198B /* RxFramework.framework in Frameworks */,
 				35BAC8412883F8C8002E198B /* Core.framework in Frameworks */,
@@ -138,6 +143,7 @@
 		35BAC83C2883F8C8002E198B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3531123F2884303400043A1B /* MovieDetail.framework */,
 				35BAC83D2883F8C8002E198B /* Core.framework */,
 				35BAC83E2883F8C8002E198B /* MovieKit.framework */,
 				35BAC83F2883F8C8002E198B /* Networking.framework */,
@@ -155,6 +161,7 @@
 				35BAC84D2883FB00002E198B /* Coordinator */,
 				35BAC84F2883FB00002E198B /* View */,
 				35BAC8582883FB00002E198B /* ViewController */,
+				3531123828842E0E00043A1B /* Module.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -401,6 +408,7 @@
 				35BAC85E2883FB00002E198B /* MovieItemSectionCell.swift in Sources */,
 				35BAC85B2883FB00002E198B /* MovieListCoordinator.swift in Sources */,
 				35BAC8602883FB00002E198B /* MovieListViewController.swift in Sources */,
+				3531123928842E0E00043A1B /* Module.swift in Sources */,
 				35BAC85F2883FB00002E198B /* SectionMovieCell.swift in Sources */,
 				35BAC85C2883FB00002E198B /* NowPlayingSectionMovie.swift in Sources */,
 			);
@@ -560,6 +568,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -590,6 +599,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTING_SEARCH_PATHS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

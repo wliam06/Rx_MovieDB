@@ -7,9 +7,8 @@
 
 import XCTest
 
-@testable import MovieDB
 class MovieListViewControllerTests: XCTestCase {
-    var mock: MockMovieListViewModel?
+//    var mock: MockMovieListViewModel?
 
     override func setUp() {
         super.setUp()

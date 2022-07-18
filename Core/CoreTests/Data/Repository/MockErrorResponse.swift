@@ -7,7 +7,6 @@
 
 import Foundation
 
-@testable import Networking
 public enum MockErrorResponse: Error {
     case someError
 }

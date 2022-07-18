@@ -15,7 +15,7 @@ public enum ViewState: Equatable {
 }
 
 open class ParentViewModel: HasDisposeBag {
-    @RxPublished public var viewState: ViewState = .start
+    @RxPublished open var viewState: ViewState = .start
 
     public init() {}
 

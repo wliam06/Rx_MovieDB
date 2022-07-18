@@ -7,20 +7,20 @@
 
 // MARK: - MovieList Repo
 private struct MovieListRepoProviderKey: InjectionKey {
-    static var currentValue: MovieListRepository = ImpMovieListRepository()
+    public static var currentValue: MovieListRepository = ImpMovieListRepository()
 }
 
 // MARK: - MovieList UseCase
 private struct MovieListUcProviderKey: InjectionKey {
-    static var currentValue: MovieListUseCase = ImpMovieListUseCase()
+    public static var currentValue: MovieListUseCase = ImpMovieListUseCase()
 }
 
 extension InjectedValue {
-    var movieListRepo: MovieListRepository {
+    public var movieListRepo: MovieListRepository {
         get { Self[MovieListRepoProviderKey.self] }
         set { Self[MovieListRepoProviderKey.self] = newValue }
     }
-    var movieListUC: MovieListUseCase {
+    public var movieListUC: MovieListUseCase {
         get { Self[MovieListUcProviderKey.self] }
         set { Self[MovieListUcProviderKey.self] = newValue }
     }

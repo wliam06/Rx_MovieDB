@@ -6,10 +6,14 @@
 //
 
 import XCTest
+import Core
+import MovieKit
+import Networking
 
-@testable import MovieDB
+@testable import MovieList
 
 class MockMovieListViewModel: ImpMovieListViewModel {
+
     var invokedPageSetter = false
     var invokedPageSetterCount = 0
     var invokedPage: Int?
@@ -140,7 +144,7 @@ class MockMovieListViewModel: ImpMovieListViewModel {
             invokedViewStateGetterCount += 1
             return stubbedViewState
         }
-    }
+    }    
 
     var invokedDidLoad = false
     var invokedDidLoadCount = 0

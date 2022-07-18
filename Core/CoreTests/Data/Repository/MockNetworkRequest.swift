@@ -9,6 +9,7 @@ import XCTest
 import RxFramework
 import Alamofire
 
+@testable import Networking
 public class MockNetworkRequest: NetworkRequest {
     public init() {}
     public var invokedRequest = false

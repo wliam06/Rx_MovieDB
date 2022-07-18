@@ -8,7 +8,7 @@
 import RxSwift
 import Networking
 
-protocol MovieListRepository: AnyObject {
+public protocol MovieListRepository: AnyObject {
     func getUpcoming(page: Int) -> Single<MovieResultResponse>
     func getNowPlaying(page: Int) -> Single<MovieResultResponse>
     func getPopular(page: Int) -> Single<MovieResultResponse>
