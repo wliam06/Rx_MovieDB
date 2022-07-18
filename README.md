@@ -52,12 +52,12 @@ The property wrapper allows injecting dependencies and reduces code clutter on t
 ```
 
 ## TODO
- - [ ] Show Movie List Layout (Upcoming, Now Playing, Popular)
- - [ ] Show Movie Detail
+ - [X] Show Movie List Layout (Upcoming, Now Playing, Popular)
+ - [X] Show Movie Detail
  - [ ] Unit Test & Snapshot UI
  - [X] Dark Mode
  - [X] Create Dependency Injection
- - [ ] Modularity
+ - [X] Modularity
  - [X] Navigation Flow
  - [ ] Fastlane
  - [ ] [Localization using google sheets](https://github.com/vivek-jl/LocalizationDemo) or [Next](https://github.com/aunnnn/SwiftyLocalization)
