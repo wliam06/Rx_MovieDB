@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct MovieResultResponse: Codable {
+public struct MovieResultResponse: Codable, Equatable {
     public let page: Int
     public let totalPages: Int
     public let results: [MovieResponse]

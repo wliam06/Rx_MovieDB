@@ -12,7 +12,7 @@ import Networking
 
 @testable import MovieList
 
-class MockMovieListViewModel: ImpMovieListViewModel {
+class MockMovieListViewModel: MovieListViewModel {
 
     var invokedPageSetter = false
     var invokedPageSetterCount = 0

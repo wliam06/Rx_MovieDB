@@ -25,7 +25,7 @@ final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     func navigateTo(route: MovieListRoute, animated: Bool) {
         switch route {
         case .list:
-            let viewModel = ImpMovieListViewModel(router: router)
+            let viewModel = MovieListViewModel(router: router)
             let view = MovieListViewController()
             view.bind(to: viewModel)
             navigationRoute.pushTo(view) { [weak self] in

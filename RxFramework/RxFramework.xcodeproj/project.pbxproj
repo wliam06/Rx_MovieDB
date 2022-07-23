@@ -14,6 +14,7 @@
 		3501F30B287AA42E00CE8C87 /* Rx+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F306287AA42E00CE8C87 /* Rx+ActivityIndicator.swift */; };
 		3501F30C287AA42E00CE8C87 /* RxBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501F307287AA42E00CE8C87 /* RxBinding.swift */; };
 		35056D9C2880241F004AC1CE /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35056D9B2880241F004AC1CE /* export.swift */; };
+		353E0AFA288C15B500B5AACC /* Observable+Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353E0AF9288C15B500B5AACC /* Observable+Driver.swift */; };
 		356859BF28858F4600A8329F /* RxTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356859BE28858F4600A8329F /* RxTrigger.swift */; };
 		C340572BAC732A6DFBA2839A /* Pods_RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D6E2140CF74DD9EADFD65F /* Pods_RxFramework.framework */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		3501F306287AA42E00CE8C87 /* Rx+ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		3501F307287AA42E00CE8C87 /* RxBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxBinding.swift; sourceTree = "<group>"; };
 		35056D9B2880241F004AC1CE /* export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = "<group>"; };
+		353E0AF9288C15B500B5AACC /* Observable+Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Driver.swift"; sourceTree = "<group>"; };
 		356859BE28858F4600A8329F /* RxTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTrigger.swift; sourceTree = "<group>"; };
 		B4D6E2140CF74DD9EADFD65F /* Pods_RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F89D934631D6FC1D625DDBD2 /* Pods-RxFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.release.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,9 +79,10 @@
 			isa = PBXGroup;
 			children = (
 				3501F301287AA42D00CE8C87 /* Proxy.swift */,
+				353E0AF8288C159E00B5AACC /* Binding */,
+				353E0AF7288C159500B5AACC /* Extension */,
 				3501F302287AA42E00CE8C87 /* Wrapper */,
 				3501F305287AA42E00CE8C87 /* Activity */,
-				3501F307287AA42E00CE8C87 /* RxBinding.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -100,6 +103,22 @@
 				3501F306287AA42E00CE8C87 /* Rx+ActivityIndicator.swift */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		353E0AF7288C159500B5AACC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				353E0AF9288C15B500B5AACC /* Observable+Driver.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		353E0AF8288C159E00B5AACC /* Binding */ = {
+			isa = PBXGroup;
+			children = (
+				3501F307287AA42E00CE8C87 /* RxBinding.swift */,
+			);
+			path = Binding;
 			sourceTree = "<group>";
 		};
 		71F17CCF2BEF741F453A09D7 /* Pods */ = {
@@ -231,6 +250,7 @@
 				35056D9C2880241F004AC1CE /* export.swift in Sources */,
 				3501F308287AA42E00CE8C87 /* Proxy.swift in Sources */,
 				356859BF28858F4600A8329F /* RxTrigger.swift in Sources */,
+				353E0AFA288C15B500B5AACC /* Observable+Driver.swift in Sources */,
 				3501F30A287AA42E00CE8C87 /* RxSignal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
