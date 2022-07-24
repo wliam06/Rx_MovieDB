@@ -115,9 +115,8 @@ class MovieListViewController: ParentViewController, Bindable {
             ) { (data, cell: NowPlayingMovieCell) in
                 cell.bind(
                     data: nowPlaying,
-                    action: { [weak self] movie in
-                        self?.viewModel.stateMachine.transition(.didMovieDetail(movie))
-                })
+                    action: self.viewModel.navigateToDetail(movie:)
+                )
             }
 
             let popularSections = self.movieSection(
@@ -126,9 +125,7 @@ class MovieListViewController: ParentViewController, Bindable {
                 cell.bind(
                     sectionTitle: "Popular Movie",
                     data: data,
-                    action: { [weak self] movie in
-                        self?.viewModel.stateMachine.transition(.didMovieDetail(movie))
-                    }
+                    action: self.viewModel.navigateToDetail(movie:)
                 )
             }
 
@@ -138,9 +135,7 @@ class MovieListViewController: ParentViewController, Bindable {
                 cell.bind(
                     sectionTitle: "Upcoming Movie",
                     data: data,
-                    action: { [weak self] movie in
-                        self?.viewModel.stateMachine.transition(.didMovieDetail(movie))
-                    }
+                    action: self.viewModel.navigateToDetail(movie:)
                 )
             }
 

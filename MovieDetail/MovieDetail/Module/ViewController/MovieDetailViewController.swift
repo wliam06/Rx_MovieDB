@@ -19,7 +19,22 @@ class MovieDetailViewController: ParentViewController, Bindable {
         table.showsVerticalScrollIndicator = false
         table.rowHeight = UITableView.automaticDimension
         table.contentInsetAdjustmentBehavior = .never
+        table.sectionHeaderHeight = 320
+        table.estimatedSectionHeaderHeight = .leastNonzeroMagnitude
         return table
+    }()
+
+    private lazy var indicator: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView()
+        if #available(iOS 13.0, *) {
+            activity.style = .large
+        } else {
+            // Fallback on earlier versions
+            activity.style = .whiteLarge
+        }
+        activity.hidesWhenStopped = true
+        activity.translatesAutoresizingMaskIntoConstraints = false
+        return activity
     }()
 
     var viewModel: MovieDetailViewModel!
@@ -46,48 +61,75 @@ class MovieDetailViewController: ParentViewController, Bindable {
 
     override func setupUI() {
         super.setupUI()
+        self.viewModel.stateMachine.transition(.viewDidLoad)
 
-        viewModel.didLoad()
-        self.view.addSubview(tableView)
+        self.view.addSubviews(indicator, tableView)
+
+        tableView.registerCells(MovieDetailCell.self)
+        tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+    }
+
+    override func setupConstraint() {
+        super.setupConstraint()
 
         tableView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
-
-        tableView.registerCells(MovieDetailCell.self)
-        tableView.rx.setDelegate(self)
-            .disposed(by: rx.disposeBag)
+        indicator.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.width.height.equalTo(32)
+        }
     }
 
     func bindViewModel() {
-        viewModel.$movie.bind(
-            to: tableView.rx.items(cellType: MovieDetailCell.self)
-        ) { [weak self] _, item, cell in
-            cell.bind(movie: item)
-            self?.headerView.bind(item.movieImg)
+        viewModel
+            .stateMachine
+            .$currentState
+            .asDriverOnErrorJustComplete()
+            .drive(onNext: { [weak self] in
+                switch $0 {
+                case .isLoading:
+                    self?.indicator.startAnimating()
+                case .error:
+                    // error
+                    print("Error")
+                default:
+                    self?.indicator.stopAnimating()
+                }
+            }).disposed(by: disposeBag)
+
+        let movieSection = Observable.combineLatest(
+            viewModel.stateMachine.$currentState.map ({
+                $0 == .isLoading
+            }),
+            viewModel.stateMachine.$currentState.map ({
+                $0.movieDetail
+            })
+        ) { [weak self] (loading, movie) -> TableSectionViewModelProtocol in
+            guard let self = self else {
+                // Return skeleton cell
+                return TableSectionViewModel.cells(cellCount: 8) { (_: UITableViewCell) in}
+            }
             
-        }.disposed(by: disposeBag)
+            return TableSectionViewModel(entries: movie) { [weak self] (_, data, cell: MovieDetailCell) in
+                cell.bind(movie: data)
+                self?.headerView.bind(data.movieImg)
+            }.asProtocol
+
+        }
+
+        tableView.rx.items(
+            sections: Observable.combineLatest([movieSection])
+        ).disposed(by: disposeBag)
     }
 }
+
 extension MovieDetailViewController: UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
         viewForHeaderInSection section: Int
     ) -> UIView? {
         return headerView
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        estimatedHeightForHeaderInSection section: Int
-    ) -> CGFloat {
-        return .leastNonzeroMagnitude
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        heightForHeaderInSection section: Int
-    ) -> CGFloat {
-        return 320
     }
 }
