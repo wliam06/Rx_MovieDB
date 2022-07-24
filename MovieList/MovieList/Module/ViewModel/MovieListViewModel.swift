@@ -12,20 +12,14 @@ import Networking
 
 extension MovieListViewModel {
     enum State: StateType {
-        static func == (lhs: MovieListViewModel.State, rhs: MovieListViewModel.State) -> Bool {
-            return true
-        }
-        
         case isLoading
         case error
-        case successLoadNowPlaying([MovieResponse])
-        case successLoadPopular([MovieResponse])
-        case successLoadUpcoming([MovieResponse])
-
+        case doRoute
+        case successLoadMovies([MovieResponse], [MovieResponse], [MovieResponse])
 
         var nowPlaying: [MovieResponse] {
             switch self {
-            case .successLoadNowPlaying(let movie):
+            case .successLoadMovies(let movie, _, _):
                 return movie
             default:
                 return []
@@ -33,7 +27,7 @@ extension MovieListViewModel {
         }
         var popular: [MovieResponse] {
             switch self {
-            case .successLoadPopular(let movie):
+            case .successLoadMovies(_, let movie, _):
                 return movie
             default:
                 return []
@@ -41,7 +35,7 @@ extension MovieListViewModel {
         }
         var upcoming: [MovieResponse] {
             switch self {
-            case .successLoadUpcoming(let movie):
+            case .successLoadMovies(_, _, let movie):
                 return movie
             default:
                 return []
@@ -50,38 +44,34 @@ extension MovieListViewModel {
 
         static func routes(fromState state: State, fromEvent event: Event)  -> TransitionEffect<State, Effect>? {
             switch (state, event) {
+            case (.isLoading, .viewDidLoad):
+                return TransitionEffect(toState: .isLoading, sideEffect: .onViewDidLoad)
             case (.isLoading, .didRequest):
                 return TransitionEffect(toState: .isLoading, sideEffect: .onShowSkeleton)
             case (.isLoading, .didReceiveError):
                 return TransitionEffect(toState: .error)
-            case (.isLoading, .didSuccessLoadNowPlaying(let movies)):
-                return TransitionEffect(toState: .successLoadNowPlaying(movies), sideEffect: .onHideSkeleton)
-            case (.isLoading, .didSuccessLoadPopular(let movies)):
-                return TransitionEffect(toState: .successLoadPopular(movies), sideEffect: .onHideSkeleton)
-            case (.isLoading, .didSuccessUpcoming(let movies)):
-                return TransitionEffect(toState: .successLoadUpcoming(movies), sideEffect: .onHideSkeleton)
-            case (.successLoadNowPlaying(let movies), .didMovieDetail(let movie)):
-                return TransitionEffect(toState: .successLoadNowPlaying(movies), sideEffect: .onTapDetail(movie))
-            case (.successLoadPopular(let movies), .didMovieDetail(let movie)):
-                return TransitionEffect(toState: .successLoadPopular(movies), sideEffect: .onTapDetail(movie))
-            case (.successLoadUpcoming(let movies), .didMovieDetail(let movie)):
-                return TransitionEffect(toState: .successLoadUpcoming(movies), sideEffect: .onTapDetail(movie))
+            case (.isLoading, .didSuccessLoadMovies(let nowPlaying, let popular, let upcoming)):
+                return TransitionEffect(toState: .successLoadMovies(nowPlaying, popular, upcoming), sideEffect: .onHideSkeleton)
+            case (.doRoute, .didMovieDetail(let movie)):
+                return TransitionEffect(toState: .isLoading, sideEffect: .onTapDetail(movie))
+            case (.successLoadMovies, .didMovieDetail(let movie)):
+                return TransitionEffect(toState: .doRoute, sideEffect: .onTapDetail(movie))
             default:
                 return nil
             }
         }
     }
 
-    enum Event:EventType {
+    enum Event: EventType {
+        case viewDidLoad
         case didRequest
         case didMovieDetail(MovieResponse)
         case didReceiveError
-        case didSuccessLoadNowPlaying([MovieResponse])
-        case didSuccessLoadPopular([MovieResponse])
-        case didSuccessUpcoming([MovieResponse])
+        case didSuccessLoadMovies([MovieResponse], [MovieResponse], [MovieResponse])
     }
 
     enum Effect: SideEffect {
+        case onViewDidLoad
         case onShowSkeleton
         case onHideSkeleton
         case onTapDetail(MovieResponse)
@@ -91,9 +81,6 @@ extension MovieListViewModel {
 final class MovieListViewModel: ParentViewModel, StateMachineBuilder {
     // Input
     @RxPublished var page: Int = 1
-    @RxPublished var nowPlaying = [MovieResponse]()
-    @RxPublished var popular = [MovieResponse]()
-    @RxPublished var upcoming = [MovieResponse]()
 
     private let router: Router<MovieListRoute>
 
@@ -120,6 +107,11 @@ final class MovieListViewModel: ParentViewModel, StateMachineBuilder {
             print("onHideSkeleton")
         case .onTapDetail(let movie):
             print("onTapDetail")
+//            self.stateMachine.transition(.didMovieDetail(movie))
+            self.router.navigateTo(route: .detail(id: movie.id))
+        case .onViewDidLoad:
+            print("ViewDidLoad")
+            self.didLoad()
         default:
             return
         }
@@ -128,24 +120,19 @@ final class MovieListViewModel: ParentViewModel, StateMachineBuilder {
     // MARK: - ViewController Lifecycle
     override func didLoad() {
         super.didLoad()
-
-//        self.viewState = .loading
         self.stateMachine.transition(.didRequest)
         Single.zip(
             usecase.fetchNowPlaying(page: page),
             usecase.fetchPopular(page: page),
             usecase.fetchUpcoming(page: page)
         ).subscribe(onSuccess: { [weak self] (nowPlaying, popular, upcoming) in
-//            self?.stateMachine.transition(.didSuccessLoadNowPlaying(.just(nowPlaying.results)))
-//            self?.stateMachine.transition(.didSuccessUpcoming(.just(upcoming.results)))
-//            self?.stateMachine.transition(.didSuccessLoadPopular(.just(popular.results)))
-            self?.stateMachine.transition(.didSuccessLoadNowPlaying(nowPlaying.results))
-            self?.stateMachine.transition(.didSuccessUpcoming(upcoming.results))
-            self?.stateMachine.transition(.didSuccessLoadPopular(popular.results))
+            self?.stateMachine.transition(
+                .didSuccessLoadMovies(
+                    nowPlaying.results,
+                    upcoming.results,
+                    popular.results
+                )
+            )
         }).disposed(by: disposeBag)
-    }
-
-    func didSelectMovie(movie: MovieResponse) {
-        self.router.navigateTo(route: .detail(id: movie.id))
     }
 }

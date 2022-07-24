@@ -63,7 +63,7 @@ class MovieListViewController: ParentViewController, Bindable {
             SectionMovieCell.self
         )
 
-        viewModel.stateMachine.transition(.didRequest)
+        viewModel.stateMachine.transition(.viewDidLoad)
     }
 
     override func setupConstraint() {
@@ -97,9 +97,6 @@ class MovieListViewController: ParentViewController, Bindable {
 
         let cellSections = Observable.combineLatest(
             viewModel.stateMachine.$currentState.map ({
-                $0 == .isLoading
-            }),
-            viewModel.stateMachine.$currentState.map ({
                 $0.nowPlaying
             }),
             viewModel.stateMachine.$currentState.map ({
@@ -108,36 +105,45 @@ class MovieListViewController: ParentViewController, Bindable {
             viewModel.stateMachine.$currentState.map ({
                 $0.upcoming
             })
-        ) { [weak self] (loading, nowPlaying, popular, upcoming) -> [TableSectionViewModelProtocol] in
-            let nowPlayingSections = self!.movieSection(
+        ) { [weak self] (nowPlaying, popular, upcoming) -> [TableSectionViewModelProtocol] in
+            guard let self = self else {
+                // Return skeleton cell
+                return [TableSectionViewModel.cells(cellCount: 8) { (_: UITableViewCell) in}]
+            }
+            let nowPlayingSections = self.movieSection(
                 source: nowPlaying
             ) { (data, cell: NowPlayingMovieCell) in
                 cell.bind(
-                    data: data,
-                    action: self!.viewModel.didSelectMovie(movie:)
-                )
+                    data: nowPlaying,
+                    action: { [weak self] movie in
+                        self?.viewModel.stateMachine.transition(.didMovieDetail(movie))
+                })
             }
 
-            let popularSections = self!.movieSection(
+            let popularSections = self.movieSection(
                 source: popular
             ) { (data, cell: SectionMovieCell) in
                 cell.bind(
                     sectionTitle: "Popular Movie",
                     data: data,
-                    action: self!.viewModel.didSelectMovie(movie:)
+                    action: { [weak self] movie in
+                        self?.viewModel.stateMachine.transition(.didMovieDetail(movie))
+                    }
                 )
             }
 
-            let upcomingSections = self!.movieSection(
+            let upcomingSections = self.movieSection(
                 source: upcoming
             ) { (data, cell: SectionMovieCell) in
                 cell.bind(
                     sectionTitle: "Upcoming Movie",
                     data: data,
-                    action: self!.viewModel.didSelectMovie(movie:)
+                    action: { [weak self] movie in
+                        self?.viewModel.stateMachine.transition(.didMovieDetail(movie))
+                    }
                 )
             }
-            
+
             return [nowPlayingSections, popularSections, upcomingSections]
         }
 
@@ -146,45 +152,6 @@ class MovieListViewController: ParentViewController, Bindable {
         ).disposed(by: disposeBag)
     }
 
-//    private func showMovie(_ movies: Observable<[MovieResponse]>) {
-//        let nowPlaying = movieSection(
-//            source: viewModel.$nowPlaying
-//        ) { (data, cell: NowPlayingMovieCell) in
-//            cell.bind(
-//                data: data,
-//                action: self.viewModel.didSelectMovie(movie:)
-//            )
-//        }
-//
-//        let popular = movieSection(
-//            source: viewModel.$popular
-//        ) { (data, cell: SectionMovieCell) in
-//            cell.bind(
-//                sectionTitle: "Popular Movie",
-//                data: data,
-//                action: self.viewModel.didSelectMovie(movie:)
-//            )
-//        }
-//
-//        let upcoming = movieSection(
-//            source: viewModel.$upcoming
-//        ) { (data, cell: SectionMovieCell) in
-//            cell.bind(
-//                sectionTitle: "Upcoming Movie",
-//                data: data,
-//                action: self.viewModel.didSelectMovie(movie:)
-//            )
-//        }
-//
-//        _ = tableView.rx.items(
-//            sections: Observable.combineLatest([
-//                nowPlaying,
-//                popular,
-//                upcoming
-//            ])
-//        )
-//    }
-
     private func movieSection<Cell: UITableViewCell>(
         source: [MovieResponse],
         configureCell: @escaping(
@@ -192,12 +159,6 @@ class MovieListViewController: ParentViewController, Bindable {
             _ cell: Cell
         ) -> ()
     ) -> TableSectionViewModelProtocol {
-//        source.map { (data: MovieResponse) in
-//            TableSectionViewModel.cells(cellCount: 1) { (cell: Cell) in
-//                let test = data
-//                configureCell(data, cell)
-//            }
-//        }
         TableSectionViewModel.cells(cellCount: 1) { (cell: Cell) in
             configureCell(source, cell)
         }
