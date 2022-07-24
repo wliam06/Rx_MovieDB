@@ -13,9 +13,6 @@ protocol ImpStateMachineType: StateMachineBuilder {
 }
 
 final class MockImpStateMachine: ImpStateMachineType {
-
-    
-
     enum State: StateType {
         case starting
         case request
@@ -82,54 +79,3 @@ final class MockImpStateMachine: ImpStateMachineType {
         invokedEffectHandlerParametersList.append((effect, ()))
     }
 }
-
-
-//    enum State: StateType {
-//        case starting
-//        case request
-//        case cancel
-//
-//        static func routes(fromState: State, event: Event) -> TransitionEffect<State, Effect>? {
-//            switch (fromState, event) {
-//            case (.request, .didLoading(let id)):
-//                return TransitionEffect(toState: .request, sideEffect: .onRequest(id))
-//            case (.starting, .didLoading(_)):
-//                return TransitionEffect(toState: .starting)
-//            case (.cancel, .didLoading(_)):
-//                return TransitionEffect(toState: .cancel)
-//            default:
-//                return nil
-//            }
-//        }
-//    }
-//
-//    enum Event: EventType {
-//        case didLoading(String)
-//        case didSuccess(String)
-//        case didFailure
-//    }
-//
-//    enum Effect: SideEffect {
-//        case onRequest(String)
-//    }
-//
-//    lazy var stateMachine = StateMachine<State, Event, Effect>(
-//        initialState: .cancel,
-//        routing: MockImpStateMachine.State.routes,
-//        effects: { [weak self] in
-//            self?.effectHandler(effect: $0)
-//        }
-//    )
-//
-//    func onRequestAPI(id: String) {
-//        self.stateMachine.transition(.didSuccess("success with \(id)"))
-//    }
-//
-//    func effectHandler(effect: Effect?) {
-//        switch effect {
-//        case .onRequest(let id):
-//            self.onRequestAPI(id: id)
-//        default:
-//            return
-//        }
-//    }

@@ -45,3 +45,21 @@ public struct MovieResponse: Codable, Equatable, MoviePoster {
         return NetworkConfig.imageBaseURL + (posterPath ?? "")
     }
 }
+
+extension MovieResultResponse {
+    public static func response() -> MovieResponse {
+        return .init(
+            id: 1,
+            title: "title",
+            genreIds: [0],
+            overview: "overview",
+            posterPath: "posterpath",
+            backdropPath: "backdrop",
+            releaseDate: "date",
+            voteAverage: 80
+        )
+    }
+    public static func mock() -> Self {
+        return .init(page: 0, totalPages: 0, results: [MovieResultResponse.response()])
+    }
+}

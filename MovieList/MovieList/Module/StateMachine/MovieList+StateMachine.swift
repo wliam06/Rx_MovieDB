@@ -46,8 +46,6 @@ extension MovieListViewModel {
                 return TransitionEffect(toState: .isLoading, sideEffect: .onViewDidLoad)
             case (.isLoading, .didRequest):
                 return TransitionEffect(toState: .isLoading, sideEffect: .onShowSkeleton)
-            case (.isLoading, .didReceiveError):
-                return TransitionEffect(toState: .error)
             case (.isLoading, .didSuccessLoadMovies(let nowPlaying, let popular, let upcoming)):
                 return TransitionEffect(toState: .successLoadMovies(nowPlaying, popular, upcoming), sideEffect: .onHideSkeleton)
             default:

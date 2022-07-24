@@ -10,7 +10,7 @@ import Core
 import MovieKit
 import Networking
 
-final class MovieListViewModel: ParentViewModel, StateMachineBuilder {
+class MovieListViewModel: ParentViewModel, StateMachineBuilder {
     // Input
     @RxPublished var page: Int = 1
 
