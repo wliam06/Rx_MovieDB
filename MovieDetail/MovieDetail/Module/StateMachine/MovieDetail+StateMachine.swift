@@ -33,7 +33,7 @@ extension MovieDetailViewModel {
                 return TransitionEffect(toState: .error)
             case (.isLoading, .didSuccessLoadMovies(let movie)):
                 return TransitionEffect(toState: .successLoadMovie(movie), sideEffect: .onHideSkeleton)
-            case (.successLoadMovie, .didClearMovie):
+            case (.successLoadMovie(_), .viewDidDisappear):
                 return TransitionEffect(toState: .isLoading, sideEffect: .onViewDidDisappear)
             default:
                 return nil
@@ -43,7 +43,7 @@ extension MovieDetailViewModel {
 
     enum Event: EventType {
         case viewDidLoad
-        case didClearMovie
+        case viewDidDisappear
         case didRequest
         case didReceiveError
         case didSuccessLoadMovies([MovieDetailModel])

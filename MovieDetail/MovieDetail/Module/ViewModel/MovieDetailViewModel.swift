@@ -58,6 +58,6 @@ final class MovieDetailViewModel: ParentViewModel {
     override func didDisappear() {
         super.didDisappear()
 
-        self.stateMachine.transition(.didClearMovie)
+        self.stateMachine.transition(.viewDidDisappear)
     }
 }

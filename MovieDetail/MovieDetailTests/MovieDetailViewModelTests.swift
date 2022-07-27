@@ -29,7 +29,7 @@ public enum MockErrorResponse: Error {
 }
 
 class MovieDetailViewModelTests: XCTestCase {
-    var viewModel: MovieDetailViewModel!
+    var sut: MovieDetailViewModel!
     var usecase: MockMovieDetailUseCase!
     var mock: MockMovieDetailModel!
 
@@ -38,14 +38,14 @@ class MovieDetailViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        viewModel = MovieDetailViewModel(1)
+        sut = MovieDetailViewModel(1)
         usecase = MockMovieDetailUseCase()
         mock = MockMovieDetailModel()
-        viewModel.usecase = usecase
+        sut.usecase = usecase
     }
 
     override func tearDown() {
-        viewModel = nil
+        sut = nil
         usecase = nil
         mock = nil
         super.tearDown()
@@ -53,23 +53,49 @@ class MovieDetailViewModelTests: XCTestCase {
 
     func testSuccessDidLoad() {
         usecase.stubbedFetchMovieDetailResult = .just(mock.result())
-        viewModel.didLoad()
-        _ = usecase.fetchMovieDetail(id: 1)
+        sut.stateMachine = StateMachine(
+            initialState: .isLoading,
+            routing: MovieDetailViewModel.State.routes,
+            effects: { [weak self] in
+                self?.sut.effectHandler(effect: $0)
+            })
+        let expected = MovieDetailViewModel.State.successLoadMovie([MockMovieDetailModel().result()])
+        sut.stateMachine.transition(.viewDidLoad)
+        sut.stateMachine.onTransitionResult(onSuccess: { (testA, newState, testC) in
+            XCTAssertEqual(newState, expected)
+        })
+        XCTAssertTrue(sut.stateMachine.currentState.movieDetail.count > 0)
         XCTAssertTrue(usecase.invokedFetchMovieDetail)
-        XCTAssertEqual(viewModel.movie.count, 1)
     }
 
     func testErrorGetMovieDetail() {
         usecase.stubbedFetchMovieDetailResult = .error(MockErrorResponse.someError)
-        viewModel.didLoad()
-        _ = usecase.fetchMovieDetail(id: 1)
-        XCTAssertTrue(usecase.invokedFetchMovieDetail)
-        XCTAssertEqual(viewModel.movie.count, 0)
+        sut.stateMachine = StateMachine(
+            initialState: .isLoading,
+            routing: MovieDetailViewModel.State.routes,
+            effects: { [weak self] in
+                self?.sut.effectHandler(effect: $0)
+            })
+        let expected = MovieDetailViewModel.State.error
+        sut.stateMachine.transition(.didReceiveError)
+        sut.didLoad()
+        sut.stateMachine.onTransitionResult(onSuccess: { (_, newState, _) in
+            XCTAssertEqual(newState, expected)
+        })
     }
 
     func testClearMovieDetail() {
-        viewModel.didDisappear()
-        XCTAssertEqual(viewModel.movie.count, 0)
+        sut.stateMachine = StateMachine(
+            initialState: .successLoadMovie([MockMovieDetailModel().result()]),
+            routing: MovieDetailViewModel.State.routes,
+            effects: { [weak self] in
+                self?.sut.effectHandler(effect: $0)
+            })
+        let expected = MovieDetailViewModel.State.isLoading
+        sut.stateMachine.transition(.viewDidDisappear)
+        sut.stateMachine.onTransitionResult(onSuccess: { (_, newState, _) in
+            XCTAssertEqual(newState, expected)
+        })
     }
 }
 
