@@ -1,0 +1,3 @@
+[submodule "MovieKitFramework"]
+	path = MovieKitFramework
+	url = git@github.com:wliamgho/MovieKitFramework.git
