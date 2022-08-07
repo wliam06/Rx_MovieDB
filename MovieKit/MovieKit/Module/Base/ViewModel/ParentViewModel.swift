@@ -7,16 +7,8 @@
 
 import RxFramework
 
-public enum ViewState: Equatable {
-    case start
-    case loading
-    case finish
-    case error
-}
-
 open class ParentViewModel: HasDisposeBag {
-    @RxPublished open var viewState: ViewState = .start
-
+    public lazy var disposeBag = DisposeBag()
     public init() {}
 
     // MARK: - ViewController Lifecycle

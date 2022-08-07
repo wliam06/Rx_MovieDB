@@ -1,5 +1,4 @@
 platform :ios, '9.0'
-use_frameworks!
 
 plugin 'cocoapods-pod-linkage'
 plugin 'cocoapods-pod-merge'
@@ -17,6 +16,7 @@ end
 
 # Features
 target 'MovieList' do
+  use_frameworks! :linkage => :static
   project 'MovieList/MovieList.xcodeproj'
   target 'MovieListTests' do
     inherit! :search_paths
@@ -24,6 +24,7 @@ target 'MovieList' do
 end
 
 target 'MovieDetail' do
+  use_frameworks! :linkage => :static
   project 'MovieDetail/MovieDetail.xcodeproj'
   target 'MovieDetailTests' do
     inherit! :search_paths
@@ -32,6 +33,7 @@ end
 
 # Core
 target 'Core' do
+  use_frameworks!
   project 'Core/Core.xcodeproj'
   target 'CoreTests' do
     inherit! :search_paths

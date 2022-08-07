@@ -21,8 +21,6 @@
 		351F9A582877F18100F030F1 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351F9A502877F18100F030F1 /* Injected.swift */; };
 		352912A1288401E900C5CFE5 /* MockInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35291282288401E900C5CFE5 /* MockInjection.swift */; };
 		352912A3288401E900C5CFE5 /* InjectedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35291285288401E900C5CFE5 /* InjectedTests.swift */; };
-		352912A4288401E900C5CFE5 /* MovieDetailInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35291287288401E900C5CFE5 /* MovieDetailInjectionTests.swift */; };
-		352912A5288401E900C5CFE5 /* MovieListInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35291289288401E900C5CFE5 /* MovieListInjectionTests.swift */; };
 		352912A7288401E900C5CFE5 /* MovieDetailUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3529128F288401E900C5CFE5 /* MovieDetailUseCaseTests.swift */; };
 		352912A8288401E900C5CFE5 /* MovieListUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35291291288401E900C5CFE5 /* MovieListUseCaseTests.swift */; };
 		352912AD288401E900C5CFE5 /* MovieDetailRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3529129C288401E900C5CFE5 /* MovieDetailRepositoryTests.swift */; };
@@ -31,6 +29,11 @@
 		3547AC7F2877EF950031E377 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3547AC742877EF950031E377 /* Core.framework */; };
 		3547AC842877EF950031E377 /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3547AC832877EF950031E377 /* CoreTests.swift */; };
 		3547AC852877EF950031E377 /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 3547AC772877EF950031E377 /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		356859B828858EA900A8329F /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356859B728858EA900A8329F /* StateMachine.swift */; };
+		356859BB28858EEE00A8329F /* TransitionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356859BA28858EEE00A8329F /* TransitionResult.swift */; };
+		356859BD28858F1100A8329F /* TransitionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356859BC28858F1100A8329F /* TransitionEffect.swift */; };
+		356859C42885913700A8329F /* MockImpStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356859C32885913700A8329F /* MockImpStateMachine.swift */; };
+		356859C6288593EB00A8329F /* StateMachineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356859C5288593EB00A8329F /* StateMachineTests.swift */; };
 		35A3085728850F7E00F537E3 /* MockNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A3085628850F7E00F537E3 /* MockNetworkRequest.swift */; };
 		35A3085A28850FB400F537E3 /* MockMovieResultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A3085828850FB400F537E3 /* MockMovieResultResponse.swift */; };
 		35A3085B28850FB400F537E3 /* MockErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A3085928850FB400F537E3 /* MockErrorResponse.swift */; };
@@ -44,7 +47,6 @@
 		35EBB6382883FFBC00F4D145 /* Injected+MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBB6352883FFBC00F4D145 /* Injected+MovieList.swift */; };
 		35EBB6392883FFBC00F4D145 /* Injected+MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBB6372883FFBC00F4D145 /* Injected+MovieDetail.swift */; };
 		35EBB63E2884005200F4D145 /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBB63D2884005200F4D145 /* MovieDetailModel.swift */; };
-		35FAD340288439630003F6A2 /* NetworkInjectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FAD33F288439630003F6A2 /* NetworkInjectionTests.swift */; };
 		3AA38F153D2643FDECCA7342 /* Pods_CoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A26A437264F8EDAB8D4DA2 /* Pods_CoreTests.framework */; };
 		86060C496C2237272B9A7AE6 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A2F735C797A2DFBB2D3070B /* Pods_Core.framework */; };
 /* End PBXBuildFile section */
@@ -91,8 +93,6 @@
 		351F9A762877F22E00F030F1 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35291282288401E900C5CFE5 /* MockInjection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockInjection.swift; sourceTree = "<group>"; };
 		35291285288401E900C5CFE5 /* InjectedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InjectedTests.swift; sourceTree = "<group>"; };
-		35291287288401E900C5CFE5 /* MovieDetailInjectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailInjectionTests.swift; sourceTree = "<group>"; };
-		35291289288401E900C5CFE5 /* MovieListInjectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListInjectionTests.swift; sourceTree = "<group>"; };
 		3529128F288401E900C5CFE5 /* MovieDetailUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailUseCaseTests.swift; sourceTree = "<group>"; };
 		35291291288401E900C5CFE5 /* MovieListUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListUseCaseTests.swift; sourceTree = "<group>"; };
 		3529129C288401E900C5CFE5 /* MovieDetailRepositoryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailRepositoryTests.swift; sourceTree = "<group>"; };
@@ -106,6 +106,11 @@
 		3547AC782877EF950031E377 /* Core.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Core.docc; sourceTree = "<group>"; };
 		3547AC7E2877EF950031E377 /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3547AC832877EF950031E377 /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
+		356859B728858EA900A8329F /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		356859BA28858EEE00A8329F /* TransitionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionResult.swift; sourceTree = "<group>"; };
+		356859BC28858F1100A8329F /* TransitionEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionEffect.swift; sourceTree = "<group>"; };
+		356859C32885913700A8329F /* MockImpStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImpStateMachine.swift; sourceTree = "<group>"; };
+		356859C5288593EB00A8329F /* StateMachineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineTests.swift; sourceTree = "<group>"; };
 		35A3085628850F7E00F537E3 /* MockNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkRequest.swift; sourceTree = "<group>"; };
 		35A3085828850FB400F537E3 /* MockMovieResultResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMovieResultResponse.swift; sourceTree = "<group>"; };
 		35A3085928850FB400F537E3 /* MockErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockErrorResponse.swift; sourceTree = "<group>"; };
@@ -120,7 +125,6 @@
 		35EBB6352883FFBC00F4D145 /* Injected+MovieList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Injected+MovieList.swift"; sourceTree = "<group>"; };
 		35EBB6372883FFBC00F4D145 /* Injected+MovieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Injected+MovieDetail.swift"; sourceTree = "<group>"; };
 		35EBB63D2884005200F4D145 /* MovieDetailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
-		35FAD33F288439630003F6A2 /* NetworkInjectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInjectionTests.swift; sourceTree = "<group>"; };
 		3A2F735C797A2DFBB2D3070B /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42A26A437264F8EDAB8D4DA2 /* Pods_CoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		929F124FADF6F772CABE094D /* Pods-Core-CoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.release.xcconfig"; path = "Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		351F9A4C2877F18100F030F1 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				356859B628858E8D00A8329F /* StateMachine */,
 				35EBB63B2884002B00F4D145 /* Data */,
 				35EBB63A2884002500F4D145 /* Domain */,
 				35056D9E2880272B004AC1CE /* Routing */,
@@ -251,10 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				35291281288401E900C5CFE5 /* Mock */,
-				35291283288401E900C5CFE5 /* Network */,
 				35291285288401E900C5CFE5 /* InjectedTests.swift */,
-				35291286288401E900C5CFE5 /* MovieDetail */,
-				35291288288401E900C5CFE5 /* MovieList */,
 			);
 			path = Injected;
 			sourceTree = "<group>";
@@ -265,30 +267,6 @@
 				35291282288401E900C5CFE5 /* MockInjection.swift */,
 			);
 			path = Mock;
-			sourceTree = "<group>";
-		};
-		35291283288401E900C5CFE5 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				35FAD33F288439630003F6A2 /* NetworkInjectionTests.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		35291286288401E900C5CFE5 /* MovieDetail */ = {
-			isa = PBXGroup;
-			children = (
-				35291287288401E900C5CFE5 /* MovieDetailInjectionTests.swift */,
-			);
-			path = MovieDetail;
-			sourceTree = "<group>";
-		};
-		35291288288401E900C5CFE5 /* MovieList */ = {
-			isa = PBXGroup;
-			children = (
-				35291289288401E900C5CFE5 /* MovieListInjectionTests.swift */,
-			);
-			path = MovieList;
 			sourceTree = "<group>";
 		};
 		3529128A288401E900C5CFE5 /* Domain */ = {
@@ -394,12 +372,40 @@
 		3547AC822877EF950031E377 /* CoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				356859C0288590EA00A8329F /* StateMachine */,
 				35291294288401E900C5CFE5 /* Data */,
 				3529128A288401E900C5CFE5 /* Domain */,
 				35291280288401E900C5CFE5 /* Injected */,
 				3547AC832877EF950031E377 /* CoreTests.swift */,
 			);
 			path = CoreTests;
+			sourceTree = "<group>";
+		};
+		356859B628858E8D00A8329F /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				356859B928858EDD00A8329F /* Transition */,
+				356859B728858EA900A8329F /* StateMachine.swift */,
+			);
+			path = StateMachine;
+			sourceTree = "<group>";
+		};
+		356859B928858EDD00A8329F /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				356859BA28858EEE00A8329F /* TransitionResult.swift */,
+				356859BC28858F1100A8329F /* TransitionEffect.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		356859C0288590EA00A8329F /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				356859C32885913700A8329F /* MockImpStateMachine.swift */,
+				356859C5288593EB00A8329F /* StateMachineTests.swift */,
+			);
+			path = StateMachine;
 			sourceTree = "<group>";
 		};
 		35A3085C2885105800F537E3 /* Mock */ = {
@@ -675,15 +681,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				356859BD28858F1100A8329F /* TransitionEffect.swift in Sources */,
 				35EBB6382883FFBC00F4D145 /* Injected+MovieList.swift in Sources */,
 				35EBB63E2884005200F4D145 /* MovieDetailModel.swift in Sources */,
 				351F9A572877F18100F030F1 /* ImpInjection.swift in Sources */,
+				356859BB28858EEE00A8329F /* TransitionResult.swift in Sources */,
 				35EBB62C2883FD2700F4D145 /* MovieDetailRepository.swift in Sources */,
 				35056DA82880272B004AC1CE /* NavigationRoute.swift in Sources */,
 				35EBB62B2883FD2700F4D145 /* MovieListUseCase.swift in Sources */,
 				35056DAB2880272B004AC1CE /* Router.swift in Sources */,
 				35056DA72880272B004AC1CE /* Injected+Navigation.swift in Sources */,
 				35EBB62D2883FD2700F4D145 /* MovieListRepository.swift in Sources */,
+				356859B828858EA900A8329F /* StateMachine.swift in Sources */,
 				3547AC792877EF950031E377 /* Core.docc in Sources */,
 				35056D962880238A004AC1CE /* Coordinator.swift in Sources */,
 				35056DAA2880272B004AC1CE /* Routing.swift in Sources */,
@@ -703,17 +712,16 @@
 				35A3085A28850FB400F537E3 /* MockMovieResultResponse.swift in Sources */,
 				35A3085728850F7E00F537E3 /* MockNetworkRequest.swift in Sources */,
 				352912AD288401E900C5CFE5 /* MovieDetailRepositoryTests.swift in Sources */,
-				35FAD340288439630003F6A2 /* NetworkInjectionTests.swift in Sources */,
 				352912A8288401E900C5CFE5 /* MovieListUseCaseTests.swift in Sources */,
-				352912A5288401E900C5CFE5 /* MovieListInjectionTests.swift in Sources */,
+				356859C6288593EB00A8329F /* StateMachineTests.swift in Sources */,
 				35A30860288510CD00F537E3 /* MockMovieListRepo.swift in Sources */,
 				35A3085B28850FB400F537E3 /* MockErrorResponse.swift in Sources */,
 				35A3085E2885106100F537E3 /* MockMovieDetailRepo.swift in Sources */,
 				3547AC842877EF950031E377 /* CoreTests.swift in Sources */,
+				356859C42885913700A8329F /* MockImpStateMachine.swift in Sources */,
 				352912AF288401E900C5CFE5 /* MovieListRepositoryTests.swift in Sources */,
 				352912A1288401E900C5CFE5 /* MockInjection.swift in Sources */,
 				352912A3288401E900C5CFE5 /* InjectedTests.swift in Sources */,
-				352912A4288401E900C5CFE5 /* MovieDetailInjectionTests.swift in Sources */,
 				352912A7288401E900C5CFE5 /* MovieDetailUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

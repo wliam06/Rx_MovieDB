@@ -10,6 +10,7 @@
 		352912742884018B00C5CFE5 /* MovieDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352912732884018B00C5CFE5 /* MovieDetailViewModelTests.swift */; };
 		3531123B28842E5C00043A1B /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3531123A28842E5C00043A1B /* Module.swift */; };
 		3531123E28842EEC00043A1B /* MovieDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3531123D28842EEC00043A1B /* MovieDetailCoordinator.swift */; };
+		356E2786288D6F7600C7F689 /* MovieDetail+StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E2785288D6F7600C7F689 /* MovieDetail+StateMachine.swift */; };
 		35A3085528850B3800F537E3 /* MockMovieDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A3085428850B3800F537E3 /* MockMovieDetailUseCase.swift */; };
 		35EBB5F22883FC2300F4D145 /* MovieDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EBB5E92883FC2300F4D145 /* MovieDetail.framework */; };
 		35EBB5F72883FC2300F4D145 /* MovieDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EBB5F62883FC2300F4D145 /* MovieDetailTests.swift */; };
@@ -41,6 +42,7 @@
 		352912732884018B00C5CFE5 /* MovieDetailViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModelTests.swift; sourceTree = "<group>"; };
 		3531123A28842E5C00043A1B /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		3531123D28842EEC00043A1B /* MovieDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailCoordinator.swift; sourceTree = "<group>"; };
+		356E2785288D6F7600C7F689 /* MovieDetail+StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetail+StateMachine.swift"; sourceTree = "<group>"; };
 		35A3085428850B3800F537E3 /* MockMovieDetailUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMovieDetailUseCase.swift; sourceTree = "<group>"; };
 		35D4EA6F2884474500B20BCF /* Pods_CoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_CoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35EBB5E92883FC2300F4D145 /* MovieDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MovieDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,14 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		356E2784288D6F6900C7F689 /* StateMachine */ = {
+			isa = PBXGroup;
+			children = (
+				356E2785288D6F7600C7F689 /* MovieDetail+StateMachine.swift */,
+			);
+			path = StateMachine;
+			sourceTree = "<group>";
+		};
 		35A3085328850B3800F537E3 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 		35EBB6012883FC4900F4D145 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				356E2784288D6F6900C7F689 /* StateMachine */,
 				3531123C28842EE300043A1B /* Coordinator */,
 				35EBB6022883FC4900F4D145 /* ViewModel */,
 				35EBB6062883FC4900F4D145 /* View */,
@@ -392,6 +403,7 @@
 				35EBB6112883FC4900F4D145 /* MovieDetailViewController.swift in Sources */,
 				35EBB6102883FC4900F4D145 /* MovieDetailHeaderView.swift in Sources */,
 				3531123B28842E5C00043A1B /* Module.swift in Sources */,
+				356E2786288D6F7600C7F689 /* MovieDetail+StateMachine.swift in Sources */,
 				35EBB60F2883FC4900F4D145 /* MovieDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,6 +574,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = me.william.MovieDetail;
@@ -594,6 +607,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = me.william.MovieDetail;
