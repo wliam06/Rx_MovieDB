@@ -31,8 +31,8 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     override func start() {
         ModuleManagement.shared.register(
             modules: [
-                MovieListModule(),
-                MovieDetailModule()
+                MovieListModule.shared,
+                MovieDetailModule.shared
             ]
         )
         navigateTo(route: .movieList)

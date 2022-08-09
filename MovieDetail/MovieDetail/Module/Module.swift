@@ -7,7 +7,8 @@
 
 import ModuleManagement
 
-public struct MovieDetailModule: MovieDetailManageModule {
+public final class MovieDetailModule: MovieDetailManageModule {
+    public static let shared = MovieDetailModule()
     public func start(movieId: Int) {
         let coordinator = MovieDetailCoordinator(id: movieId)
         coordinator.start()

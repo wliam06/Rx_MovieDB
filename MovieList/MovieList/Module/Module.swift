@@ -11,7 +11,9 @@ public protocol MovieListRouteModule {
     func navigateToDetail(movieId: Int)
 }
 
-public struct MovieListModule: MovieListManageModule, MovieListRouteModule {
+public final class MovieListModule: MovieListManageModule, MovieListRouteModule {
+    public static let shared = MovieListModule()
+
     public func start() {
         let coordinator = MovieListCoordinator()
         coordinator.start()

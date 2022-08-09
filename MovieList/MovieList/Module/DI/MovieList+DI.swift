@@ -11,7 +11,7 @@ import ModuleManagement
 // MARK: - MovieDetail Repo
 
 private struct MovieListModuleProviderKey: InjectionKey {
-    static var currentValue: MovieListRouteModule = MovieListModule()
+    static var currentValue: MovieListRouteModule = MovieListModule.shared
 }
 
 extension InjectedValue {
