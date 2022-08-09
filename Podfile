@@ -14,6 +14,7 @@ target 'MovieDB' do
   end
 end
 
+## High level module
 # Features
 target 'MovieList' do
   use_frameworks! :linkage => :static
@@ -31,6 +32,16 @@ target 'MovieDetail' do
   end
 end
 
+## Mid level module
+# Bridge
+target 'ModuleManagement' do
+  project 'ModuleManagement/ModuleManagement.xcodeproj'
+  target 'ModuleManagementTests' do
+    inherit! :search_paths
+  end 
+end
+
+## Low Level Module
 # Core
 target 'Core' do
   use_frameworks!

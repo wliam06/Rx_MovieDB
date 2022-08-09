@@ -23,6 +23,7 @@
 		35FAD338288438190003F6A2 /* MovieKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FAD333288438190003F6A2 /* MovieKit.framework */; };
 		35FAD33A288438190003F6A2 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FAD334288438190003F6A2 /* Networking.framework */; };
 		35FAD33C288438190003F6A2 /* RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FAD335288438190003F6A2 /* RxFramework.framework */; };
+		35FD8DC528A234FE00C307C7 /* ModuleManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35FD8DC428A234FE00C307C7 /* ModuleManagement.framework */; };
 		55EB1F4B3425395041656118 /* Pods_MovieDetailTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70A61F51F4C169D9C7469916 /* Pods_MovieDetailTests.framework */; };
 		569BCBD8BF19B098E35E372A /* Pods_MovieDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEC9BD1308B412E500BA242 /* Pods_MovieDetail.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		35FAD333288438190003F6A2 /* MovieKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MovieKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FAD334288438190003F6A2 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FAD335288438190003F6A2 /* RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35FD8DC428A234FE00C307C7 /* ModuleManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ModuleManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EEC9BD1308B412E500BA242 /* Pods_MovieDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FFBABE3A22C86F042B14278 /* Pods-MovieDetail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDetail.release.xcconfig"; path = "Target Support Files/Pods-MovieDetail/Pods-MovieDetail.release.xcconfig"; sourceTree = "<group>"; };
 		70A61F51F4C169D9C7469916 /* Pods_MovieDetailTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDetailTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 				35FAD33A288438190003F6A2 /* Networking.framework in Frameworks */,
 				35FAD33C288438190003F6A2 /* RxFramework.framework in Frameworks */,
 				569BCBD8BF19B098E35E372A /* Pods_MovieDetail.framework in Frameworks */,
+				35FD8DC528A234FE00C307C7 /* ModuleManagement.framework in Frameworks */,
 				35FAD338288438190003F6A2 /* MovieKit.framework in Frameworks */,
 				35FAD336288438190003F6A2 /* Core.framework in Frameworks */,
 			);
@@ -213,6 +216,7 @@
 		35EBB6122883FC5800F4D145 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35FD8DC428A234FE00C307C7 /* ModuleManagement.framework */,
 				35D4EA6F2884474500B20BCF /* Pods_CoreTests.framework */,
 				35FAD332288438190003F6A2 /* Core.framework */,
 				35FAD333288438190003F6A2 /* MovieKit.framework */,

@@ -9,6 +9,8 @@ import UIKit
 import RxFramework
 import Core
 import MovieList
+import MovieDetail
+import ModuleManagement
 
 enum AppRoute: Route {
     case movieList
@@ -27,13 +29,19 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     }
 
     override func start() {
+        ModuleManagement.shared.register(
+            modules: [
+                MovieListModule.shared,
+                MovieDetailModule.shared
+            ]
+        )
         navigateTo(route: .movieList)
     }
 
     func navigateTo(route: AppRoute, animated: Bool) {
         switch route {
         case .movieList:
-            let movie = MovieListModule.configure()
+            ModuleManagement.shared.module(withType: MovieListManageModule.self)?.start()
         }
     }
 }

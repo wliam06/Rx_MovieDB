@@ -20,6 +20,7 @@
 		356C6C9F26C65C14007A0F67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356C6C9E26C65C14007A0F67 /* SceneDelegate.swift */; };
 		356C6CA626C65C16007A0F67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 356C6CA526C65C16007A0F67 /* Assets.xcassets */; };
 		356C6CA926C65C16007A0F67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 356C6CA726C65C16007A0F67 /* LaunchScreen.storyboard */; };
+		3578843928A147510091FCFC /* ModuleManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3578843828A147510091FCFC /* ModuleManagement.framework */; };
 		35790F3A2770909F0038B210 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35790F392770909F0038B210 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		356C6CA526C65C16007A0F67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		356C6CA826C65C16007A0F67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		356C6CAA26C65C16007A0F67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3578843828A147510091FCFC /* ModuleManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ModuleManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35790F392770909F0038B210 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		68BD504B32C9A59E9FD56324 /* Pods-MovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDBTests.release.xcconfig"; path = "Target Support Files/Pods-MovieDBTests/Pods-MovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		ABF485E3C34B7534183354A6 /* libPods-MovieDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MovieDB.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				353112462884334200043A1B /* MovieList.framework in Frameworks */,
+				3578843928A147510091FCFC /* ModuleManagement.framework in Frameworks */,
 				3553D0F5287ABEC800163427 /* Networking.framework in Frameworks */,
 				3553D0F7287ABEC900163427 /* RxFramework.framework in Frameworks */,
 				3553D0F3287ABEC800163427 /* MovieKit.framework in Frameworks */,
@@ -94,6 +97,7 @@
 		16E8B0B8C50CDC72D48E62E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3578843828A147510091FCFC /* ModuleManagement.framework */,
 				3531122D28842C6300043A1B /* MovieDetail.framework */,
 				3531122E28842C6300043A1B /* MovieList.framework */,
 				3553D0ED287ABEC800163427 /* Core.framework */,

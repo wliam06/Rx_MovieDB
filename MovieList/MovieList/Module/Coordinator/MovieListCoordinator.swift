@@ -17,7 +17,8 @@ enum MovieListRoute: Route {
 
 final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
     @Injected(\.navRoute) var navigationRoute: NavigationRoute
-
+    @Injected(\.movieListModule) var moduleRoute: MovieListRouteModule
+    
     override func start() {
         navigateTo(route: .list)
     }
@@ -33,7 +34,7 @@ final class MovieListCoordinator: BaseCoordinator, RoutingFlowCoordinator {
                 self.$onFinish.onNext(true)
             }
         case .detail(let id):
-            MovieDetailModule.configure(movieId: id)
+            moduleRoute.navigateToDetail(movieId: id)
         }
     }
 }
