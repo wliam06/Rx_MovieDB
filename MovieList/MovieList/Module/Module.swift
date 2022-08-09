@@ -5,17 +5,19 @@
 //  Created by William on 17/07/22.
 //
 
-import Foundation
+import ModuleManagement
 
-public class MovieListModule {
-    private static let shared = MovieListModule()
+public protocol MovieListRouteModule {
+    func navigateToDetail(movieId: Int)
+}
 
-    public static func configure() {
-        self.shared.instance()
-    }
-
-    private func instance() {
+public struct MovieListModule: MovieListManageModule, MovieListRouteModule {
+    public func start() {
         let coordinator = MovieListCoordinator()
         coordinator.start()
+    }
+
+    public func navigateToDetail(movieId: Int) {
+        ModuleManagement.shared.module(withType: MovieDetailManageModule.self)?.start(movieId: movieId)
     }
 }
