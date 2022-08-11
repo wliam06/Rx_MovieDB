@@ -1,0 +1,105 @@
+name: MovieDB
+configs:
+  Debug: debug
+  Release: release
+options:
+  postGenCommand: bundle exec pod install
+  createIntermediateGroups: true
+targetTemplates:
+  projectBase:
+    type: application
+    platform: iOS
+    deploymentTarget: 12.0
+    scheme:
+      testTargets:
+        - MovieDBTests
+      gatherCoverageData: true
+    dependencies:
+      - framework: RxFramework
+        embed: false
+      - framework: Core
+        embed: false
+      - framework: ModuleManagement
+        embed: false
+      - framework: MovieKit
+        embed: false
+      - framework: Networking
+        embed: false  
+      - framework: MovieList
+        embed: false
+      - framework: MovieDetail
+        embed: false
+    settings:
+      base:
+        PRODUCT_NAME: $(TARGET_NAME)
+        CODE_SIGN_STYLE: Automatic
+        MARKETING_VERSION: 1.0.1
+        CURRENT_PROJECT_VERSION: 1
+        DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+        SWIFT_VERSION: 5.0
+        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+        TARGETED_DEVICE_FAMILY: 1,2
+        ENABLE_BITCODE: NO
+        EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
+        LIBRARY_SEARCH_PATHS:
+          - "$(inherited)"
+        OTHER_LDFLAGS: 
+          - "$(inherited)"
+        NSHumanReadableCopyright: Copyright © 2022 William. All rights reserved.
+      configs:
+        Debug:
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+        Release:
+          SWIFT_OPTIMIZATION_LEVEL: "-O"
+    postBuildScripts:
+      - script: |
+                echo "post build scripts"
+        name: "Echo Post Build Scripts"
+
+targets:
+  MovieDB:
+    templates:
+      - projectBase
+    sources:
+      - path: "MovieDB/Info.plist"
+        buildPhase: none
+    settings:
+      base:
+        INFOPLIST_FILE: MovieDB/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: me.william
+        APP_URL_SCHEME: "MovieDB"
+  
+schemes:
+  MovieDB:
+    build:
+      targets:
+        MovieDB: all
+    run:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+
+# include:
+#   - path: DModuleSpecs/AjaibRouting.yml
+#   - path: DModuleSpecs/RxFramework.yml
+#   - path: DModuleSpecs/AjaibConfig.yml
+#   - path: DModuleSpecs/AjaibAnalytics.yml
+#   - path: DModuleSpecs/AjaibNetwork.yml
+#   - path: DModuleSpecs/AjaibUtils.yml
+#   - path: DModuleSpecs/AjaibComponents.yml
+#   - path: DModuleSpecs/AjaibCalendar.yml
+#   - path: DModuleSpecs/AjaibRichNotificationService.yml
+#   - path: DModuleSpecs/AjaibRemoteConfig.yml
+#   - path: DModuleSpecs/Features/AjaibPayments.yml
+#   - path: DModuleSpecs/Features/AjaibKYC.yml
+#   - path: DModuleSpecs/Features/AjaibOnboarding.yml
+#   - path: DModuleSpecs/Extensions/AjaibWidgets.yml
+#   - path: DModuleSpecs/AjaibCoinDomain.yml
+#   - path: DModuleSpecs/AjaibCoinUtil.yml
+#   - path: DModuleSpecs/Features/Coin/AjaibCoinTrading.yml # Coin Feature Module
+#   - path: DModuleSpecs/Features/Coin/AjaibCoinSendReceive.yml # Coin Feature Module
+  # - path: DModuleSpecs/Features/AjaibCommunities.yml
