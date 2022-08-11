@@ -7,11 +7,6 @@ workspace 'MovieDB.xcworkspace'
 
 # MainApp
 target 'MovieDB' do
-  target 'MovieDBTests' do
-    inherit! :search_paths
-    # Pods for testing
-    # testing_pods
-  end
 end
 
 ## High level module
