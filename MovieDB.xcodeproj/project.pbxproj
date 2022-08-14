@@ -61,6 +61,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		352308AF28A8FE36000028AF /* PushNotification */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PushNotification;
+			sourceTree = "<group>";
+		};
 		50E5857C50A4C20578D2E461 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,7 +84,6 @@
 				A373DC46AC4D8377FD20B0BC /* Pods-MovieDB.debug.xcconfig */,
 				7D08BE96777511E239349AAD /* Pods-MovieDB.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -106,6 +112,7 @@
 				A418137AC9A5FB671816AE60 /* Info.plist */,
 				0D9C285BE82122EBE3CEA1D6 /* LaunchScreen.storyboard */,
 				50E5857C50A4C20578D2E461 /* App */,
+				352308AF28A8FE36000028AF /* PushNotification */,
 			);
 			path = MovieDB;
 			sourceTree = "<group>";
@@ -154,8 +161,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1200;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 10034103EEC97E305ACC637F /* Build configuration list for PBXProject "MovieDB" */;
 			compatibilityVersion = "Xcode 10.0";

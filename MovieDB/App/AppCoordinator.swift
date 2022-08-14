@@ -14,6 +14,7 @@ import ModuleManagement
 
 enum AppRoute: Route {
     case movieList
+    case movieDetail(Int?)
 }
 
 final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
@@ -26,22 +27,37 @@ final class AppCoordinator: BaseCoordinator, RoutingFlowCoordinator {
         super.init()
 
         navigationRoute.setRootVC(window: window)
+        self.registerDependencies()
     }
 
-    override func start() {
+    override func start(with option: DeeplinkOption?) {
+        if let option = option {
+            switch option {
+            case .movies:
+                self.navigateTo(route: .movieList, animated: true)
+            case .movie(let id):
+                self.navigateTo(route: .movieDetail(id), animated: true)
+            }
+        } else {
+            self.navigateTo(route: .movieList)
+        }
+    }
+
+    private func registerDependencies() {
         ModuleManagement.shared.register(
             modules: [
                 MovieListModule.shared,
                 MovieDetailModule.shared
             ]
         )
-        navigateTo(route: .movieList)
     }
 
     func navigateTo(route: AppRoute, animated: Bool) {
         switch route {
         case .movieList:
             ModuleManagement.shared.module(withType: MovieListManageModule.self)?.start()
+        case .movieDetail(let id):
+            ModuleManagement.shared.module(withType: MovieDetailModule.self)?.start(movieId: id)
         }
     }
 }
