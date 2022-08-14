@@ -6,6 +6,7 @@
 //
 
 import RxSwift
+import RxCocoa
 
 public extension ObservableType {
     func asDriverOnErrorJustComplete() -> Driver<Element> {

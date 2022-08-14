@@ -3,6 +3,9 @@ options:
   bundleIdPrefix: me.william
   postGenCommand: bundle exec pod install
   createIntermediateGroups: true
+configs:
+  Debug: debug
+  Release: releaes
 targets:
   MovieDB:
     type: application
@@ -10,7 +13,6 @@ targets:
     deploymentTarget: 12.0
     sources:
       - path: MovieDB
-        buildPhase: none
     dependencies:
       - framework: RxFramework.framework
         embed: false
@@ -29,7 +31,6 @@ targets:
     settings:
       base:
         PRODUCT_NAME: $(TARGET_NAME)
-        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
         DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
         INFOPLIST_FILE: MovieDB/Info.plist
         PRODUCT_BUNDLE_IDENTIFIER: "me.william.MovieDB"
@@ -44,13 +45,7 @@ targets:
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
         Release:
           SWIFT_OPTIMIZATION_LEVEL: "-O"
-
-schemes:
-  MovieDB:
-    build:
-      targets:
-        MovieDB: all
-      run:
-        config: DEBUG
-      profile:
-        config: DEBUG
+    postBuildScripts:
+      - script: |
+                echo "post build scripts"
+        name: "Echo Post Build Scripts"
