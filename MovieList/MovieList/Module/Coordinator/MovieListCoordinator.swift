@@ -8,7 +8,6 @@
 import UIKit
 import RxFramework
 import Core
-import MovieDetail
 
 enum MovieListRoute: Route {
     case list

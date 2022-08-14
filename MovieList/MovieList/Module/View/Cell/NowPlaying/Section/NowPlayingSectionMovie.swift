@@ -27,7 +27,7 @@ class NowPlayingSectionMovie: UICollectionViewCell {
     }()
     private lazy var rating: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor(named: "orange_rate")!
+        label.textColor = .yellowStar
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .right
         return label

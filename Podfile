@@ -7,11 +7,6 @@ workspace 'MovieDB.xcworkspace'
 
 # MainApp
 target 'MovieDB' do
-  target 'MovieDBTests' do
-    inherit! :search_paths
-    # Pods for testing
-    # testing_pods
-  end
 end
 
 ## High level module
@@ -19,6 +14,8 @@ end
 target 'MovieList' do
   use_frameworks! :linkage => :static
   project 'MovieList/MovieList.xcodeproj'
+  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift'
+
   target 'MovieListTests' do
     inherit! :search_paths
   end
@@ -97,10 +94,10 @@ post_install do |installer_representation|
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'DEBUG=1']
       end
 
-      # config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-      # if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.1
-      #   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.1'
-      # end
+      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.1
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
       config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = '$(inherited)'
 
     end
