@@ -4,6 +4,17 @@
 
 Implementation The Movie DB using RxSwift.
 
+## Architecture
+### Modular
+<p align = "center">
+   <img src= "https://user-images.githubusercontent.com/25744906/184834232-11d403cf-105e-4d8e-ac37-3eae9a166503.jpg">
+</p>
+
+Modularity is a software design technique that emphasizes of separating the functionality of a program into independent, interchangeable modules that each contains everything necessary to execute only one aspect of the desired functionality.
+
+### Cocoapods
+We use Cocoapods as a dependency manager to split the app in isolated modules. The reason why we will using Cocoapods is the documentation and many developers are use this. To avoid the conflict branch and project, we can use [Xcodegen](https://github.com/yonaskolb/XcodeGen) to help generate our code structure and configuration.
+
 ## Dependency Injection
 Dependency Injection a technique whereby one subject supplies the dependencies of another object, So that makes a class independent of it's dependencies.
 I used Swift property-wrapper, keypath-based as dependency injection system. The keypaths ensure compile-time safety for all injectable services.
