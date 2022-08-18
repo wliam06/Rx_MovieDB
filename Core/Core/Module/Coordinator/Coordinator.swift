@@ -42,6 +42,7 @@ import RxFramework
 public protocol Coordinator: AnyObject {
     var childCoordinators: [Coordinator] { get set }
     func start()
+    func start(with option: DeeplinkOption?)
 
     /// Trigger to release from coordinator
     var onFinish: Observable<Bool> { get }

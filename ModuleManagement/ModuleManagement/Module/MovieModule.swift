@@ -12,5 +12,5 @@ public protocol MovieListManageModule {
 }
 
 public protocol MovieDetailManageModule {
-    func start(movieId: Int)
+    func start(movieId: Int?)
 }
