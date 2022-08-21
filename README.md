@@ -62,6 +62,14 @@ The property wrapper allows injecting dependencies and reduces code clutter on t
    }
 ```
 
+### Build Time
+![log_report](https://user-images.githubusercontent.com/25744906/185784925-597b6933-c614-4cc0-8787-0645e2d0678b.png)
+
+> **Attention**
+> This build time generate using XLogParser and already clean the derived data.
+
+
+
 ## TODO
  - [X] Show Movie List Layout (Upcoming, Now Playing, Popular)
  - [X] Show Movie Detail
