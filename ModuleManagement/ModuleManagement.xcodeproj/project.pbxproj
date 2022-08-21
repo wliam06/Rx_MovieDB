@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		15C62649DF8EB70732E8A471 /* MovieModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E5305FE61D40706751771B7 /* MovieModule.swift */; };
-		231F22D920690A1B709D5A7A /* libPods-ModuleManagementTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B037694CC9CCAFBF4E7D9B3A /* libPods-ModuleManagementTests.a */; };
 		32621C376887CC9051216D50 /* ModuleManagement.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C19A78B5FBCEFB55B24744 /* ModuleManagement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3DE5BCCF6E9A72D0E7234746 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 023F6F769615496ABD50BC87 /* Core.framework */; };
-		91D873DBF2D8DEBBC14F9718 /* libPods-ModuleManagement.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE84E7888D81D1DA4E5DE397 /* libPods-ModuleManagement.a */; };
+		968C9E9C03E72F349923E892 /* Pods_ModuleManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7E08C0952263E4129F0D6B /* Pods_ModuleManagement.framework */; };
+		CB2138028FD7E03ABD260E86 /* Pods_ModuleManagementTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC4EBDA91DBA2B565F56458 /* Pods_ModuleManagementTests.framework */; };
 		E98ECC9049DBC2468181AF39 /* ModuleManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF9A440F6D5DEEC1EB18970 /* ModuleManagement.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		96C19A78B5FBCEFB55B24744 /* ModuleManagement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModuleManagement.h; sourceTree = "<group>"; };
 		9FF9A440F6D5DEEC1EB18970 /* ModuleManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManagement.swift; sourceTree = "<group>"; };
 		A30BAE8218A956F159BA139C /* Pods-ModuleManagementTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ModuleManagementTests.release.xcconfig"; path = "Target Support Files/Pods-ModuleManagementTests/Pods-ModuleManagementTests.release.xcconfig"; sourceTree = "<group>"; };
-		AE84E7888D81D1DA4E5DE397 /* libPods-ModuleManagement.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ModuleManagement.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B037694CC9CCAFBF4E7D9B3A /* libPods-ModuleManagementTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ModuleManagementTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEC4EBDA91DBA2B565F56458 /* Pods_ModuleManagementTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModuleManagementTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD7E08C0952263E4129F0D6B /* Pods_ModuleManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ModuleManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BE7F811DD57B1A8084B2EA /* ModuleManagement.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModuleManagement.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF6ECB9A4904ED30F0DEF2A9 /* ModuleManagementTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ModuleManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,7 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				231F22D920690A1B709D5A7A /* libPods-ModuleManagementTests.a in Frameworks */,
+				CB2138028FD7E03ABD260E86 /* Pods_ModuleManagementTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,7 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DE5BCCF6E9A72D0E7234746 /* Core.framework in Frameworks */,
-				91D873DBF2D8DEBBC14F9718 /* libPods-ModuleManagement.a in Frameworks */,
+				968C9E9C03E72F349923E892 /* Pods_ModuleManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				023F6F769615496ABD50BC87 /* Core.framework */,
-				AE84E7888D81D1DA4E5DE397 /* libPods-ModuleManagement.a */,
-				B037694CC9CCAFBF4E7D9B3A /* libPods-ModuleManagementTests.a */,
+				BD7E08C0952263E4129F0D6B /* Pods_ModuleManagement.framework */,
+				AEC4EBDA91DBA2B565F56458 /* Pods_ModuleManagementTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

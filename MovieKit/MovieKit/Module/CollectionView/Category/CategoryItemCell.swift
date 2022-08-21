@@ -11,7 +11,7 @@ import SnapKit
 public class CategoryItemCell: UICollectionViewCell {
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         return view
     }()
     private lazy var title: UILabel = {
@@ -40,7 +40,7 @@ public class CategoryItemCell: UICollectionViewCell {
             containerView.layer.borderWidth = 1.5
             containerView.layer.masksToBounds = false
             containerView.layer.cornerRadius = 16
-            containerView.layer.borderColor = UIColor.black.cgColor
+            containerView.layer.borderColor = UIColor.colorMode(light: .black, dark: .lightGray).cgColor
 
             self.title.text = name
         }

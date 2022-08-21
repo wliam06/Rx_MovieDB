@@ -2,6 +2,7 @@ platform :ios, '9.0'
 
 plugin 'cocoapods-pod-linkage'
 plugin 'cocoapods-pod-merge'
+plugin 'cocoapods-binary'
 
 workspace 'MovieDB.xcworkspace'
 
@@ -13,8 +14,9 @@ end
 # Features
 target 'MovieList' do
   use_frameworks! :linkage => :static
+
   project 'MovieList/MovieList.xcodeproj'
-  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift'
+  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift', :binary => true
 
   target 'MovieListTests' do
     inherit! :search_paths
@@ -23,6 +25,7 @@ end
 
 target 'MovieDetail' do
   use_frameworks! :linkage => :static
+
   project 'MovieDetail/MovieDetail.xcodeproj'
   target 'MovieDetailTests' do
     inherit! :search_paths
@@ -32,6 +35,8 @@ end
 ## Mid level module
 # Bridge
 target 'ModuleManagement' do
+  use_frameworks! :linkage => :static
+
   project 'ModuleManagement/ModuleManagement.xcodeproj'
   target 'ModuleManagementTests' do
     inherit! :search_paths
@@ -42,6 +47,7 @@ end
 # Core
 target 'Core' do
   use_frameworks!
+
   project 'Core/Core.xcodeproj'
   target 'CoreTests' do
     inherit! :search_paths
@@ -50,9 +56,9 @@ end
 
 # UIKIt
 target 'MovieKit' do
-  project 'MovieKit/MovieKit.xcodeproj'
   use_frameworks! :linkage => :static
 
+  project 'MovieKit/MovieKit.xcodeproj'  
   pod 'SnapKit'
 
   target 'MovieKitTests' do
@@ -63,9 +69,10 @@ end
 # Network
 target 'Networking' do
   use_frameworks! :linkage => :static
+
   project 'Networking/Networking.xcodeproj'
 
-  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift'
+  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift', :binary => true
   pod 'Alamofire'
 
   target 'NetworkingTests' do
@@ -75,8 +82,9 @@ end
 
 # 3rd party custom
 target 'RxFramework' do
-  project 'RxFramework/RxFramework.xcodeproj'
   use_frameworks! :linkage => :static
+
+  project 'RxFramework/RxFramework.xcodeproj'
 
   pod 'RxSwift', '6.2.0'
   pod 'RxCocoa', '6.2.0'
@@ -94,6 +102,7 @@ post_install do |installer_representation|
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'DEBUG=1']
       end
 
+      config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = "YES"
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
       if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.1
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
