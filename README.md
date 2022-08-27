@@ -4,7 +4,7 @@
 
 Implementation The Movie DB using RxSwift.
 
-## Architecture
+## Application Architecture
 ### Modular
 <p align = "center">
    <img src= "https://user-images.githubusercontent.com/25744906/184834232-11d403cf-105e-4d8e-ac37-3eae9a166503.jpg">
@@ -83,6 +83,7 @@ The property wrapper allows injecting dependencies and reduces code clutter on t
  - [ ] Code Coverage (CodeCov) or [Sonarqube](https://medium.com/@pranay.urkude/sonarqube-integration-with-ios-b76df8405014)
  - [X] [State machine](https://github.com/ReactKit/SwiftState)
  - [ ] [Submodules For Core, Product, Utils, Helper (Advance)](https://www.youtube.com/watch?v=y7w9oz2zcEU&t=988s)
+ - [ ] [Bazel](https://github.com/bazelbuild/tulsi)
 
 ## Optional
  - [ ] Using Texture
