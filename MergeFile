@@ -1,4 +1,4 @@
-group 'NetworkSwift'
+group 'ImageCache'
     swift_version! '5.0'
 
     pod 'Kingfisher'

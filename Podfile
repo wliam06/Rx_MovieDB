@@ -16,7 +16,7 @@ target 'MovieList' do
   use_frameworks! :linkage => :static
 
   project 'MovieList/MovieList.xcodeproj'
-  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift', :binary => true
+  pod 'ImageCache', path: 'MergedPods/ImageCache', :binary => true
 
   target 'MovieListTests' do
     inherit! :search_paths
@@ -72,7 +72,7 @@ target 'Networking' do
 
   project 'Networking/Networking.xcodeproj'
 
-  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift', :binary => true
+  pod 'ImageCache', path: 'MergedPods/ImageCache', :binary => true
   pod 'Alamofire'
 
   target 'NetworkingTests' do

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import RxSwift
+import RxFramework
 import Networking
 
 @testable import Core

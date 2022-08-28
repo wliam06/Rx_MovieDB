@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import NetworkSwift
+import ImageCache
 
 class MovieItemSectionCell: UICollectionViewCell {
     private lazy var movieImage = UIImageView()

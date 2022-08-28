@@ -12,6 +12,10 @@ targets:
     platform: iOS
     sources:
       - path: Networking
+    scheme:
+      testTargets:
+        - NetworkingTests
+      gatherCoverageData: true
     dependencies:
       - framework: RxFramework.framework
         embed: false
@@ -50,3 +54,10 @@ targets:
     type: bundle.unit-test
     platform: iOS
     deploymentTarget: "12.0"
+    settings:
+      CODE_SIGN_STYLE: Manual
+      SWIFT_VERSION: "5"
+      INFOPLIST_FILE: ""
+      # TEST_HOST: $(BUILD_PRODUCT_DIR)/MovieDB.app/MovieDB
+    sources:
+      - path: NetworkingTests
