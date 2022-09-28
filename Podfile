@@ -1,5 +1,4 @@
-platform :ios, '9.0'
-
+platform :ios, '13.0'
 plugin 'cocoapods-pod-linkage'
 plugin 'cocoapods-pod-merge'
 plugin 'cocoapods-binary'
@@ -115,9 +114,10 @@ post_install do |installer_representation|
       config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = "YES"
       config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
   
-      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.1
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
-      end
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      # if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 13.0
+      #   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      # end
       config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = '$(inherited)'
 
     end

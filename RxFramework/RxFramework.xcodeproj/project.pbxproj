@@ -11,37 +11,51 @@
 		1E8747E808811C91EEC3821A /* Rx+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08757D553B29A8AFDF536D0 /* Rx+ActivityIndicator.swift */; };
 		2AAD485B5C6D5DB9657EC49F /* RxBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63310C9C70F03DE5FED9A01E /* RxBinding.swift */; };
 		308CC271FD44638AADF55A67 /* RxFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = DA1B3823A3D8CFD446DE5C0B /* RxFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3581BB3828A65BBF00D9EBCA /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581BB3728A65BBF00D9EBCA /* export.swift */; };
+		35C6D6AF28E446E2002CF13F /* Pods_RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C6D6AE28E446E2002CF13F /* Pods_RxFramework.framework */; };
+		35C6D6B028E446E2002CF13F /* Pods_RxFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35C6D6AE28E446E2002CF13F /* Pods_RxFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BF94D5B855E970981DB2AB /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335ABE2EBF58174C9ED85E46 /* Proxy.swift */; };
 		8DA4679C2D3E14D2811D1307 /* RxPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B574D3F8B9CA22A7D95D433 /* RxPublished.swift */; };
 		E9925D946390CED8A1922C8A /* RxSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D38D92635FE428C08C24E9A /* RxSignal.swift */; };
 		F4FBB3331D06D9B9C3599D44 /* RxTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E86A0161533DD6694A19D1 /* RxTrigger.swift */; };
-		FB386AD19AD3F9FC51E0AE9B /* Pods_RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130DD32DC240E30970C4EF8F /* Pods_RxFramework.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		35C6D6B128E446E3002CF13F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				35C6D6B028E446E2002CF13F /* Pods_RxFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		130DD32DC240E30970C4EF8F /* Pods_RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A77632FC2CACF878AD49E9E /* Pods_RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B4E10FEAA9F96AA98E1203 /* Pods-RxFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.debug.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		26E86A0161533DD6694A19D1 /* RxTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTrigger.swift; sourceTree = "<group>"; };
 		335ABE2EBF58174C9ED85E46 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
-		3581BB3728A65BBF00D9EBCA /* export.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = SOURCE_ROOT; };
+		35C6D6AE28E446E2002CF13F /* Pods_RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47674034A54A841E3D4D71E4 /* RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2B6F51D189662B6C3F43BA /* Observable+Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Driver.swift"; sourceTree = "<group>"; };
 		5B574D3F8B9CA22A7D95D433 /* RxPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPublished.swift; sourceTree = "<group>"; };
 		63310C9C70F03DE5FED9A01E /* RxBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBinding.swift; sourceTree = "<group>"; };
-		70756C4F33A294AC91565A6D /* Pods-RxFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.release.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.release.xcconfig"; sourceTree = "<group>"; };
+		685A8946D46B92F6313EDAD4 /* Pods-RxFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.release.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.release.xcconfig"; sourceTree = "<group>"; };
 		7D38D92635FE428C08C24E9A /* RxSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSignal.swift; sourceTree = "<group>"; };
 		AF4091AEF114F4E865CE6729 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		C63165CCAC8EC1BB10472575 /* Pods-RxFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.debug.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		DA1B3823A3D8CFD446DE5C0B /* RxFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxFramework.h; sourceTree = "<group>"; };
 		E08757D553B29A8AFDF536D0 /* Rx+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+ActivityIndicator.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8D0A40084F7DFE5C99BC6E3A /* Frameworks */ = {
+		86157E1F603A4FF99DD89213 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB386AD19AD3F9FC51E0AE9B /* Pods_RxFramework.framework in Frameworks */,
+				35C6D6AF28E446E2002CF13F /* Pods_RxFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,9 +97,18 @@
 			children = (
 				C138E01FD05F0DA3FB40CF68 /* RxFramework */,
 				A31CA7765BE86DA30CCCE0FE /* Products */,
-				A27165F2EDAD6324C6C93C76 /* Pods */,
-				CDA43BAFAD814C3378C7993F /* Frameworks */,
+				F55D48DA5B9EA255971D32F0 /* Pods */,
+				6390C2ADA31C8CE34B9A7056 /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		6390C2ADA31C8CE34B9A7056 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35C6D6AE28E446E2002CF13F /* Pods_RxFramework.framework */,
+				0A77632FC2CACF878AD49E9E /* Pods_RxFramework.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8E952C3C5D93AA2FC6E49474 /* Activity */ = {
@@ -94,16 +117,6 @@
 				E08757D553B29A8AFDF536D0 /* Rx+ActivityIndicator.swift */,
 			);
 			path = Activity;
-			sourceTree = "<group>";
-		};
-		A27165F2EDAD6324C6C93C76 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C63165CCAC8EC1BB10472575 /* Pods-RxFramework.debug.xcconfig */,
-				70756C4F33A294AC91565A6D /* Pods-RxFramework.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
 			sourceTree = "<group>";
 		};
 		A31CA7765BE86DA30CCCE0FE /* Products */ = {
@@ -125,7 +138,6 @@
 		C138E01FD05F0DA3FB40CF68 /* RxFramework */ = {
 			isa = PBXGroup;
 			children = (
-				3581BB3728A65BBF00D9EBCA /* export.swift */,
 				AF4091AEF114F4E865CE6729 /* Info.plist */,
 				DA1B3823A3D8CFD446DE5C0B /* RxFramework.h */,
 				0C569D5789E8B3AB44BBC63C /* Module */,
@@ -133,12 +145,14 @@
 			path = RxFramework;
 			sourceTree = "<group>";
 		};
-		CDA43BAFAD814C3378C7993F /* Frameworks */ = {
+		F55D48DA5B9EA255971D32F0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				130DD32DC240E30970C4EF8F /* Pods_RxFramework.framework */,
+				17B4E10FEAA9F96AA98E1203 /* Pods-RxFramework.debug.xcconfig */,
+				685A8946D46B92F6313EDAD4 /* Pods-RxFramework.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
+			path = ../Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,10 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 853E5F1C6623C385F80A4327 /* Build configuration list for PBXNativeTarget "RxFramework" */;
 			buildPhases = (
-				CCF2AECC72805FAE69F2C63A /* [CP] Check Pods Manifest.lock */,
+				F81CDE42AA685A06EA6AD6ED /* [CP] Check Pods Manifest.lock */,
 				1CD8F5FCA3E3962DA1A3C186 /* Headers */,
 				01319EAE5A4443E52E183315 /* Sources */,
-				8D0A40084F7DFE5C99BC6E3A /* Frameworks */,
+				86157E1F603A4FF99DD89213 /* Frameworks */,
+				35C6D6B128E446E3002CF13F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -205,7 +220,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CCF2AECC72805FAE69F2C63A /* [CP] Check Pods Manifest.lock */ = {
+		F81CDE42AA685A06EA6AD6ED /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,7 +250,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				194775F6E70886D58D69031A /* Observable+Driver.swift in Sources */,
-				3581BB3828A65BBF00D9EBCA /* export.swift in Sources */,
 				45BF94D5B855E970981DB2AB /* Proxy.swift in Sources */,
 				1E8747E808811C91EEC3821A /* Rx+ActivityIndicator.swift in Sources */,
 				2AAD485B5C6D5DB9657EC49F /* RxBinding.swift in Sources */,
@@ -250,7 +264,7 @@
 /* Begin XCBuildConfiguration section */
 		3722B09F6943907983787B81 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70756C4F33A294AC91565A6D /* Pods-RxFramework.release.xcconfig */;
+			baseConfigurationReference = 685A8946D46B92F6313EDAD4 /* Pods-RxFramework.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_IDENTITY = "";
@@ -261,8 +275,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				EXCLUDED_ARCHS = NO;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = RxFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -327,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -389,7 +401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -403,7 +415,7 @@
 		};
 		F03E8671B171E2D583F99683 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C63165CCAC8EC1BB10472575 /* Pods-RxFramework.debug.xcconfig */;
+			baseConfigurationReference = 17B4E10FEAA9F96AA98E1203 /* Pods-RxFramework.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_IDENTITY = "";
@@ -414,8 +426,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = NO;
-				EXCLUDED_ARCHS = NO;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = RxFramework/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (

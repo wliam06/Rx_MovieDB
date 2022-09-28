@@ -10,7 +10,7 @@ targets:
   MovieDB:
     type: application
     platform: iOS
-    deploymentTarget: 12.0
+    deploymentTarget: 13.0
     sources:
       - path: MovieDB
     dependencies:
@@ -39,7 +39,7 @@ targets:
         SWIFT_VERSION: 5.0
         TARGETED_DEVICE_FAMILY: 1,2
         ENABLE_BITCODE: NO
-        EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
+        # EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
       configs:
         Debug:
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"

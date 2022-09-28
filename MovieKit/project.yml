@@ -5,7 +5,7 @@ configs:
 options:
   bundleIdPrefix: me.william
   deploymentTarget:
-    iOS: 12.0
+    iOS: 13.0
 targets:
   MovieKit:
     type: framework
@@ -40,7 +40,7 @@ targets:
         TARGETED_DEVICE_FAMILY: 1,2
         SUPPORTS_MACCATALYST: NO
         ENABLE_BITCODE: NO
-        EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
+        # EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
       configs:
         Debug:
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
@@ -49,4 +49,6 @@ targets:
   MovieKitTests:
     type: bundle.unit-test
     platform: iOS
-    deploymentTarget: "12.0"
+    deploymentTarget: "13.0"
+    sources:
+      - path: MovieKitTests
