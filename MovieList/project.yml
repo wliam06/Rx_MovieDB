@@ -58,16 +58,20 @@ targets:
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
         Release:
           SWIFT_OPTIMIZATION_LEVEL: "-O"
+    # preBuildScripts:
+    #   - name: SwiftLint
+    #     script: |
+    #             ${PODS_ROOT}/SwiftLint/swiftlint --config .swiftlint.yml
+
   MovieListTests:
     type: bundle.unit-test
     platform: iOS
     deploymentTarget: "12.0"
-    settings:
-      CODE_SIGN_STYLE: Manual
-      SWIFT_VERSION: "5"
-      INFOPLIST_FILE: ""
-      EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
-    dependencies:
-      - target: MovieList
     sources:
       - path: MovieListTests
+    scheme:
+      testTargets:
+        - MovieListTests
+      gatherCoverageData: true
+    dependencies:
+      - target: MovieList

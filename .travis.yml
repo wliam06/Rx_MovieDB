@@ -1,5 +1,5 @@
 language: osx
-osx_image: xcode13.3
+osx_image: xcode13.4
 language: swift
 script:
   - fastlane scan --scheme MovieDB --device "iPhone 8"

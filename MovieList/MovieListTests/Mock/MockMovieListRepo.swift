@@ -7,9 +7,9 @@
 
 import XCTest
 import RxFramework
-import Networking
-
+@testable import Networking
 @testable import Core
+
 public class MockMovieListRepo: MovieListRepository {
 
     var invokedGetUpcoming = false
