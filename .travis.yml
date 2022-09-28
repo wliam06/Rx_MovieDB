@@ -1,6 +1,9 @@
 language: osx
 osx_image: xcode13.4
 language: swift
+before_install:
+  - gem install bundler
+  - bundle config set --local deployment 'true'
 script:
   - fastlane scan --scheme MovieDB --device "iPhone 8"
 after_success:
