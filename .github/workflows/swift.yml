@@ -1,0 +1,21 @@
+name: Swift
+
+on:
+  push:
+    branches: [ "develop" ]
+  pull_request:
+    branches: [ "develop" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Bundle install
+      run: bundle install
+    - name: Fastlane scan
+      run: bundle exec fastlane scan --scheme MovieDB --decice "iPhone 8"
+    - name: Generate Code Coverage
+      if: steps.build.outcome == 'success'
+      run: bash <(curl -s https://codecov.io/bash) -J MovieDB -t f5aea74b-61ac-4d2b-9cdd-ee6a534bbb35
+      
