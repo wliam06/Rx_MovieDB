@@ -15,13 +15,13 @@
 
 default_platform(:ios)
 
-def testCore
-  scan(
-    project: "Core/Core.xcodeproj",
-    scheme: "Core",
-    device: "iPhone 8"
-  )
-end
+# def testCore
+#   scan(
+#     project: "Core/Core.xcodeproj",
+#     scheme: "Core",
+#     device: "iPhone 8"
+#   )
+# end
 
 def testMovieList
   scan(
@@ -34,7 +34,7 @@ end
 platform :ios do
   desc "Running tests"
   lane :testing do 
-    testCore()
+    # testCore()
     testMovieList()
   end
 end
