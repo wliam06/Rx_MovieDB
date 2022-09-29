@@ -55,9 +55,9 @@ targets:
         # EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
       configs:
         Debug:
-          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
-        Release:
           SWIFT_OPTIMIZATION_LEVEL: "-O"
+        Release:
+          SWIFT_OPTIMIZATION_LEVEL: "-Onone"
     # preBuildScripts:
     #   - name: SwiftLint
     #     script: |
@@ -73,5 +73,22 @@ targets:
       testTargets:
         - MovieListTests
       gatherCoverageData: true
+    info:
+      path: MovieListTests/Info.plist
+      properties:
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleName: $(PRODUCT_NAME)
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSHumanReadableCopyright: Copyright © 2022 Ajaib Technologies. All rights reserved.
+    settings:
+      base:
+        CODE_SIGN_STYLE: Manual
+        SWIFT_VERSION: "5"
+        INFOPLIST_FILE: MovieListTests/Info.plist
+        # TEST_HOST: $(BUILT_PRODUCTS_DIR)/MovieDB.app/MovieList
     dependencies:
       - target: MovieList
