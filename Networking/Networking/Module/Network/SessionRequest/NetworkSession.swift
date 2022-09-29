@@ -21,16 +21,13 @@ public class NetworkSession {
         ]
     }
 
-    static let session: SessionManager = {
+    static let session: Session = {
         let config = URLSessionConfiguration.default
         config.httpCookieAcceptPolicy = .never
         config.httpCookieStorage = nil
         config.urlCache = nil
-        config.httpAdditionalHeaders = httpHeader
-        let sesion = SessionManager(
-            configuration: config
-        )
-        return sesion
+        config.headers = httpHeader
+        return Session(configuration: config)
     }()
 }
 

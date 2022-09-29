@@ -112,7 +112,7 @@ post_install do |installer_representation|
       config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
 
       config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = "YES"
-      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+      # config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
   
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
       # if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 13.0

@@ -7,6 +7,7 @@
 
 import UIKit
 import RxFramework
+import RxSwift
 
 open class ParentViewController: UIViewController, HasDisposeBag {
     public enum ViewState {

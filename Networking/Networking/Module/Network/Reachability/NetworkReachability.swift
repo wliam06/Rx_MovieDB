@@ -14,20 +14,22 @@ final class NetworkReachability {
 //    private var alertView = AlertViewController.shared
 
     func startNetworkMonitoring() {
-        reachabilityManager?.startListening()
-        switch reachabilityManager?.networkReachabilityStatus {
-        case .notReachable:
-//            self.showOfflineAlert {
-//                self.startNetworkMonitoring()
-//            }
-            print("Not reachable")
-        case .reachable(.wwan), .reachable(.ethernetOrWiFi):
-            self.dismissOfflineAlert()
-        case .unknown:
-            print("Unknown network state")
-        case .none:
-            self.dismissOfflineAlert()
-        }
+        reachabilityManager?.startListening(onUpdatePerforming: { status in
+            switch status {
+            case .notReachable:
+    //            self.showOfflineAlert {
+    //                self.startNetworkMonitoring()
+    //            }
+                print("Not reachable")
+            case .reachable(.cellular), .reachable(.ethernetOrWiFi):
+                self.dismissOfflineAlert()
+            case .unknown:
+                print("Unknown network state")
+            default:
+                self.dismissOfflineAlert()
+            }
+        })
+
     }
 
     func showErrorResponse(_ statusCode: NetworkError?, callback: (() -> Void)?) {
