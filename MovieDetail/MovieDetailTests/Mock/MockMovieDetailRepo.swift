@@ -6,9 +6,8 @@
 //
 
 import XCTest
-import Networking
+@testable import Networking
 import RxFramework
-
 @testable import Core
 
 public class MockMovieDetailRepo: MovieDetailRepository {

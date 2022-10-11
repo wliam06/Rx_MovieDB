@@ -25,7 +25,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
-        NSHumanReadableCopyright: Copyright © 2022 Ajaib Technologies. All rights reserved.
+        NSHumanReadableCopyright: Copyright © 2021 William. All rights reserved.
     settings:
       base:
         CODE_SIGN_STYLE: Manual

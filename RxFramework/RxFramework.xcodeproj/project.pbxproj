@@ -11,10 +11,10 @@
 		1E8747E808811C91EEC3821A /* Rx+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08757D553B29A8AFDF536D0 /* Rx+ActivityIndicator.swift */; };
 		2AAD485B5C6D5DB9657EC49F /* RxBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63310C9C70F03DE5FED9A01E /* RxBinding.swift */; };
 		308CC271FD44638AADF55A67 /* RxFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = DA1B3823A3D8CFD446DE5C0B /* RxFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C6D68FAA3439042F3A42CD2 /* Pods_RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7D1B2E06930F911C4211913 /* Pods_RxFramework.framework */; };
 		43A12D8808CB9FB64C9F4341 /* export.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBCAB27CED3CCE5A792F0070 /* export.swift */; };
 		45BF94D5B855E970981DB2AB /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335ABE2EBF58174C9ED85E46 /* Proxy.swift */; };
 		8DA4679C2D3E14D2811D1307 /* RxPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B574D3F8B9CA22A7D95D433 /* RxPublished.swift */; };
-		946DEC216A64AB34DFB27BC3 /* Pods_RxFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34103EFF2A49483160E6EC31 /* Pods_RxFramework.framework */; };
 		E9925D946390CED8A1922C8A /* RxSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D38D92635FE428C08C24E9A /* RxSignal.swift */; };
 		F4FBB3331D06D9B9C3599D44 /* RxTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E86A0161533DD6694A19D1 /* RxTrigger.swift */; };
 /* End PBXBuildFile section */
@@ -22,26 +22,26 @@
 /* Begin PBXFileReference section */
 		26E86A0161533DD6694A19D1 /* RxTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTrigger.swift; sourceTree = "<group>"; };
 		335ABE2EBF58174C9ED85E46 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
-		34103EFF2A49483160E6EC31 /* Pods_RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47674034A54A841E3D4D71E4 /* RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2B6F51D189662B6C3F43BA /* Observable+Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Driver.swift"; sourceTree = "<group>"; };
 		5B574D3F8B9CA22A7D95D433 /* RxPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPublished.swift; sourceTree = "<group>"; };
 		63310C9C70F03DE5FED9A01E /* RxBinding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxBinding.swift; sourceTree = "<group>"; };
-		79B72875EFF61F41938B420C /* Pods-RxFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.release.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.release.xcconfig"; sourceTree = "<group>"; };
+		6332F858B67EAC8D572A299C /* Pods-RxFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.debug.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		7D38D92635FE428C08C24E9A /* RxSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSignal.swift; sourceTree = "<group>"; };
-		AAB858374BD0DEA26797B71E /* Pods-RxFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.debug.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.debug.xcconfig"; sourceTree = "<group>"; };
 		AF4091AEF114F4E865CE6729 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C7D1B2E06930F911C4211913 /* Pods_RxFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1B3823A3D8CFD446DE5C0B /* RxFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RxFramework.h; sourceTree = "<group>"; };
 		E08757D553B29A8AFDF536D0 /* Rx+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rx+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		EBCAB27CED3CCE5A792F0070 /* export.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = export.swift; sourceTree = "<group>"; };
+		FB937CAF8F2BB053AE12C4B2 /* Pods-RxFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxFramework.release.xcconfig"; path = "Target Support Files/Pods-RxFramework/Pods-RxFramework.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B3E7698773B2C8A6C5F7C7D1 /* Frameworks */ = {
+		1EDD60022AF1096D24F7A07C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946DEC216A64AB34DFB27BC3 /* Pods_RxFramework.framework in Frameworks */,
+				3C6D68FAA3439042F3A42CD2 /* Pods_RxFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +68,16 @@
 			path = Module;
 			sourceTree = "<group>";
 		};
+		119929CA1596A4EAD91642AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6332F858B67EAC8D572A299C /* Pods-RxFramework.debug.xcconfig */,
+				FB937CAF8F2BB053AE12C4B2 /* Pods-RxFramework.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		2C3166F572E7246E445452F5 /* Wrapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,23 +88,13 @@
 			path = Wrapper;
 			sourceTree = "<group>";
 		};
-		36AD8CAEDC1296C9E600EA0B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				AAB858374BD0DEA26797B71E /* Pods-RxFramework.debug.xcconfig */,
-				79B72875EFF61F41938B420C /* Pods-RxFramework.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
-			sourceTree = "<group>";
-		};
 		5C5BFFB207B80B00747481D3 = {
 			isa = PBXGroup;
 			children = (
 				C138E01FD05F0DA3FB40CF68 /* RxFramework */,
 				A31CA7765BE86DA30CCCE0FE /* Products */,
-				36AD8CAEDC1296C9E600EA0B /* Pods */,
-				B94697B0E7847585DECDA7AE /* Frameworks */,
+				119929CA1596A4EAD91642AC /* Pods */,
+				E176E2FA8E103609FC4BCD57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,14 +112,6 @@
 				47674034A54A841E3D4D71E4 /* RxFramework.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		B94697B0E7847585DECDA7AE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				34103EFF2A49483160E6EC31 /* Pods_RxFramework.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BF8E08B7A1CACC47EBA3177E /* Binding */ = {
@@ -141,6 +133,14 @@
 			path = RxFramework;
 			sourceTree = "<group>";
 		};
+		E176E2FA8E103609FC4BCD57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7D1B2E06930F911C4211913 /* Pods_RxFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -159,10 +159,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 853E5F1C6623C385F80A4327 /* Build configuration list for PBXNativeTarget "RxFramework" */;
 			buildPhases = (
-				463CCF662840F1EF39B386F8 /* [CP] Check Pods Manifest.lock */,
+				CB9B513532600A1BF775070E /* [CP] Check Pods Manifest.lock */,
 				1CD8F5FCA3E3962DA1A3C186 /* Headers */,
 				01319EAE5A4443E52E183315 /* Sources */,
-				B3E7698773B2C8A6C5F7C7D1 /* Frameworks */,
+				1EDD60022AF1096D24F7A07C /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -205,7 +205,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		463CCF662840F1EF39B386F8 /* [CP] Check Pods Manifest.lock */ = {
+		CB9B513532600A1BF775070E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -250,7 +250,7 @@
 /* Begin XCBuildConfiguration section */
 		3722B09F6943907983787B81 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79B72875EFF61F41938B420C /* Pods-RxFramework.release.xcconfig */;
+			baseConfigurationReference = FB937CAF8F2BB053AE12C4B2 /* Pods-RxFramework.release.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_IDENTITY = "";
@@ -401,7 +401,7 @@
 		};
 		F03E8671B171E2D583F99683 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAB858374BD0DEA26797B71E /* Pods-RxFramework.debug.xcconfig */;
+			baseConfigurationReference = 6332F858B67EAC8D572A299C /* Pods-RxFramework.debug.xcconfig */;
 			buildSettings = {
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_IDENTITY = "";

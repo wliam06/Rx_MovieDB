@@ -38,6 +38,7 @@ target 'MovieDetail' do
   use_frameworks! :linkage => :static
 
   project 'MovieDetail/MovieDetail.xcodeproj'
+
   target 'MovieDetailTests' do
     inherit! :search_paths
     testing_pod

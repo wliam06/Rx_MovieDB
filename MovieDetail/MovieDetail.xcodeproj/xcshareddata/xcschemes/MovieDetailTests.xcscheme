@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5D3F9342AD8BDA8C3C374D65"
-               BuildableName = "MovieList.framework"
-               BlueprintName = "MovieList"
-               ReferencedContainer = "container:MovieList.xcodeproj">
+               BlueprintIdentifier = "D3F9B4A4DE33FA193A85DA68"
+               BuildableName = "MovieDetailTests.xctest"
+               BlueprintName = "MovieDetailTests"
+               ReferencedContainer = "container:MovieDetail.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,20 +35,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FAB81C109918A57A15CF093A"
-               BuildableName = "MovieListTests.xctest"
-               BlueprintName = "MovieListTests"
-               ReferencedContainer = "container:MovieList.xcodeproj">
+               BlueprintIdentifier = "D3F9B4A4DE33FA193A85DA68"
+               BuildableName = "MovieDetailTests.xctest"
+               BlueprintName = "MovieDetailTests"
+               ReferencedContainer = "container:MovieDetail.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D3F9342AD8BDA8C3C374D65"
-            BuildableName = "MovieList.framework"
-            BlueprintName = "MovieList"
-            ReferencedContainer = "container:MovieList.xcodeproj">
+            BlueprintIdentifier = "D3F9B4A4DE33FA193A85DA68"
+            BuildableName = "MovieDetailTests.xctest"
+            BlueprintName = "MovieDetailTests"
+            ReferencedContainer = "container:MovieDetail.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <CommandLineArguments>
@@ -67,10 +67,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D3F9342AD8BDA8C3C374D65"
-            BuildableName = "MovieList.framework"
-            BlueprintName = "MovieList"
-            ReferencedContainer = "container:MovieList.xcodeproj">
+            BlueprintIdentifier = "D3F9B4A4DE33FA193A85DA68"
+            BuildableName = "MovieDetailTests.xctest"
+            BlueprintName = "MovieDetailTests"
+            ReferencedContainer = "container:MovieDetail.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <CommandLineArguments>
@@ -86,10 +86,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D3F9342AD8BDA8C3C374D65"
-            BuildableName = "MovieList.framework"
-            BlueprintName = "MovieList"
-            ReferencedContainer = "container:MovieList.xcodeproj">
+            BlueprintIdentifier = "D3F9B4A4DE33FA193A85DA68"
+            BuildableName = "MovieDetailTests.xctest"
+            BlueprintName = "MovieDetailTests"
+            ReferencedContainer = "container:MovieDetail.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
