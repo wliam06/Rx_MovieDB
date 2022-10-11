@@ -35,7 +35,7 @@ jobs:
     - name: Cocoapod install
       run: pod install
     - name: Fastlane scanning
-      run: xcodebuild test -scheme '${{matrix.run-config['scheme']}}' -workspace '${{matrix.run-config['workspace']}}' -destination '${{matrix.run-config['destination']}}' -showBuildTimingSummary -enable-code-coverage 'true'
+      run: xcodebuild test -scheme '${{matrix.run-config['scheme']}}' -workspace '${{matrix.run-config['workspace']}}' -destination '${{matrix.run-config['destination']}}' -showBuildTimingSummary -enableCodeCoverage YES
       # run: fastlane ios testing
       # run: xcodebuild -scheme MovieList -workspace MovieDB.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8 OS=latest' build -enableCodeCoverage YES test
       # uses: sersoft-gmbh/xcodebuild-action@v2
