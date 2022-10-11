@@ -9,18 +9,10 @@ on:
 jobs:
   run_tests:
     runs-on: macos-latest
-    env: 
-      DEVELOPER_DIR: /Applications/Xcode_14.0.app/Contents/Developer
     steps:
-    - uses: actions/checkout@v3
-    - name: Bundle install
-      run: bundle install
-    # - name: Run Script File
-    #   run: |
-    #         chmod +x ../movie.sh
-    #   shell: bash
+    - uses: actions/checkout@v1
     - name: Fastlane scan
-      run: bundle exec fastlane ios testing
+      run: fastlane ios testing
     - name: Generate Code Coverage
       if: steps.build.outcome == 'success'
       run: bash <(curl -s https://codecov.io/bash) -J MovieDB -t f5aea74b-61ac-4d2b-9cdd-ee6a534bbb35

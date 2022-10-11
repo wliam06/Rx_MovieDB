@@ -18,15 +18,10 @@ targets:
       gatherCoverageData: true
     dependencies:
       - framework: RxFramework.framework
-        embed: false
       - framework: Networking.framework
-        embed: false
       - framework: Core.framework
-        embed: false
       - framework: ModuleManagement.framework
-        embed: false
       - framework: MovieKit.framework
-        embed: false
     info:
       path: MovieList/Info.plist
       properties:
@@ -35,7 +30,7 @@ targets:
         CFBundleName: $(PRODUCT_NAME)
         CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
         CFBundleShortVersionString: $(MARKETING_VERSION)
-        CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
+        CFBundlePackageType: $(PRO  DUCT_BUNDLE_PACKAGE_TYPE)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSHumanReadableCopyright: Copyright © 2021 William. All rights reserved.
     settings:
@@ -52,6 +47,9 @@ targets:
         TARGETED_DEVICE_FAMILY: 1,2
         SUPPORTS_MACCATALYST: NO
         ENABLE_BITCODE: NO
+        OTHER_LDFLAGS: 
+          - "$(inherited)"
+          - -all_load
         # EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
       configs:
         Debug:
@@ -69,6 +67,7 @@ targets:
     deploymentTarget: "13.0"
     sources:
       - path: MovieListTests
+        excludes: [Info.plis]
     scheme:
       testTargets:
         - MovieListTests
