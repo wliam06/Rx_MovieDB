@@ -5,9 +5,11 @@
 //  Created by William on 30/04/22.
 //
 
+import RxSwift
 import RxFramework
+import RxCocoa
 
-open class ParentViewModel: HasDisposeBag {
+open class ParentViewModel {
     public lazy var disposeBag = DisposeBag()
     public init() {}
 

@@ -6,10 +6,10 @@
 //
 
 import XCTest
-import RxSwift
-import Networking
-
+import RxFramework
+@testable import Networking
 @testable import Core
+
 public class MockMovieListRepo: MovieListRepository {
 
     var invokedGetUpcoming = false

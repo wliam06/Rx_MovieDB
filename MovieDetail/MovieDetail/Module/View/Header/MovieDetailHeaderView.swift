@@ -7,7 +7,7 @@
 
 import UIKit
 import MovieKit
-import NetworkSwift
+import ImageCache
 
 class MovieDetailHeaderView: UIView {
     private lazy var image = UIImageView()

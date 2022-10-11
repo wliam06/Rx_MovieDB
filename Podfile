@@ -1,10 +1,19 @@
-platform :ios, '9.0'
+platform :ios, '13.0'
 
 plugin 'cocoapods-pod-linkage'
 plugin 'cocoapods-pod-merge'
 plugin 'cocoapods-binary'
 
 workspace 'MovieDB.xcworkspace'
+
+# 3rd Party
+def image_cache
+  pod 'ImageCache', path: 'MergedPods/ImageCache', :binary => true
+end
+
+def testing_pod
+  pod "SnapshotTesting"
+end
 
 # MainApp
 target 'MovieDB' do
@@ -16,10 +25,12 @@ target 'MovieList' do
   use_frameworks! :linkage => :static
 
   project 'MovieList/MovieList.xcodeproj'
-  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift', :binary => true
+  image_cache
 
   target 'MovieListTests' do
     inherit! :search_paths
+    image_cache
+    testing_pod
   end
 end
 
@@ -27,8 +38,10 @@ target 'MovieDetail' do
   use_frameworks! :linkage => :static
 
   project 'MovieDetail/MovieDetail.xcodeproj'
+
   target 'MovieDetailTests' do
     inherit! :search_paths
+    testing_pod
   end
 end
 
@@ -72,11 +85,12 @@ target 'Networking' do
 
   project 'Networking/Networking.xcodeproj'
 
-  pod 'NetworkSwift', path: 'MergedPods/NetworkSwift', :binary => true
+  image_cache
   pod 'Alamofire'
 
   target 'NetworkingTests' do
     inherit! :search_paths
+    image_cache
   end
 end
 
@@ -102,11 +116,16 @@ post_install do |installer_representation|
         config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)', 'DEBUG=1']
       end
 
+      config.build_settings['ONLY_ACTIVE_ARCH'] = 'YES'
+      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+
       config.build_settings['GCC_WARN_INHIBIT_ALL_WARNINGS'] = "YES"
-      config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
-      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.1
-        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
-      end
+      # config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = 'arm64'
+  
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      # if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 13.0
+      #   config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
+      # end
       config.build_settings['CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER'] = '$(inherited)'
 
     end
