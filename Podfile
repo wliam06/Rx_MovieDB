@@ -1,4 +1,5 @@
 platform :ios, '13.0'
+
 plugin 'cocoapods-pod-linkage'
 plugin 'cocoapods-pod-merge'
 plugin 'cocoapods-binary'
@@ -8,6 +9,10 @@ workspace 'MovieDB.xcworkspace'
 # 3rd Party
 def image_cache
   pod 'ImageCache', path: 'MergedPods/ImageCache', :binary => true
+end
+
+def testing_pod
+  pod "SnapshotTesting"
 end
 
 # MainApp
@@ -25,6 +30,7 @@ target 'MovieList' do
   target 'MovieListTests' do
     inherit! :search_paths
     image_cache
+    testing_pod
   end
 end
 
@@ -34,6 +40,7 @@ target 'MovieDetail' do
   project 'MovieDetail/MovieDetail.xcodeproj'
   target 'MovieDetailTests' do
     inherit! :search_paths
+    testing_pod
   end
 end
 
