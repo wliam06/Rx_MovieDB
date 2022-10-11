@@ -25,9 +25,9 @@ default_platform(:ios)
 
 def testMovieList
   scan(
-    project: "MovieList/MovieList.xcodeproj",
     scheme: "MovieList",
-    device: "iPhone 8"
+    devices: ["iPhone 8 (16.0)"],
+    build_for_testing: true
   )
 end
 
