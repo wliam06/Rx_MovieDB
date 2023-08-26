@@ -27,3 +27,8 @@ else
     xcodegen -s ./RxFramework/project.yml
     xcodegen -s ./project.yml
 fi
+
+if id "$USER" >/dev/null 2>&1; then
+    echo 'Opening MovieDB.xcworkspace'
+    open MovieDB.xcworkspace
+fi
