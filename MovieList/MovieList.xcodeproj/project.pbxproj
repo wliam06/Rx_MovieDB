@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -71,6 +71,7 @@
 		388FA249405D80BC48CF6824 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		3B8326CC5F43927C987C7558 /* MovieListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCoordinator.swift; sourceTree = "<group>"; };
 		3CB0C258557763EC985B43DF /* MovieList+StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieList+StateMachine.swift"; sourceTree = "<group>"; };
+		3D8B5E452A99E210008A5CD5 /* MovieListSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieListSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47484CEB955A37F8698249D0 /* MovieListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModelTests.swift; sourceTree = "<group>"; };
 		48DF0F86453FB93D1BEAF9AA /* MovieItemSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItemSectionCell.swift; sourceTree = "<group>"; };
 		4EBFC0C7DA78755E9748CB3B /* Pods-MovieListTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieListTests.release.xcconfig"; path = "Target Support Files/Pods-MovieListTests/Pods-MovieListTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,6 +104,13 @@
 			files = (
 				451CB9AE72641A398E6BDEBB /* MovieList.framework in Frameworks */,
 				5664F81FFFBB9FE54D1C40AD /* Pods_MovieListTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8B5E422A99E210008A5CD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +304,7 @@
 			children = (
 				0654DB24CF8BFD4D819C9081 /* MovieList.framework */,
 				EADE98B8B60284531F920F88 /* MovieListTests.xctest */,
+				3D8B5E452A99E210008A5CD5 /* MovieListSample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,6 +345,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3D8B5E442A99E210008A5CD5 /* MovieListSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D8B5E582A99E211008A5CD5 /* Build configuration list for PBXNativeTarget "MovieListSample" */;
+			buildPhases = (
+				3D8B5E412A99E210008A5CD5 /* Sources */,
+				3D8B5E422A99E210008A5CD5 /* Frameworks */,
+				3D8B5E432A99E210008A5CD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MovieListSample;
+			productName = MovieListSample;
+			productReference = 3D8B5E452A99E210008A5CD5 /* MovieListSample.app */;
+			productType = "com.apple.product-type.application";
+		};
 		5D3F9342AD8BDA8C3C374D65 /* MovieList */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 081DC7B91812EA3B769D20FC /* Build configuration list for PBXNativeTarget "MovieList" */;
@@ -380,8 +406,12 @@
 		095C728C791BFDB90086B027 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					3D8B5E442A99E210008A5CD5 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					5D3F9342AD8BDA8C3C374D65 = {
 						ProvisioningStyle = Manual;
 					};
@@ -405,11 +435,19 @@
 			targets = (
 				5D3F9342AD8BDA8C3C374D65 /* MovieList */,
 				FAB81C109918A57A15CF093A /* MovieListTests */,
+				3D8B5E442A99E210008A5CD5 /* MovieListSample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3D8B5E432A99E210008A5CD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9D16D8AD7F1724413945A33 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,6 +520,13 @@
 				098B136FF194C4DB3DD404E5 /* NowPlayingMovieCell.swift in Sources */,
 				870EEDDD400E9CC09F1295B1 /* NowPlayingSectionMovie.swift in Sources */,
 				133A649C7130DFEB229728DB /* SectionMovieCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D8B5E412A99E210008A5CD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +627,71 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		3D8B5E562A99E211008A5CD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BXSVZF5997;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieListSample/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.william.MovieListSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D8B5E572A99E211008A5CD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BXSVZF5997;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MovieListSample/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.william.MovieListSample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -774,6 +884,15 @@
 			buildConfigurations = (
 				A468F8C68180EA837C6CE8CB /* Debug */,
 				1CB2BE9E416396669E146E3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3D8B5E582A99E211008A5CD5 /* Build configuration list for PBXNativeTarget "MovieListSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D8B5E562A99E211008A5CD5 /* Debug */,
+				3D8B5E572A99E211008A5CD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

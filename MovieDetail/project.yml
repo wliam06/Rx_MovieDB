@@ -102,6 +102,19 @@ targets:
         embed: false
       - framework: MovieKit.framework
         embed: false
+      - framework: MovieDetail.framework
+        embed: false
+    info:
+      path: MovieDetailSample/Info.plist
+      properties:
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        CFBundleName: $(PRODUCT_NAME)
+        CFBundleDevelopmentRegion: $(DEVELOPMENT_LANGUAGE)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSHumanReadableCopyright: Copyright © 2022 William. All rights reserved.
     settings:
       base:
         PRODUCT_NAME: $(TARGET_NAME)
@@ -113,7 +126,6 @@ targets:
         SWIFT_VERSION: 5.0
         TARGETED_DEVICE_FAMILY: 1,2
         ENABLE_BITCODE: NO
-        # EXCLUDED_ARCHS[sdk=iphonesimulator*]: arm64
       configs:
         Debug:
           SWIFT_OPTIMIZATION_LEVEL: "-Onone"
